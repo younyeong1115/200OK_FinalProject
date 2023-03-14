@@ -23,15 +23,15 @@ public class NonUserOrderDetail {
 	@OneToMany
 	@NonNull
 	@JoinColumn(name="productCode")
-	private Integer productCode;
+	private Product productCode;
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="nonUserCode")
-	private Integer nonUserCode;
+	private NonUserOrder nonUserCode;
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="deliveryId")
-	private Integer deliveryId;
+	private Delivery deliveryId;
 	private Integer nonDetailPrice;
 	
 	

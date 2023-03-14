@@ -36,7 +36,7 @@ public class Coupon {
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="userId")
-	private String userId;
+	private User userId;
 	
 	
 	

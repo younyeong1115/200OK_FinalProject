@@ -30,7 +30,7 @@ public class Orders {
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="userId")
-	private String userId;
+	private User userId;
 	@Temporal(TemporalType.TIMESTAMP)
 	private  Date orderRegdate;
 	private Integer orderDeliveryCharge;
@@ -38,7 +38,7 @@ public class Orders {
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="deliveryId")
-	private Integer deliveryId;
+	private Delivery deliveryId;
 	private String orderStatus;
 	
 	@OneToMany(mappedBy = "orderCode")

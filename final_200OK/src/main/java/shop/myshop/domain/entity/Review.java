@@ -26,15 +26,15 @@ public class Review {
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="productCode")
-	private Integer productCode;
+	private Product productCode;
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="userId")
-	private String userId;
+	private User userId;
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="orderCode")
-	private Integer orderCode;
+	private Orders orderCode;
 	private String reviewContent;
 	private String reviewStarScope;
 	@Temporal(TemporalType.TIMESTAMP)

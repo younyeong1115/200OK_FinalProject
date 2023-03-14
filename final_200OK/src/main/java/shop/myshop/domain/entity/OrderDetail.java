@@ -24,17 +24,17 @@ public class OrderDetail {
 	@OneToMany
 	@NonNull
 	@JoinColumn(name="productCode")
-	private Integer productCode;
+	private Product productCode;
 	
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="orderCode")
-	private Integer orderCode;
+	private Orders orderCode;
 	
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="deliveryId")
-	private Integer deliveryId;
+	private Delivery deliveryId;
 	private Integer orderDetailSale;
 	private Integer orderDetailMileage;
 	private Integer orderDetailPrice;

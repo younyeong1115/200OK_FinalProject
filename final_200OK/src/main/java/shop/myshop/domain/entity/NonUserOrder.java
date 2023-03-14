@@ -32,7 +32,7 @@ public class NonUserOrder {
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="deliveryId")
-	private Integer deliveryId;
+	private Delivery deliveryId;
 	private String nonUserPayment;
 	@Temporal(TemporalType.TIMESTAMP)
 	private  Date nonUserRegdate;
