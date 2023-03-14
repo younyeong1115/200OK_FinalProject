@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,10 +29,11 @@ public class Answer {
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="managerId")
-	private String managerId;
+	private Manager managerId;
+	
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="qusetionNo")
-	private Integer questionNo;
+	private Question questionNo;
 
 }

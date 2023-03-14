@@ -21,9 +21,9 @@ public class Likes {
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="productCode")
-	private Integer productCode;
+	private Product productCode;
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="userId")
-	private String userId;
+	private User userId;
 }

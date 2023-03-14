@@ -25,7 +25,7 @@ public class Notice {
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="managerId")
-	private String managerId;
+	private Manager managerId;
 	private String noticeTitle;
 	private String noticeContent;
 	@Temporal(TemporalType.TIMESTAMP)

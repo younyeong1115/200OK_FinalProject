@@ -33,6 +33,7 @@ public class Product {
 	private Integer productStock;
 	private Integer productSale;
 	private String productDetail;
+	
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="categoryNo")
@@ -49,7 +50,6 @@ public class Product {
 	
 	@OneToMany(mappedBy = "productCode")
 	private List<OrderDetail> orderdetail = new ArrayList<OrderDetail>();
-	
 	
 	@OneToMany(mappedBy = "productCode")
 	private List<Review> Review = new ArrayList<Review>();

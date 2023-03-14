@@ -30,15 +30,15 @@ public class ProductAnswer {
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="managerId")
-	private String managerId;
+	private Manager managerId;
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="productCode")
-	private Integer productCode;
+	private Product productCode;
 	
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="productquestionNo")
-	private Integer productquestionNo;
+	private Question productquestionNo;
 
 }
