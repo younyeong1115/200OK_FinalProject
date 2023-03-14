@@ -6,10 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.Data;
+import lombok.NonNull;
 import lombok.ToString;
 @Data
 @ToString
@@ -23,7 +27,13 @@ public class Answer {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date answerRegdate;
 	
+	@OneToOne
+	@NonNull
+	@JoinColumn(name="managerId")
 	private String managerId;
+	@OneToOne
+	@NonNull
+	@JoinColumn(name="qusetionNo")
 	private Integer questionNo;
 
 }

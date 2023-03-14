@@ -1,15 +1,15 @@
 package shop.myshop.domain.entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Data
@@ -19,12 +19,21 @@ import lombok.ToString;
 public class NonUserOrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer nonDetailCode;	
+	private Integer nonDetailCode;
+	@OneToMany
+	@NonNull
+	@JoinColumn(name="productCode")
 	private Integer productCode;
+	@OneToOne
+	@NonNull
+	@JoinColumn(name="nonUserCode")
 	private Integer nonUserCode;
+	@OneToOne
+	@NonNull
+	@JoinColumn(name="deliveryId")
 	private Integer deliveryId;
 	private Integer nonDetailPrice;
 	
 	
-	
+
 }
