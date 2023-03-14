@@ -17,7 +17,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-@Entity
+@Entity(name = "productquestion")
 public class ProductQuestion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

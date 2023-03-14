@@ -22,19 +22,22 @@ import lombok.ToString;
 @Data
 @ToString
 
-@Entity
+@Entity(name = "orders")
 public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderCode;
+	
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="userId")
 	private User userId;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private  Date orderRegdate;
 	private Integer orderDeliveryCharge;
 	private String orderPayment;
+	
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="deliveryId")

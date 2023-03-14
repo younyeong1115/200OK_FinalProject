@@ -1,8 +1,6 @@
 package shop.myshop.domain.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +18,7 @@ import lombok.ToString;
 @Data
 @ToString
 
-@Entity
+@Entity(name = "nonuserorder")
 public class NonUserOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,9 +35,6 @@ public class NonUserOrder {
 	@Temporal(TemporalType.TIMESTAMP)
 	private  Date nonUserRegdate;
 	private String nonUserStatus;
-	
-	@OneToOne(mappedBy = "nonUserCode")
-	private List<NonUserOrderDetail> nonuserorderdetail= new ArrayList<NonUserOrderDetail>();
 	
 	
 }

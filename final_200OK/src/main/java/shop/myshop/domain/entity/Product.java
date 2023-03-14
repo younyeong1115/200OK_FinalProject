@@ -17,7 +17,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-@Entity
+@Entity(name = "product")
 public class Product {
 	
 	@Id
@@ -37,10 +37,10 @@ public class Product {
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="categoryNo")
-	private Integer categoryNo;
+	private Category categoryNo;
 	
 	@OneToMany(mappedBy = "productCode")
-	private List<Likes> like = new ArrayList<Likes>();
+	private List<Likes> likes = new ArrayList<Likes>();
 	
 	@OneToMany(mappedBy = "productCode")
 	private List<Cart> cart = new ArrayList<Cart>();

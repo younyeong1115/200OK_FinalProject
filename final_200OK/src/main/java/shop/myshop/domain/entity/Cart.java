@@ -13,7 +13,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-@Entity
+@Entity(name="cart")
 public class Cart {
 	
 	@Id
