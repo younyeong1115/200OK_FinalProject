@@ -1,10 +1,8 @@
 
 drop table ANSWER;
-drop table QUESTION;
 drop table PRODUCTANSWER;
 drop table CART;
 drop table NOTICE;
-drop table manager;
 drop table mileage;
 drop table orderdetail;
 drop table nonuserorderdetail;
@@ -14,6 +12,7 @@ drop table nonuserorder;
 drop table PRODUCTQUESTION;
 drop table orders;
 drop table likes;
+drop table QUESTION;
 drop table USER;
 drop table PRODUCT;
 drop table category;
@@ -29,15 +28,8 @@ create table USER(/* 회원 */
  user_emailWhether VARCHAR(10) NOT NULL,
  user_snsWhether VARCHAR(50) NOT NULL,
  user_email VARCHAR(50),
- user_regdate DATE
-);
-
-/*관리자*/
-
-create table MANAGER(/* 관리자 */
-manager_id  VARCHAR(32)  PRIMARY KEY,
-manager_pwd VARCHAR(32)  NOT NULL,
-manager_name VARCHAR(20)  NOT NULL
+ user_regdate  TIMESTAMP,
+ user_role  VARCHAR(20) 
 );
 
 /*배송*/
@@ -55,7 +47,7 @@ delivery_memo   VARCHAR(50)
 create table  ORDERS(/* 주문*/
  order_code INTEGER AUTO_INCREMENT  PRIMARY KEY,
  user_id VARCHAR(32)  NOT NULL,
- order_regdate DATE  NOT NULL,
+ order_regdate TIMESTAMP  NOT NULL,
  order_deliveryCharge INTEGER NOT NULL,
  order_payment VARCHAR(20) NOT NULL,
  delivery_id INTEGER NOT NULL,
@@ -85,7 +77,7 @@ create table REVIEW(/* 리뷰 */
  order_Code   INTEGER NOT NULL,
  review_content    VARCHAR(200) NOT NULL,
  review_starScope  VARCHAR(20) NOT NULL,
- review_regdate    DATE NOT NULL,
+ review_regdate    TIMESTAMP NOT NULL,
  review_image1      VARCHAR(20)  ,
  review_image2      VARCHAR(20),
  review_image3      VARCHAR(20)
@@ -96,11 +88,11 @@ create table REVIEW(/* 리뷰 */
 CREATE TABLE COUPON (/*쿠폰*/
   coupon_code INTEGER AUTO_INCREMENT PRIMARY KEY,
   coupon_name VARCHAR(20) NOT NULL,
-  coupon_usedate DATE NOT NULL,
+  coupon_usedate TIMESTAMP NOT NULL,
   coupon_benefit VARCHAR(20) NOT NULL,
   coupon_price VARCHAR(20) NOT NULL,
   coupon_payment VARCHAR(20) NOT NULL,
-  coupon_expdate DATE NOT NULL,
+  coupon_expdate TIMESTAMP NOT NULL,
   coupon_useYN VARCHAR(10) NOT NULL,
   user_id VARCHAR(32)
 );
@@ -114,7 +106,7 @@ CREATE TABLE COUPON (/*쿠폰*/
 
 create table MILEAGE(/* 적립금 */
 mileage_code INTEGER AUTO_INCREMENT PRIMARY KEY,
- mileage_regdate     DATE  NOT NULL,
+ mileage_regdate     TIMESTAMP  NOT NULL,
  mileage_content   VARCHAR(50) NOT NULL,
  mileage_price      INTEGER  NOT NULL,
 user_id VARCHAR(32)
@@ -133,7 +125,7 @@ nonuser_mobile   VARCHAR(40)  NOT NULL,
 nonuser_email         VARCHAR(50),
 delivery_id  INTEGER NOT NULL,
 nonuser_payment    VARCHAR(20) NOT NULL,
-nonuser_regdate     DATE  NOT NULL,
+nonuser_regdate     TIMESTAMP  NOT NULL,
 nonuser_status    VARCHAR(20) NOT NULL
 );
 
@@ -175,8 +167,8 @@ category_no INTEGER NOT NULL
 create table ANSWER(/*질문게시판 답변*/
 answer_no INTEGER AUTO_INCREMENT PRIMARY KEY,
 answer_content VARCHAR(500) NOT NULL,
-answer_regdate DATE NOT NULL,
-manager_id VARCHAR(32) NOT NULL,
+answer_regdate TIMESTAMP NOT NULL,
+user_id VARCHAR(32) NOT NULL,
 question_no INTEGER NOT NULL
 );
 
@@ -187,7 +179,7 @@ create table PRODUCTQUESTION(/*상품 질문*/
 productquestion_no INTEGER AUTO_INCREMENT PRIMARY KEY,
 productquestion_title VARCHAR(50) NOT NULL,
 productquestion_content VARCHAR(500) NOT NULL,
-productquestion_regdate DATE NOT NULL,
+productquestion_regdate TIMESTAMP NOT NULL,
 productquestion_publication INTEGER NOT NULL,
 user_id VARCHAR(32) NOT NULL,
 product_code INTEGER NOT NULL
@@ -198,9 +190,9 @@ product_code INTEGER NOT NULL
 create table PRODUCTANSWER(/*상품질문 답변*/
 productanswer_no INTEGER AUTO_INCREMENT PRIMARY KEY,
 productanswer_content VARCHAR(500) NOT NULL,
-productanswer_regdate DATE NOT NULL,
-manager_id VARCHAR(32) NOT NULL,
-question_no INTEGER NOT NULL
+productanswer_regdate TIMESTAMP NOT NULL,
+user_id VARCHAR(32) NOT NULL,
+productquestion_no INTEGER NOT NULL
 );
 
 /*질문 게시판*/
@@ -209,7 +201,7 @@ create table QUESTION(/*질문 게시판*/
 qusetion_no INTEGER AUTO_INCREMENT PRIMARY KEY,
 qusetion_title VARCHAR(50) NOT NULL,
 qusetion_content VARCHAR(500) NOT NULL,
-qusetion_regdate DATE NOT NULL,
+qusetion_regdate TIMESTAMP NOT NULL,
 qusetion_category VARCHAR(20) NOT NULL,
 qusetion_publication INTEGER NOT NULL,
 user_id VARCHAR(32) NOT NULL
@@ -229,11 +221,11 @@ user_id   VARCHAR(32) NOT NULL
 /*공지게시판*/
 
 create table NOTICE(/*공지게시판*/
-manager_id varchar(32) not null,
+user_id varchar(32) not null,
 notice_no INTEGER AUTO_INCREMENT PRIMARY KEY,
 notice_title VARCHAR(50) NOT NULL,
 notice_content VARCHAR(500) NOT NULL,
-notice_regdate DATE NOT NULL,
+notice_regdate TIMESTAMP NOT NULL,
 notice_category INTEGER NOT NULL,/*중요도 순으로 (0,1만)*/
 notice_image VARCHAR(20) 
 );
@@ -274,9 +266,9 @@ ALTER TABLE NONUSERORDER
 ADD FOREIGN KEY (delivery_id) REFERENCES DELIVERY(delivery_id);
 ALTER TABLE PRODUCT ADD FOREIGN KEY(category_no) REFERENCES CATEGORY(category_no);
 
-ALTER TABLE NOTICE ADD FOREIGN KEY (manager_id) REFERENCES MANAGER(manager_id);
+ALTER TABLE NOTICE ADD FOREIGN KEY (user_id) REFERENCES USER(user_id);
 
-ALTER TABLE ANSWER ADD FOREIGN KEY(manager_id) REFERENCES MANAGER(manager_id);
+ALTER TABLE ANSWER ADD FOREIGN KEY(user_id) REFERENCES USER(user_id);
 
 ALTER TABLE ANSWER ADD FOREIGN KEY(question_no) REFERENCES QUESTION(qusetion_no);
 
@@ -305,8 +297,8 @@ ALTER TABLE ORDERDETAIL ADD FOREIGN KEY(delivery_id) REFERENCES DELIVERY(deliver
 ALTER TABLE ORDERDETAIL ADD FOREIGN KEY(product_code) REFERENCES PRODUCT(product_code);
 ALTER TABLE ORDERDETAIL  ADD FOREIGN KEY(order_code) REFERENCES ORDERS(order_code);
 
-ALTER TABLE PRODUCTANSWER ADD FOREIGN KEY (manager_id) REFERENCES MANAGER(manager_id);
-ALTER TABLE PRODUCTANSWER ADD FOREIGN KEY (question_no) REFERENCES PRODUCTQUESTION(PRODUCTQUESTION_no);
+ALTER TABLE PRODUCTANSWER ADD FOREIGN KEY (user_id) REFERENCES USER(user_id);
+ALTER TABLE PRODUCTANSWER ADD FOREIGN KEY (productquestion_no) REFERENCES PRODUCTQUESTION(productquestion_no);
 
 ALTER TABLE NONUSERORDERDETAIL  ADD FOREIGN KEY(nonuser_code  ) REFERENCES NONUSERORDER(nonuser_code);
 ALTER TABLE NONUSERORDERDETAIL ADD FOREIGN KEY(delivery_id) REFERENCES DELIVERY(delivery_id);
