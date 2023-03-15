@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Likes {
+public class LikesDTO {
 	
 	private Integer likeNo;
 	private Integer productCode;
