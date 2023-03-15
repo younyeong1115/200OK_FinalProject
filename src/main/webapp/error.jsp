@@ -24,8 +24,7 @@
 	<div class="d-box">
 		<div class="titl">
 			<div style="float: left; margin: 0 20px;">
-				<a href="#"><img
-					src="https://www.slou.co.kr/img/front/slouLogo.png" width="70"></a>
+				<a href="index.html"><img src="image/logo.png" width="70"></a>
 			</div>
 			<ul class="f-list">
 				<li><a href="#">Best</a></li>
@@ -66,8 +65,9 @@
 	
 	<br><br><br><br><br><br>
 	
+	
 	<!--footer1-->
-	<div class="d-box" style="background-color: #eee; padding: 30px 0px;">
+	<div  class="d-box" style="background-color: #eee; padding: 30px 0px;">
 		<div class="dd-box">
 			<div class="container">
 				<div class="con1">
