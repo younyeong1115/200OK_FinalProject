@@ -27,8 +27,8 @@ create table USER(/* 회원 */
  user_address VARCHAR(50) ,
  user_emailWhether VARCHAR(10) NOT NULL,
  user_snsWhether VARCHAR(50) NOT NULL,
- user_email VARCHAR(50),
- user_regdate  TIMESTAMP,
+ user_email VARCHAR(50) NOT NULL,
+ user_regdate  TIMESTAMP NOT NULL,
  user_role  VARCHAR(20) 
 );
 
@@ -63,8 +63,8 @@ create table ORDERDETAIL(/* 주문상세내역*/
  product_code   INTEGER  NOT NULL,
  order_code           INTEGER  NOT NULL,
  delivery_id   INTEGER NOT NULL,
- order_detailSale    INTEGER NOT NULL,
- order_detailMileage INTEGER NOT NULL,
+ order_detailSale    INTEGER ,
+ order_detailMileage INTEGER ,
  order_detailPrice   INTEGER NOT NULL
 );
 
@@ -78,7 +78,7 @@ create table REVIEW(/* 리뷰 */
  review_content    VARCHAR(200) NOT NULL,
  review_starScope  VARCHAR(20) NOT NULL,
  review_regdate    TIMESTAMP NOT NULL,
- review_image1      VARCHAR(20)  ,
+ review_image1      VARCHAR(20),
  review_image2      VARCHAR(20),
  review_image3      VARCHAR(20)
 );
@@ -94,7 +94,7 @@ CREATE TABLE COUPON (/*쿠폰*/
   coupon_payment VARCHAR(20) NOT NULL,
   coupon_expdate TIMESTAMP NOT NULL,
   coupon_useYN VARCHAR(10) NOT NULL,
-  user_id VARCHAR(32)
+  user_id VARCHAR(32)  NOT NULL
 );
 
 
@@ -109,7 +109,7 @@ mileage_code INTEGER AUTO_INCREMENT PRIMARY KEY,
  mileage_regdate     TIMESTAMP  NOT NULL,
  mileage_content   VARCHAR(50) NOT NULL,
  mileage_price      INTEGER  NOT NULL,
-user_id VARCHAR(32)
+user_id VARCHAR(32)  NOT NULL
 
 );
 

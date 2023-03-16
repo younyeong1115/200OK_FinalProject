@@ -58,7 +58,8 @@ public class User {
 	private String Role;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = true)
+	@NonNull
+	@Column(nullable = false)
 	private  Date userRegdate;
 	
 	@OneToMany(mappedBy = "userId")

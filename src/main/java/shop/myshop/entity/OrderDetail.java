@@ -38,12 +38,10 @@ public class OrderDetail {
 	@JoinColumn(name="deliveryId")
 	private Delivery deliveryId;
 	
-	@NonNull
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Integer orderDetailSale;
 	
-	@NonNull
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Integer orderDetailMileage;
 	
 	@NonNull
