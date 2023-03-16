@@ -1,5 +1,6 @@
 package shop.myshop.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,8 +37,17 @@ public class OrderDetail {
 	@NonNull
 	@JoinColumn(name="deliveryId")
 	private Delivery deliveryId;
+	
+	@NonNull
+	@Column(nullable = false)
 	private Integer orderDetailSale;
+	
+	@NonNull
+	@Column(nullable = false)
 	private Integer orderDetailMileage;
+	
+	@NonNull
+	@Column(nullable = false)
 	private Integer orderDetailPrice;
 	
 	

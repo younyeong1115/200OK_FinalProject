@@ -1,5 +1,6 @@
 package shop.myshop.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,7 @@ public class NonUserOrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer nonDetailCode;
+	
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name="productCode")
@@ -37,6 +39,9 @@ public class NonUserOrderDetail {
 	@NonNull
 	@JoinColumn(name="deliveryId")
 	private Delivery deliveryId;
+	
+	@NonNull
+	@Column(nullable = false)
 	private Integer nonDetailPrice;
 	
 	

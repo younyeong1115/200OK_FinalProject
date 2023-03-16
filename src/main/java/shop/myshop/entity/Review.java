@@ -2,6 +2,7 @@ package shop.myshop.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,12 +36,25 @@ public class Review {
 	@NonNull
 	@JoinColumn(name="orderCode")
 	private Orders orderCode;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String reviewContent;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String reviewStarScope;
+	
 	@Temporal(TemporalType.TIMESTAMP)
+	@NonNull
+	@Column(nullable = false)
 	private  Date reviewRegdate;
+	
+	@Column(nullable = true)
 	private String reviewImage1;
+	@Column(nullable = true)
 	private String reviewImage2;
+	@Column(nullable = true)
 	private String reviewImage3;
 	
 	

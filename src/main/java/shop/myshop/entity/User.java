@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -11,6 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.Data;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Data
@@ -19,17 +21,44 @@ import lombok.ToString;
 @Entity(name ="user")
 public class User {
 	@Id
-	private String userId;	
+	private String userId;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String userName;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String userPwd;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String userMobile;
+	
+	@Column(nullable = true)
 	private String userPhone;
+	
+	@Column(nullable = true)
 	private String userAddress;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String userEmailWhether;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String userSnsWhether;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String userEmail;
+	
+
+	@Column(nullable = true)
 	private String Role;
+	
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = true)
 	private  Date userRegdate;
 	
 	@OneToMany(mappedBy = "userId")

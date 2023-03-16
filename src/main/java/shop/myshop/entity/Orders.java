@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,14 +35,25 @@ public class Orders {
 	private User userId;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@NonNull
+	@Column(nullable = false)
 	private  Date orderRegdate;
+	
+	@NonNull
+	@Column(nullable = false)
 	private Integer orderDeliveryCharge;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String orderPayment;
 	
 	@OneToOne
 	@NonNull
 	@JoinColumn(name="deliveryId")
 	private Delivery deliveryId;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String orderStatus;
 	
 	@OneToMany(mappedBy = "orderCode")
