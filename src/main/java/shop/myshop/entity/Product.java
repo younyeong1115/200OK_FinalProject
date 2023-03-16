@@ -3,6 +3,7 @@ package shop.myshop.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,19 +24,50 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer productCode;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String productPrice;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String productThumbNail;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String productImage1;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String productImage2;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String productPostingYn;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String productSaleingYn;
+	
+	@NonNull
+	@Column(nullable = false)
 	private Integer productSize;
+	
+	@NonNull
+	@Column(nullable = false)
 	private Integer productStock;
+	
+	@NonNull
+	@Column(nullable = false)
 	private Integer productSale;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String productDetail;
 	
 	@ManyToOne
 	@NonNull
+	@Column(nullable = false)
 	@JoinColumn(name="categoryNo")
 	private Category categoryNo;
 	

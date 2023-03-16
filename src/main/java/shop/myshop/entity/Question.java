@@ -2,6 +2,7 @@ package shop.myshop.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,14 +23,31 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer qusetionNo;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String qusetionTitle;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String qusetionContent;
+	
+	@NonNull
+	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date qusetionRegdate;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String qusetionCategory;
+	
+	@NonNull
+	@Column(nullable = false)
 	private Integer qusetionPublication;
+	
 	@ManyToOne
 	@NonNull
+	@Column(nullable = false)
 	@JoinColumn(name="userId")
 	private User userId;
 	
