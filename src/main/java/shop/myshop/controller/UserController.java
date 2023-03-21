@@ -25,9 +25,15 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/join")
+	@GetMapping("joinForm")
+	 public String join() {
+       
+		 return "user/signUp.html";
+    }
+	
+	@GetMapping("join")
 	@ResponseBody
-	 public String join( User user) {
+	 public String join(User user) {
        
 		User newUser = null;
 		try {
@@ -116,11 +122,3 @@ public class UserController {
 
 
 }
-
-
-
-
-
-
-
-
