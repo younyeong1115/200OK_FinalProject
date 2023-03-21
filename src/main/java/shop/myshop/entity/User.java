@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,15 +20,15 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 import shop.myshop.dto.Role;
-//userEmailwhether이름
-//userRole이름 변경
-//스키마 인서트 값 변경
+
 @NoArgsConstructor
 @ToString
 @Getter
 @Setter
-@Entity(name="User")
+@Entity(name ="user")
 public class User {
+	
+
 	@Id
 	private String userId;
 	
@@ -52,7 +51,8 @@ public class User {
 	private String userAddress;
 	
 	@NonNull
-	@Column(nullable = false)
+	
+	@Column(nullable = false )
 	private String userEmailwhether;
 	
 	@NonNull
@@ -63,15 +63,14 @@ public class User {
 	@Column(nullable = false)
 	private String userEmail;
 	
-
-	@NonNull
+    	//테스트 true로바꿈
+	//@NonNull
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Role userRole;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@NonNull
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private  Date userRegdate;
 	
 	@OneToMany(mappedBy = "userId")
@@ -103,4 +102,13 @@ public class User {
 	
 	@OneToMany(mappedBy = "userId")
 	private List<ProductAnswer> productanswer= new ArrayList<ProductAnswer>();
+
+	
+
+	
+
+	
+
+	
+	
 }

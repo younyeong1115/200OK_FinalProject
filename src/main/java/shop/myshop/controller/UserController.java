@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.myshop.annotation.MySecured;
 import shop.myshop.dto.Role;
@@ -16,19 +17,35 @@ import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
 import shop.myshop.service.UserService;
 
+
 @Controller
 @RequestMapping("user")
 public class UserController {
-	
+
 	@Autowired
-    private UserService userservice ;
+	private UserService userService;
+	
+	@PostMapping("/join")
+	@ResponseBody
+	 public String join( User user) {
+       
+		User newUser = null;
+		try {
+		newUser = userService.join(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+       return user.getUserName() + "님의 회원가입이 완료되었습니다.";
+    }
+
 
 //    @GetMapping()
 //    public String index() {
 //        return "index";
 //    }
-	
-	@GetMapping("logo")
+
+@GetMapping("logo")
     public String index(HttpSession httpSession) {
 		if(httpSession.getAttribute("user") == null) {
 			 return "redirect:/index.html";
@@ -50,11 +67,11 @@ public class UserController {
     public String login(@RequestParam("id") String id,
                         @RequestParam("password") String password, HttpSession httpSession) throws Exception{
     	System.out.println(id);
-        if (!userservice.isUser(id, password)) {
+        if (!userService.isUser(id, password)) {
             return "redirect:loginfail";
         }
         
-        httpSession.setAttribute("user", userservice.findByUserId(id));
+        httpSession.setAttribute("user", userService.findByUserId(id));
         return "redirect:/main.html";
     }
     
@@ -66,11 +83,11 @@ public class UserController {
     @PostMapping("loginfail")
     public String loginfail(@RequestParam("id") String id,
                         @RequestParam("password") String password, HttpSession httpSession) throws Exception{
-        if (!userservice.isUser(id, password)) {
+        if (!userService.isUser(id, password)) {
             return "redirect:loginfail";
         }
         
-        httpSession.setAttribute("user", userservice.findByUserId(id));
+        httpSession.setAttribute("user", userService.findByUserId(id));
         return "redirect:/main.html";
     }
     
@@ -95,4 +112,15 @@ public class UserController {
 
         return "user/my-info";
     }
+
+
+
 }
+
+
+
+
+
+
+
+
