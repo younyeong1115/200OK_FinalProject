@@ -6,19 +6,29 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.Setter;
 import lombok.ToString;
-
-@Data
+import shop.myshop.dto.Role;
+//userEmailwhether이름
+//userRole이름 변경
+//스키마 인서트 값 변경
+@NoArgsConstructor
 @ToString
-
-@Entity(name ="user")
+@Getter
+@Setter
+@Entity(name="User")
 public class User {
 	@Id
 	private String userId;
@@ -43,19 +53,21 @@ public class User {
 	
 	@NonNull
 	@Column(nullable = false)
-	private String userEmailWhether;
+	private String userEmailwhether;
 	
 	@NonNull
 	@Column(nullable = false)
-	private String userSnsWhether;
+	private String userSnswhether;
 	
 	@NonNull
 	@Column(nullable = false)
 	private String userEmail;
 	
 
-	@Column(nullable = true)
-	private String Role;
+	@NonNull
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role userRole;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NonNull

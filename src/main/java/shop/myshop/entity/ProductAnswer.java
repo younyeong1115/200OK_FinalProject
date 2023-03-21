@@ -37,19 +37,16 @@ public class ProductAnswer {
 	
 	@ManyToOne
 	@NonNull
-	@Column(nullable = false)
 	@JoinColumn(name="userId")
 	private User userId;
 	
 	@ManyToOne
 	@NonNull
-	@Column(nullable = false)
 	@JoinColumn(name="productCode")
 	private Product productCode;
 	
 	@OneToOne
 	@NonNull
-	@Column(nullable = false)
 	@JoinColumn(name="productquestionNo")
 	private Question productquestionNo;
 

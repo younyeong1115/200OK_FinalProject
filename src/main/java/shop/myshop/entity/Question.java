@@ -47,7 +47,6 @@ public class Question {
 	
 	@ManyToOne
 	@NonNull
-	@Column(nullable = false)
 	@JoinColumn(name="userId")
 	private User userId;
 	

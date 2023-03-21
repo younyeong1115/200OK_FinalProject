@@ -67,7 +67,6 @@ public class Product {
 	
 	@ManyToOne
 	@NonNull
-	@Column(nullable = false)
 	@JoinColumn(name="categoryNo")
 	private Category categoryNo;
 	

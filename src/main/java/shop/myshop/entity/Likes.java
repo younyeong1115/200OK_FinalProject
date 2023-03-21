@@ -1,6 +1,5 @@
 package shop.myshop.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +21,11 @@ public class Likes {
 	
 	@ManyToOne
 	@NonNull
-	@Column(nullable = false)
 	@JoinColumn(name="productCode")
 	private Product productCode;
 	
 	@ManyToOne
 	@NonNull
-	@Column(nullable = false)
 	@JoinColumn(name="userId")
 	private User userId;
 }

@@ -33,13 +33,11 @@ public class Answer {
 	private Date answerRegdate;
 	
 	@OneToOne
-	@Column(nullable = false)
 	@NonNull
 	@JoinColumn(name="userId")
 	private User userId;
 	
 	@OneToOne
-	@Column(nullable = false)
 	@NonNull
 	@JoinColumn(name="qusetionNo")
 	private Question questionNo;

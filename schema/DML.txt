@@ -54,23 +54,23 @@ INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_ad
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_address, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test08', '크리스토퍼', 'pw08', '010-8888-8888', '02-888-8888', '서울특별시 강동구 성내동', 'Y', 'Y', 'test08@gmail.com', now());
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_address, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test09', '박진영', 'pw09', '010-9999-9999', '02-999-9999', '서울특별시 강동구 성내동', 'N', 'N', 'test09@gmail.com', now());
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_address, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test10', '김우진', 'pw10', '010-1010-1010', '02-101-1010', '서울특별시 강동구 성내동', 'Y', 'N', 'test10@gmail.com', now());
-INSERT INTO USER values('admin', '김행운', 'pass', '010-8877-8888', '02-888-8888', '서울특별시 강동구 성내동', 'Y', 'N', 'admin@gmail.com', now(), 'admin');
+INSERT INTO USER values('ADMIN', '김행운', 'pass', '010-8877-8888', '02-888-8888', '서울특별시 강동구 성내동', 'Y', 'N', 'ADMIN@gmail.com', now(), 'ADMIN');
 
 
 
 
 /*공지사항*/
-INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (1,"200ok와 함께할 모델을 찾습니다","많은 관심과 지원 부탁드립니다",now(),0,"admin");
+INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (1,"200ok와 함께할 모델을 찾습니다","많은 관심과 지원 부탁드립니다",now(),0,"ADMIN");
 INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (2,"개인정보 처리방침 변경 안내","공고일자 : 2023년 2월 7일 시행일자 : 2023년 2월 15일
-",now(),1,"admin");
-INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (3,"상품별 사이즈 측정 안내","각 사이트 참고",now(),1,"admin");
-INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (4,"현금 영수증 신청 방법 안내","취소 시 현금영수증 금액도 취소 됩니다.",now(),1,"admin");
-INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (5,"사칭 피해 주의를 당부 드립니다.","최근 해외에서 쇼핑몰을 사칭해 모델 모집을 하는등의 사칭 피해 사건이 접수 되었습니다. 이와 같은 상황이 또 발생할 경우 법적 대응 하겠습니다, 감사합니다.",now(),1,"admin");
-INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (6,"200ok 배송비 변경 안내","택배 운임비 인상으로 인해 배송비가 인상됩니다 (2500-> 3000)",230123,1,"admin");
-INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (7,"교환/ 반품 공지사항","교환 반품 배송비 3000원",now(),1,"admin");
-INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (8,"설 연휴 스케쥴 안내","마지막 출고일은 1월 20일 금요일 입니다 감사합니다.",now(),1,"admin");
-INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (9,"거래처 여름 휴무 안내","8월15일 일시적으로 소진된 제품은 순차 발송 됩니다",20220815,1,"admin");
-INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (10,"삼일절 휴무 안내","법정 공휴일로 3월 2일 모든 업무가 재개 됩니다",20230225,1,"admin");
+",now(),1,"ADMIN");
+INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (3,"상품별 사이즈 측정 안내","각 사이트 참고",now(),1,"ADMIN");
+INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (4,"현금 영수증 신청 방법 안내","취소 시 현금영수증 금액도 취소 됩니다.",now(),1,"ADMIN");
+INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (5,"사칭 피해 주의를 당부 드립니다.","최근 해외에서 쇼핑몰을 사칭해 모델 모집을 하는등의 사칭 피해 사건이 접수 되었습니다. 이와 같은 상황이 또 발생할 경우 법적 대응 하겠습니다, 감사합니다.",now(),1,"ADMIN");
+INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (6,"200ok 배송비 변경 안내","택배 운임비 인상으로 인해 배송비가 인상됩니다 (2500-> 3000)",230123,1,"ADMIN");
+INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (7,"교환/ 반품 공지사항","교환 반품 배송비 3000원",now(),1,"ADMIN");
+INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (8,"설 연휴 스케쥴 안내","마지막 출고일은 1월 20일 금요일 입니다 감사합니다.",now(),1,"ADMIN");
+INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (9,"거래처 여름 휴무 안내","8월15일 일시적으로 소진된 제품은 순차 발송 됩니다",20220815,1,"ADMIN");
+INSERT INTO NOTICE (notice_no,notice_title,notice_content,notice_regdate,notice_category,user_id) values (10,"삼일절 휴무 안내","법정 공휴일로 3월 2일 모든 업무가 재개 됩니다",20230225,1,"ADMIN");
 
 /*장바구니*/
 INSERT INTO CART values(1, 1, 80000, 1, 'test01');
@@ -111,16 +111,16 @@ INSERT INTO PRODUCTQUESTION values (10,"상품 문의 드립니다:)","남자한
 
 
 /*상품문의 답변*/
-INSERT INTO PRODUCTANSWER values (1,"네 착용 가능 하십니다 사이즈표 참고 부탁드립니다.",20230311,"admin",1);
-INSERT INTO PRODUCTANSWER values (2,"사이즈표 참고 부탁드립니다.",20230311,"admin",2);
-INSERT INTO PRODUCTANSWER values (3,"네 순금입니다 감사합니다",20230311,"admin",3);
-INSERT INTO PRODUCTANSWER values (4,"네 모든 유형에 어울리도록 제작되었습니다 감사합니다.",20230311,"admin",4);
-INSERT INTO PRODUCTANSWER values (5,"평균 사이즈로 제작되었습니다 사이즈표 참고 부탁드립니다.",20230311,"admin",5);
-INSERT INTO PRODUCTANSWER values (6,"어느 계절에도 무난하게 사용 가능 하십니다 감사합니다.",20230311,"admin",6);
-INSERT INTO PRODUCTANSWER values (7,"네 상품 하단 참조 부탁드립니다.",20230311,"admin",7);
-INSERT INTO PRODUCTANSWER values (8,"네 알러지 생기지 않는 제품입니다.",20230311,"admin",8);
-INSERT INTO PRODUCTANSWER values (9,"평균 20회 정도 사용 가능합니다 감사합니다.",20230311,"admin",9);
-INSERT INTO PRODUCTANSWER values (10,"네 유니섹스 제품으로 남녀 모두 착용 가능합니다 감사합니다.",20230311,"admin",10);
+INSERT INTO PRODUCTANSWER values (1,"네 착용 가능 하십니다 사이즈표 참고 부탁드립니다.",20230311,"ADMIN",1);
+INSERT INTO PRODUCTANSWER values (2,"사이즈표 참고 부탁드립니다.",20230311,"ADMIN",2);
+INSERT INTO PRODUCTANSWER values (3,"네 순금입니다 감사합니다",20230311,"ADMIN",3);
+INSERT INTO PRODUCTANSWER values (4,"네 모든 유형에 어울리도록 제작되었습니다 감사합니다.",20230311,"ADMIN",4);
+INSERT INTO PRODUCTANSWER values (5,"평균 사이즈로 제작되었습니다 사이즈표 참고 부탁드립니다.",20230311,"ADMIN",5);
+INSERT INTO PRODUCTANSWER values (6,"어느 계절에도 무난하게 사용 가능 하십니다 감사합니다.",20230311,"ADMIN",6);
+INSERT INTO PRODUCTANSWER values (7,"네 상품 하단 참조 부탁드립니다.",20230311,"ADMIN",7);
+INSERT INTO PRODUCTANSWER values (8,"네 알러지 생기지 않는 제품입니다.",20230311,"ADMIN",8);
+INSERT INTO PRODUCTANSWER values (9,"평균 20회 정도 사용 가능합니다 감사합니다.",20230311,"ADMIN",9);
+INSERT INTO PRODUCTANSWER values (10,"네 유니섹스 제품으로 남녀 모두 착용 가능합니다 감사합니다.",20230311,"ADMIN",10);
 
 /*문의*/
 INSERT INTO QUESTION values (1,"배송 문의 드립니다:)","언제 출발해요 일주일 넘게 가달렸어요",20230311,"배송문의",1,"test01");
@@ -135,16 +135,16 @@ INSERT INTO QUESTION values (9,"교환/반품 문의 드립니다:)","주문번�
 INSERT INTO QUESTION values (10,"배송 문의 드립니다:)","언제 출고 되나요",20230311,"배송문의",1,"test10");
 
 /*문의 답변*/
-INSERT INTO ANSWER values (1,"내일 출고 됩니다 감사합니다",20230311,"admin",1);
-INSERT INTO ANSWER values (2,"공지 참고 부탁드립니다 감사합니다",20230311,"admin",2);
-INSERT INTO ANSWER values (3,"네 접수 완료되었습니다 감사합니다",20230311,"admin",3);
-INSERT INTO ANSWER values (4,"내일 출고됩니다 감사합니다",20230311,"admin",4);
-INSERT INTO ANSWER values (5,"내일 출고 됩니다 감사합니다",20230311,"admin",5);
-INSERT INTO ANSWER values (6,"네 접수 되었습니다 감사합니다",20230311,"admin",6);
-INSERT INTO ANSWER values (7,"내일 출고 됩니다 감사합니다",20230311,"admin",7);
-INSERT INTO ANSWER values (8,"내일 출고 됩니다 감사합니다",20230311,"admin",8);
-INSERT INTO ANSWER values (9,"네 접수 되었습니다 감사합니다",20230311,"admin",9);
-INSERT INTO ANSWER values (10,"내일 출고 됩니다 감사합니다",20230311,"admin",10);
+INSERT INTO ANSWER values (1,"내일 출고 됩니다 감사합니다",20230311,"ADMIN",1);
+INSERT INTO ANSWER values (2,"공지 참고 부탁드립니다 감사합니다",20230311,"ADMIN",2);
+INSERT INTO ANSWER values (3,"네 접수 완료되었습니다 감사합니다",20230311,"ADMIN",3);
+INSERT INTO ANSWER values (4,"내일 출고됩니다 감사합니다",20230311,"ADMIN",4);
+INSERT INTO ANSWER values (5,"내일 출고 됩니다 감사합니다",20230311,"ADMIN",5);
+INSERT INTO ANSWER values (6,"네 접수 되었습니다 감사합니다",20230311,"ADMIN",6);
+INSERT INTO ANSWER values (7,"내일 출고 됩니다 감사합니다",20230311,"ADMIN",7);
+INSERT INTO ANSWER values (8,"내일 출고 됩니다 감사합니다",20230311,"ADMIN",8);
+INSERT INTO ANSWER values (9,"네 접수 되었습니다 감사합니다",20230311,"ADMIN",9);
+INSERT INTO ANSWER values (10,"내일 출고 됩니다 감사합니다",20230311,"ADMIN",10);
 
 
 

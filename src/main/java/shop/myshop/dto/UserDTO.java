@@ -33,8 +33,13 @@ public class UserDTO {
 	private String userEmailWhether;
 	private String userSnsWhether;
 	private String userEmail;
-	private String Role;
+	private Role userRole;
 	private Timestamp userRegdate;
+	
+	public UserDTO(String userId, String userPwd) {
+		this.userId = userId;
+		this.userPwd = userPwd;
+	}
 	
 	
 	
