@@ -235,11 +235,11 @@ label {
   <span>개인정보 이용 동의<strong>(필수)</strong></span>
 </label>
 <label for="agree">
-  <input type="checkbox" name="agree" value="4" onchange="YnCheck(this);">
+  <input type="checkbox" name="agree" value="4"">
   <span>sns 수신동의<strong class="select_disable">(선택)</strong></span>
 </label>
 <label for="agree">
-  <input type="checkbox" name="agree" value="5" onchange="YnCheck(this);">
+  <input type="checkbox" name="agree" value="5" ">
   <span>Email 수신동의<strong class="select_disable">(선택)</strong></span>
 </label>
 </div>
@@ -365,20 +365,28 @@ for(let i = 0; i < agreeChk.length; i++){
 });
 
 
-//이메일 인증번호
 
+
+
+
+
+
+
+//이메일 인증번호
 function checkEmail(email) {
     axios({
       method: 'POST',
-      url: 'user/userEmailConfirm?userEmail=' + email
+      url: '/userEmailConfirm?userEmail=' + email
     })
       .then(function () {
         alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.");
         console.log("email : " + email);
-        chkEmailConfirm(email, $userEmailconfirm, $userEmailconfirmTxt);
       });
   }
-
+  
+ 
+  
+ 
 	// 이메일 인증번호 체크 함수
 	function chkEmailConfirm(data, $userEmailconfirm, $userEmailconfirmTxt){
 		$userEmailconfirm.on("keyup", function(){
@@ -391,8 +399,8 @@ function checkEmail(email) {
 					"font-size" : "10px"
 
 				})
-				//console.log("중복아이디");
-			} else { // 아니면 중복아님
+				
+			} else { 
 				emconfirmchk = true;
 				$userEmailconfirmTxt.html("<span id='emconfirmchk'>인증번호 확인 완료</span>")
 
@@ -403,22 +411,10 @@ function checkEmail(email) {
 
 				})
 			}
-		})
-	}
-	
-	function YnCheck(obj){
-		var checked = obj.checked;
-		if(checked){
-			obj.value="Y";
-		}else{
-			
-			obj.value="N";
-		}
-		}
+		}) }
 	
 	
-	
-	
+
 	
 	
 	
