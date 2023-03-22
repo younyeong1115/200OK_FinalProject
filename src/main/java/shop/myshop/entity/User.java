@@ -8,12 +8,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +24,8 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 import shop.myshop.dto.Role;
-
+@DynamicInsert   //(insert 시 null 인필드 제외)
+@DynamicUpdate //(update 시 null 인필드 제외)
 @NoArgsConstructor
 @ToString
 @Getter
@@ -57,8 +61,6 @@ public class User {
 	@Column(nullable = true)
 	private String userAddr3;
 	
-	
-	
 	@Column(nullable = true )
 	private String userEmailwhether;
 	
@@ -79,6 +81,7 @@ public class User {
 	@NonNull
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
+	
 	@Column(nullable = false )
 	private  Date userRegdate;
 	
@@ -112,12 +115,5 @@ public class User {
 	@OneToMany(mappedBy = "userId")
 	private List<ProductAnswer> productanswer= new ArrayList<ProductAnswer>();
 
-	
-
-	
-
-	
-
-	
 	
 }
