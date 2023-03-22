@@ -1,10 +1,16 @@
-<<!doctype html>
+<!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
-<link rel="stylesheet" href="../assets/css/login.css" />
-<style>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=3.0">
+
+<link rel="stylesheet" href="../assets/css/signUp.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+<title>signUp</title>
+<style type="text/css">
+
 main {
 	margin-top: 5rem;
 }
@@ -40,27 +46,79 @@ h2 {
 }
 
 #btnJoin {
-	width: 150px;
-	height: 40px;
-	background-color: black;
+	width: 200px;
+	height: 50px;
+	background-color: gray;
 	color: white;
 	font-size: 16px;
 	font-weight: bold;
 }
+label {
+  display: block;
+}
+
+
 </style>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+
+
 </head>
 <body>
+	<!--사이드바-->
+	<div class="fx">
+		<a href="#"> <img class="main"
+			src="https://www.slou.co.kr/img/front/btn/cartBtn.png" width="50"></a>
+		<a href="#"><img class="main"
+			src="https://www.slou.co.kr/img/front/btn/searchBtn.png" width="50"></a>
+	</div>
+
+
+	<!--title-->
+	<div class="d-box">
+		<div class="titl">
+			<div style="float: left; margin: 0 20px;">
+				<a href="../user/logo">
+				<img class="main" src="../image/logo.png" width="70"></a>
+			</div>
+			<ul class="f-list">
+				<li><a href="#">Best</a></li>
+				<li><a href="#">Products</a>
+					<ul class="list-s">
+						<li style="font-size: 0.8rem;"><a href="#">ring</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">bracelet</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">necklace</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">earing</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">watch</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">object</a></li>
+					</ul></li>
+				<li><a href="#">QnA</a></li>
+				<li><a href="#">Notice</a></li>
+			</ul>
+				<ul class="s-list">
+				<li><a href="#">찜하기</a></li>
+				<li><a href="#">장바구니</a></li>
+				<li><a href="">검색</a></li>
+				<li><a href="user/login">로그인</a></li>
+			
+			</ul>
+		</div>
+
 	<div class="entire-wrap">
 
 		<main>
 			<div class="form-wrapper">
-				<form id="join" action="join" method="GET">
+				<form id="joinForm" action="joindd" method="post">
 					<h2>Account</h2>
 
 					<br>
 					<br>
-					<h3>기본정보</h3>
-					<h6 align="right" style="font-size: 6">*필수입력사항</h6>
+				
+					<div class="input-essential" align="right" style="right: auto;color: dark gray; ;font-size:0.5rem;">
+							<label for="essential">*필수입력사항</label>
+						</div>
 					<div class="input-area">
 						<div class="input-wrapper">
 							<label for="userId">*ID</label>
@@ -72,7 +130,7 @@ h2 {
 								style="width: 70px; height: 40px;">중복체크</button>
 						</div>
 						<p id="idValidation" style="color: red; font-size: 0.5rem;">
-							아이디는 영문소문자, 숫자 조합의 4~16자리로 설정해주세요.</p>
+						아이디는 영문소문자, 숫자 조합의 4~16자리로 설정해주세요.</p>
 						<div class="input-wrapper">
 							<label for="userPwd">*Password</label>
 						</div>
@@ -100,11 +158,25 @@ h2 {
 								placeholder="이름" required>
 						</div>
 						<div class="input-wrapper">
-							<label for="userAddress">*Address</label>
+						<label for="userAddress">*Address</label>
 						</div>
-						<div>
-							<input type="text" id="userAddress" name="userAddress" size="50"
-								placeholder="주소" required>
+						<div class="form-group">
+							<input class="form-control" style="width: 40%; display: inline;"
+								placeholder="우편번호" name="userAddr1" id="userAddr1" type="text"
+								readonly="readonly">
+							<button type="button" class="btn btn-default"
+								onclick="execPostCode();">
+								<i class="fa fa-search"></i> 우편번호 찾기
+							</button>
+						</div>
+						<div class="form-group">
+							<input class="form-control" style="top: 5px;"
+								placeholder="도로명 주소" name="userAddr2" id="userAddr2" type="text"
+								readonly="readonly" />
+						</div>
+						<div class="form-group">
+							<input class="form-control" placeholder="상세주소" name="userAddr3"
+								id="userAddr3" type="text" />
 						</div>
 
 						<div class="input-wrapper">
@@ -121,20 +193,55 @@ h2 {
 							<input type="text" id="userPhone" name="userPhone" size="50"
 								placeholder="전화" required>
 						</div>
-						<div class="form-group last mb-4 email_input">
-							<label for="userEmail" id="userEmail">*Email</label> <input
-								type="text" class="form-control" name="userEmail" id="userEmail">
+						<div class="input-wrapper">
+							<label for="userEmail">*Email</label>
 						</div>
-						<button class="btn btn-outline-primary" type="button"
-							id="checkEmail">인증번호</button>
-						<div class="form-group last mb-4 check_input">
+						<div>
+							<input type="text" id="userEmail" name="userEmail" size="50"
+								placeholder="이메일" required>
+						</div><button class="btn btn-outline-primary" type="button"id="checkEmail">인증번호</button>
+	
+	
+	<div class="form-group last mb-4 check_input">
 							<label for="userEmailconfirm" id="userEmailconfirmTxt">인증번호를
 								입력해주세요</label> <input type="text" class="form-control"
 								id="userEmailconfirm">
 						</div>
-
 						<br>
-						<div style="display: block; margin: 20px auto;">
+						<br>
+						<br>
+						
+						<div class="input-agree" align="right" style="right: auto;color: black; ;font-size:auto;">
+							<span>이용약관</span>                            <span>개인정보처리방침</span>
+						</div>
+						
+						<div class="input-check" align="left"style="left: auto;">
+						<label for="agree_all">
+  <input type="checkbox" name="agree_all" id="agree_all">
+  <span>모두 동의합니다</span>
+</label>
+<label for="agree">
+  <input type="checkbox" name="agree" value="1">
+  <span>이용약관 동의<strong>(필수)</strong></span>
+</label>
+<label for="agree">
+  <input type="checkbox" name="agree" value="2">
+  <span>개인정보 수집, 이용 동의<strong>(필수)</strong></span>
+</label>
+<label for="agree">
+  <input type="checkbox" name="agree" value="3">
+  <span>개인정보 이용 동의<strong>(필수)</strong></span>
+</label>
+<label for="agree">
+  <input type="checkbox" name="agree" value="4">
+  <span>sns 수신동의<strong class="select_disable">(선택)</strong></span>
+</label>
+<label for="agree">
+  <input type="checkbox" name="agree" value="5">
+  <span>Email 수신동의<strong class="select_disable">(선택)</strong></span>
+</label>
+</div>
+						<div style="display: block; margin: 40px auto;">
 							<button type="submit" id="btnJoin">Create Account</button>
 						</div>
 					</div>
@@ -143,6 +250,160 @@ h2 {
 		</main>
 			
 	</div>
+<!--footer1-->
+	<div class="d-box" style="background-color: #eee; padding: 30px 0px;">
+		<div class="dd-box">
+			<div class="container">
+				<div class="con1">
+					고객센터
+					<hr>
+					<p style="font-size: 1.1rem;">
+						1600-0000<br> 
+						<!-- <a href="#">카카오톡 플러스 친구</a> -->
+					</p>
+					<small>제품문의 · </small>
+					<p>평일 09:30 - 17:30 | 점심시간 12:30 - 13:30
+				</div>
+				<div class="con2">
+					기업고객 문의
+					<hr>
+					<p style="font-size: 1.1rem;">
+						02-2222-22222<br> <a href="#">help@200OK.com</a>
+					</p>
+					<p>평일 10:30 - 17:30 | 점심시간 12:00 - 13:00
+				</div>
+				<div class="con3">
+					Quick Menu
+					<hr>
+					<a href="#"> About US</a><br>
+					<a href="#" style="font-weight: bold;">개인정보처리방침</a><br>
+					<a href="#">이용약관</a>
+				</div>
+				<div class="con4">
+					(주)200OK | 대표이사 · 김행운 | 서울특별시 영등포구 hta로 200OK <br>
+					1600-0000 | <a href="#">luckyham@200OK.com</a> | 사업자등록번호 ·
+					000-00-0000
+					<p>
+						통신판매업신고 · 2023-서울송파-0000호 | 부가통신사업신고필증 · 000000 <br> 
+						개인정보보호 및 청소년보호 책임자 · 김행운 
+					<p>Copyright (c) 2023 200OK Inc. All rights reserved
+					<p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--footer2-->
+	<div class="d-box" style="background-color: #bbb;">
+		
+			<div calss="foo">
+				<div class="foo-ic">
+					<a href="#"><img
+						src="https://www.slou.co.kr/img/front/main/video.png"></a>
+				</div>
+				<div class="foo-ic">
+					<a href="#"><img
+						src="https://www.slou.co.kr/img/front/main/blog.png"></a>
+				</div>
+				<div class="foo-ic">
+					<a href="#"><img
+						src="https://www.slou.co.kr/img/front/main/facebook.png"></a>
+				</div>
+				<div class="foo-ic">
+					<a href="#"><img
+						src="https://www.slou.co.kr/img/front/main/instagram.png"></a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function execPostCode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+
+           var fullRoadAddr = data.roadAddress;
+           var extraRoadAddr = ''; // 
+
+           if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+               extraRoadAddr += data.bname;
+           }
+           if(data.buildingName !== '' && data.apartment === 'Y'){
+              extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+           }
+           if(extraRoadAddr !== ''){
+               extraRoadAddr = ' (' + extraRoadAddr + ')';
+           }
+           if(fullRoadAddr !== ''){
+               fullRoadAddr += extraRoadAddr;
+           }
+
+           console.log(data.zonecode);
+           console.log(fullRoadAddr);
+           
+           
+           $("[name=userAddr1]").val(data.zonecode);
+           $("[name=userAddr2]").val(fullRoadAddr);
+           
+          
+       }
+    }).open();
+}
+
+
+const agreeChkAll = document.querySelector('input[name=agree_all]');
+agreeChkAll.addEventListener('change', (e) => {
+let agreeChk = document.querySelectorAll('input[name=agree]');
+for(let i = 0; i < agreeChk.length; i++){
+  agreeChk[i].checked = e.target.checked;
+}
+});
+
+
+//이메일 인증번호
+$checkEmail.click(function() {
+   $.ajax({
+      type : "POST",
+      url : "/userEmailConfirm",
+      data : {
+         "userEmail" : $userEmail.val()
+      },
+      success : function(data){
+         alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.")
+         console.log("data : "+data);
+         chkEmailConfirm(data, $userEmailconfirm, $userEmailconfirmTxt);
+      }
+   })
+})
+
+	// 이메일 인증번호 체크 함수
+	function chkEmailConfirm(data, $userEmailconfirm, $userEmailconfirmTxt){
+		$userEmailconfirm.on("keyup", function(){
+			if (data != $userEmailconfirm.val()) { //
+				emconfirmchk = false;
+				$userEmailconfirmTxt.html("<span id='emconfirmchk'>인증번호가 잘못되었습니다</span>")
+				$("#emconfirmchk").css({
+					"color" : "#FA3E3E",
+					"font-weight" : "bold",
+					"font-size" : "10px"
+
+				})
+				//console.log("중복아이디");
+			} else { // 아니면 중복아님
+				emconfirmchk = true;
+				$userEmailconfirmTxt.html("<span id='emconfirmchk'>인증번호 확인 완료</span>")
+
+				$("#emconfirmchk").css({
+					"color" : "#0D6EFD",
+					"font-weight" : "bold",
+					"font-size" : "10px"
+
+				})
+			}
+		})
+	}
+</script>
 </html>
