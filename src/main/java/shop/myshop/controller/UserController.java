@@ -46,7 +46,7 @@ public class UserController {
 		 return "user/signUp.html";
     }
 	
-	@GetMapping("join")
+	@PostMapping("join")
 	@ResponseBody
 	 public String join(User user) {
        

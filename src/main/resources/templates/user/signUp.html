@@ -111,7 +111,7 @@ label {
 
 		<main>
 			<div class="form-wrapper">
-				<form id="joinForm" action="joindd" method="post">
+				<form id="joinForm" action="join" method="post">
 					<h2>Account</h2>
 
 					<br>
@@ -136,7 +136,7 @@ label {
 							<label for="userPwd">*Password</label>
 						</div>
 						<div>
-							<input type="password" id="userPwd" name="userPw" size="50"
+							<input type="password" id="userPwd" name="userPwd" size="50"
 								placeholder="영문대소문자, 숫자, 특수문자 2가지 이상 조합으로 8~16자리" required>
 						</div>
 						<p id="pwValidation" style="color: red; font-size: 0.5rem;">
@@ -235,11 +235,11 @@ label {
   <span>개인정보 이용 동의<strong>(필수)</strong></span>
 </label>
 <label for="agree">
-  <input type="checkbox" name="agree" value="4">
+  <input type="checkbox" name="agree" value="4" onchange="YnCheck(this);">
   <span>sns 수신동의<strong class="select_disable">(선택)</strong></span>
 </label>
 <label for="agree">
-  <input type="checkbox" name="agree" value="5">
+  <input type="checkbox" name="agree" value="5" onchange="YnCheck(this);">
   <span>Email 수신동의<strong class="select_disable">(선택)</strong></span>
 </label>
 </div>
@@ -318,6 +318,10 @@ label {
 			</div>
 		</div>
 	</div>
+
+
+
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 function execPostCode() {
     new daum.Postcode({
@@ -371,6 +375,7 @@ function checkEmail(email) {
       .then(function () {
         alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.");
         console.log("email : " + email);
+        chkEmailConfirm(email, $userEmailconfirm, $userEmailconfirmTxt);
       });
   }
 
@@ -400,7 +405,30 @@ function checkEmail(email) {
 			}
 		})
 	}
+	
+	function YnCheck(obj){
+		var checked = obj.checked;
+		if(checked){
+			obj.value="Y";
+		}else{
+			
+			obj.value="N";
+		}
+		}
+	
+	
+	
+	
+	
+	
+	
+	
 </script>
+
+
+
+
+
 </body>
 
 

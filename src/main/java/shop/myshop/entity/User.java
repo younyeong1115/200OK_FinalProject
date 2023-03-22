@@ -13,7 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -48,15 +49,21 @@ public class User {
 	private String userPhone;
 	
 	@Column(nullable = true)
-	private String userAddress;
+	private String userAddr1;
 	
-	@NonNull
+	@Column(nullable = true)
+	private String userAddr2;
 	
-	@Column(nullable = false )
+	@Column(nullable = true)
+	private String userAddr3;
+	
+	
+	
+	@Column(nullable = true )
 	private String userEmailwhether;
 	
-	@NonNull
-	@Column(nullable = false)
+
+	@Column(nullable = true)
 	private String userSnswhether;
 	
 	@NonNull
@@ -69,8 +76,10 @@ public class User {
     @Column(nullable = true)
     private Role userRole;
 	
+	@NonNull
+	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = true)
+	@Column(nullable = false )
 	private  Date userRegdate;
 	
 	@OneToMany(mappedBy = "userId")
