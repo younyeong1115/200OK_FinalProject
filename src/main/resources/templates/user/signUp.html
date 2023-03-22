@@ -367,7 +367,7 @@ for(let i = 0; i < agreeChk.length; i++){
 $checkEmail.click(function() {
    $.ajax({
       type : "POST",
-      url : "/userEmailConfirm",
+      url : "user/userEmailConfirm",
       data : {
          "userEmail" : $userEmail.val()
       },

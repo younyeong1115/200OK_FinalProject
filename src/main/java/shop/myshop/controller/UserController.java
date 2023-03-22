@@ -15,6 +15,7 @@ import shop.myshop.annotation.MySecured;
 import shop.myshop.dto.Role;
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
+import shop.myshop.service.RegisterMail;
 import shop.myshop.service.UserService;
 
 
@@ -24,6 +25,20 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	RegisterMail registerMail;
+	
+	
+	@PostMapping("user/userEmailConfirm")
+	@ResponseBody
+	String userEmailConfirm(@RequestParam("userEmail") String email) throws Exception {
+
+	   String code = registerMail.sendSimpleMessage(email);
+	   System.out.println("인증코드 : " + code);
+	   return code;
+	}
+	
 	
 	@GetMapping("joinForm")
 	 public String join() {
