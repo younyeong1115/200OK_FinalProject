@@ -18,8 +18,8 @@ public interface UserRepository extends JpaRepository<User, String>{
      User findByUserId(String id) throws Exception;
     
     
-    @Query(value = "select u.userId from User u  where u.userName=:userName and u.userEmail=:userEmail", nativeQuery = true)
-    String findByUserNameAndUserEmail(@Param("userName")String userName, @Param("userEmail")String userEmail) throws Exception;
+    @Query(value = "select u.userId from User u where u.userName=:userName and u.userEmail=:userEmail")
+	String findByUserNameAndUserEmail(@Param("userName")String userName, @Param("userEmail")String userEmail) throws Exception;
     
     
 }

@@ -30,7 +30,7 @@ import shop.myshop.dto.Role;
 @ToString
 @Getter
 @Setter
-@Entity(name ="user")
+@Entity(name ="User")
 public class User {
 	
 
