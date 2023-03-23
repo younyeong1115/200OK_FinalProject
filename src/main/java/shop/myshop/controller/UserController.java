@@ -1,6 +1,5 @@
 package shop.myshop.controller;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,25 +8,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.fasterxml.jackson.databind.JsonNode;
 
 import shop.myshop.annotation.MySecured;
 import shop.myshop.dto.Role;
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
-import shop.myshop.service.KakaoUserInfo;
 import shop.myshop.service.RegisterMail;
 import shop.myshop.service.UserService;
 
 @Controller
 @RequestMapping("user")
 public class UserController {
+
+	private static final UserDTO UserDTO = null;
 
 	@Autowired
 	private UserService userService;
@@ -79,6 +75,26 @@ public class UserController {
        
 		 return "user/signUp.html";
     }
+	
+	
+	@GetMapping("idFindForm")
+	 public String findIdForm() {
+      
+		 return "user/findId.html";
+   }
+	
+	
+	@PostMapping(value = "findId")
+	@ResponseBody
+	   public String findId(@RequestParam("userName") String userName,
+               @RequestParam("userEmail") String userEmail) throws Exception {
+		  
+	       
+	    return userService.getUserId(userName, userEmail);
+	      
+	}
+	
+	
 	
 	@PostMapping("join")
 	@ResponseBody

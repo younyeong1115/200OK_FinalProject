@@ -52,10 +52,13 @@ public class User {
 	@Column(nullable = true)
 	private String userPhone;
 	
-	@Column(nullable = true)
+	
+	@NonNull
+	@Column(nullable = false)
 	private String userAddr1;
 	
-	@Column(nullable = true)
+	@NonNull
+	@Column(nullable = false)
 	private String userAddr2;
 	
 	@Column(nullable = true)
@@ -72,8 +75,8 @@ public class User {
 	@Column(nullable = false)
 	private String userEmail;
 	
-    	//테스트 true로바꿈
-	//@NonNull
+    	
+	
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
     private Role userRole;
@@ -81,7 +84,6 @@ public class User {
 	@NonNull
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	
 	@Column(nullable = false )
 	private  Date userRegdate;
 	

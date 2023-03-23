@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <title>signUp</title>
 <style type="text/css">
 
@@ -19,6 +20,8 @@ main {
 h2 {
 	padding-bottom: 10px;
 	font-size: 30px;
+	color: dark gray;
+	font-weight: bold;
 }
 
 .form-wrapper {
@@ -46,14 +49,7 @@ h2 {
 	height: 35px;
 }
 
-#btnJoin {
-	width: 200px;
-	height: 50px;
-	background-color: gray;
-	color: white;
-	font-size: 16px;
-	font-weight: bold;
-}
+
 label {
   display: block;
 }
@@ -125,28 +121,33 @@ label {
 							<label for="userId">*ID</label>
 						</div>
 						<div>
-							<input type="text" id="userId" name="userId" size="38"
+							<input type="text" id="userId" name="userId" size="40"
 								placeholder="영문소문자, 숫자 조합으로 4~16자리" required>
 							<button type="button" id="btnIdCheck"
 								style="width: 70px; height: 40px;">중복체크</button>
 						</div>
-						<p id="idValidation" style="color: red; font-size: 0.3rem;">
+						<p id="idValidation" align="left" style="color: red; font-size: 0.3rem; ">
+						  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						아이디는 영문소문자, 숫자 조합의 4~16자리로 설정해주세요.</p>
 						<div class="input-wrapper">
 							<label for="userPwd">*Password</label>
 						</div>
 						<div>
-							<input type="password" id="userPwd" name="userPwd" size="50"
+							<input type="password" id="userPwd" name="userPwd" size="55"
 								placeholder="영문대소문자, 숫자, 특수문자 2가지 이상 조합으로 8~16자리" required>
 						</div>
 						<p id="pwValidation" style="color: red; font-size: 0.3rem;" align="center">
-							   비밀번호는 영문대소문자, 숫자, 특수문자 2가지 이상 조합의 8~16자리로 설정해주세요.</p>
+						 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						 비밀번호는 영문대소문자, 숫자, 특수문자 2가지 이상 조합의 8~16자리로 설정해주세요.</p>
 						<div class="input-wrapper">
-							<label for="userPwCheck">비밀번호 확인</label>
+							<label for="userPwCheck">*비밀번호 확인</label>
 						</div>
 						<div>
-							<input type="password" id="userPwCheck" name="userPwCheck"
-								size="50" placeholder="영문대소문자, 숫자, 특수문자 2가지 이상 조합으로 8~16자리"
+						 <input type="password" id="userPwCheck" name="userPwCheck"
+								size="55" placeholder="영문대소문자, 숫자, 특수문자 2가지 이상 조합으로 8~16자리"
 								required>
 						</div>
 						<br>
@@ -155,14 +156,15 @@ label {
 							<label for="userName">*Name</label>
 						</div>
 						<div>
-							<input type="text" id="userName" name="userName" size="50"
+						<input type="text" id="userName" name="userName" size="55"
 								placeholder="이름" required>
 						</div>
 						<div class="input-wrapper">
 						<label for="userAddress">*Address</label>
 						</div>
 						<div class="form-group">
-							<input class="form-control" style="width: 40%; display: inline;"
+							     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							     <input class="form-control" style="width: 40%; display: inline;"
 								placeholder="우편번호" name="userAddr1" id="userAddr1" type="text"
 								readonly="readonly">
 							<button type="button" class="btn btn-default"
@@ -171,12 +173,17 @@ label {
 							</button>
 						</div>
 						<div class="form-group">
-							<input class="form-control" style="top: 5px;"
-								placeholder="도로명 주소" name="userAddr2" id="userAddr2" type="text"
-								readonly="readonly" />
+							
+							<div>
+							<input class="form-control" type="text"  id="userAddr2" name="userAddr2" size="55"
+								style="display: inline;" readonly="readonly"  placeholder="도로명 주소" required >
 						</div>
+						</div>
+						
+						
+	
 						<div class="form-group">
-							<input class="form-control" placeholder="상세주소" name="userAddr3"
+							<input class="form-control" placeholder="상세주소" name="userAddr3"size="55"
 								id="userAddr3" type="text" />
 						</div>
 
@@ -184,31 +191,40 @@ label {
 							<label for="userMobile">*Mobile</label>
 						</div>
 						<div>
-							<input type="text" id="userMobile" name="userMobile" size="50"
+							<input type="text" id="userMobile" name="userMobile" size="55"
 								placeholder="모바일" required>
 						</div>
 						<div class="input-wrapper">
 							<label for="userPhone">Phone</label>
 						</div>
 						<div>
-							<input type="text" id="userPhone" name="userPhone" size="50"
+							<input type="text" id="userPhone" name="userPhone" size="55"
 								placeholder="전화" required>
 						</div>
 						<div class="input-wrapper">
 							<label for="userEmail">*Email</label>
 						</div>
 						<div>
-							<input type="text" id="userEmail" name="userEmail" size="50" placeholder="이메일" required>
+							<input type="text" id="userEmail" name="userEmail" size="45" placeholder="이메일" required>
+						<button onClick="checkEmail(document.getElementById('userEmail').value)" class="btn btn-outline-primary" type="button">인증번호</button>
+						
 						</div>
 						
-						<button onClick="checkEmail(document.getElementById('userEmail').value)" class="btn btn-outline-primary" type="button">인증번호</button>
+						
 	
 	
-	<div class="form-group last mb-4 check_input">
-							<label for="userEmailconfirm" id="userEmailconfirmTxt">인증번호를
-								입력해주세요</label> <input type="text" class="form-control"
-								id="userEmailconfirm">
-						</div>
+	<div class="form-group last mb-4 check_input" style=" margin-top: 10px;
+	margin-left: 175px;
+	padding-bottom: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 13px;">
+	<label for="userEmailconfirm" id="userEmailconfirmTxt" >인증번호를 입력해주세요</label>
+	<input type="text" class="form-control" 
+								id="userEmailconfirm"  size="55" placeholder="인증번호">
+	</div>
+	
 						<br>
 						<br>
 						<br>
@@ -217,50 +233,38 @@ label {
 							<span>이용약관</span>                            <span>개인정보처리방침</span>
 						</div>
 						
-<div class="input-check" align="left"style="left: auto;">
-<!-- <label for="agree_all">
-  <input type="checkbox" name="agree_all" id="agree_all">
-  <span>모두 동의합니다</span>
-</label> -->
+				<div class="input-check" align="left"style="left: auto;">
+				<label for="agree_all">
+ 					 <input type="checkbox" name="agree_all" id="agree_all" value='agreeAll' onclick='agreeAll(this)'>
+  				<span>전체 동의합니다</span>
+						</label> 
 
-<!-- <label for="agree">
-  <input type="checkbox" onchange = "Yncheck(this);" name="agree" value="1">
-  <span>이용약관 동의<strong>(필수)</strong></span>
-</label>
+ 			<label for="agree">
+  				<input type="checkbox"  name="agree" value="1">
+  							<span>이용약관 동의<strong>(필수)</strong></span>
+			</label>
 
-<label for="agree">
-  <input type="checkbox" onchange = "Yncheck(this);" name="agree" value="2">
-  <span>개인정보 수집, 이용 동의<strong>(필수)</strong></span>
-</label>
+			<label for="agree">
+  					<input type="checkbox"  name="agree" value="2">
+  					<span>개인정보 수집, 이용 동의<strong>(필수)</strong></span>
+			</label>
 
-<label for="agree">
-  <input type="checkbox" onchange = "Yncheck(this);" name="agree" value="3">
-  <span>개인정보 이용 동의<strong>(필수)</strong></span>
-</label> -->
-        <!-- <label for="agree_all">
-            <input type="checkbox" name="agree_all" id="agree_all">
-            <span>모두 동의합니다</span>
-        </label>
-        <label for="Snswhether">
-            <input type="checkbox" name="snsAgree" value="n" id="Snswhether">
-            <span>sns 수신동의<strong class="select_disable">(선택)</strong></span>
-        </label>
-        
-        <label for="Emailwhether">
-            <input type="checkbox" name="emailAgree" value="n" id="Emailwhether">
-            <span>Email 수신동의<strong class="select_disable">(선택)</strong></span>
-        </label> -->
+		<label for="agree">
+  					<input type="checkbox" name="agree" value="3">
+  					<span>개인정보 이용 동의<strong>(필수)</strong></span>
+		</label> 
+      
         
         <label for="userSnswhether">
-  <input type="checkbox" name="userSnswhether" value="Y" id="userSnswhether">
-  <span>SNS 수신동의</span>
-</label>
-<label for=" userEmailwhether">
-  <input type="checkbox" name="userEmailwhether" value="Y" id="userEmailwhether">
-  <span>Email 수신동의</span>
-</label>
-    </div>
-						<div style="display: block; margin: 40px auto;">
+  				<input type="checkbox" name="userSnswhether" value="Y" id="userSnswhether">
+  				<span>SNS 수신동의</span>
+		</label>
+		<label for=" userEmailwhether">
+  		<input type="checkbox" name="userEmailwhether" value="Y" id="userEmailwhether">
+  				<span>Email 수신동의</span>
+		</label>
+    			</div>
+						<div style="display: block;  margin: 60px auto; color: dark gray; font-size: 20px; font-weight: bold;">
 							<button type="submit" id="submitForm()">Create Account</button>
 						</div>
 					</div>
@@ -338,29 +342,11 @@ label {
 
 
 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 <script>
 
 
-/*$("input:checkbox[id=Emailwhether]:checked").each(function(){
-	var checkVal = $(this).val();
-	console.log(checkVal);
-})*/
-
-/*function Yncheck(checkbox) {
-    var formData = new FormData(document.getElementById("join-form"));
-    formData.set(checkbox.name, checkbox.checked ? "y" : "n");
-    fetch("join", { method: "POST", body: formData });
-}
-
-document.getElementById("Snswhether").addEventListener("change", function() {
-    Yncheck(this);
-});
-
-document.getElementById("Emailwhether").addEventListener("change", function() {
-    Yncheck(this);
-});*/
-
+//수신동의여부
  function Yncheck(checkbox) {
 	  if (checkbox.checked == true) {
 	    checkbox.value = "Y";
@@ -369,24 +355,174 @@ document.getElementById("Emailwhether").addEventListener("change", function() {
 	  }
 	} 
 
+
+ function signUp(){
+		// 아이디 중복체크 했는지 확인
+		var checkId = false;
+		// 아이디가 형식에 맞는지
+		var idValidation = false;
+		// 비밀번호가 형식에 맞는지
+		var pwValidation = false;
+		// 비밀번호 확인란과 일치하는지
+		var pwCheck = false;
+		
+	
+		$("#idValidation").hide();
+		$("#pwValidation").hide();
+		$("#pwCheckResult").hide();
+		
+		// 아이디 중복체크
+		$("#btnIdCheck").on("click",function(){
+			console.log($("#joinForm").serialize());
+			console.log($("#joinForm"));
+			$.ajax({
+				url: '/user/idCheck.do',
+				type: 'post',
+				data: $("#joinForm").serialize(),
+				success: function(obj){
+					console.log(obj);
+					
+					if(obj == 'duplicatedId'){
+						alert("중복된 아이디입니다.");
+						$("#userId").focus();
+					} else {
+						if(confirm("사용 가능한 아이디 입니다. '" + $("#userId").val() + 
+								"'를(을) 사용하시겠습니까?")) {
+							checkId = true;
+							$("#btnIdCheck").attr("disabled", true);
+						}
+					}
+				},
+				error: function(e){
+					console.log(e);
+				}
+			})				
+		});
+		
+		// 아이디 중복체크 후 다시 아이디를 변경했을 때
+		$("#userId").on("change",function(){
+			checkId = false;
+			$("#btnIdCheck").attr("disabled", false);
+		});
+		
+		// 아이디 유효성 - 영문, 숫자 조합으로 8~16자리
+		$("#userId").on("change", function(){
+			var regexId = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
+			var resultId = regexId.exec($("#userId").val());
+			
+			  if(resultId != null){
+				  $("#idValidation").hide(); 
+               }else{
+            	   $("#idValidation").show();
+					   $("#userId").focus();
+					   $("#btnIdCheck").attr("disabled", true);
+               }
+		});
+		
+		
+		// 비밀번호 유효성 검사 - 영문, 숫자, 특수문자 조합으로 8~16자리
+		function validatePassword(character){
+			return /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*+=-])(?=.*[0-9]).{8,16}$/.test(character);
+		}
+		// 비밀번호 입력될때마다 유효성 검사
+		$("#userPwd").on("change",function(){
+			// 비밀번호 유효성 처리
+			if(!validatePassword($("#userPwd").val())){
+				pwValidation = false;
+				$("#pwValidation").show();
+				$("#userPwd").focus();
+			} else {
+				pwValidation = true;
+				$("#pwValidation").hide();
+			}
+			
+			// 비밀번호 확인까지 입력한 후 다시 비밀번호 재설정할 경우
+			if($("#userPwd").val() == $("#userPwCheck").val()){
+				pwCheck = true;
+				$("#pwCheckResult").css("color", "green");
+				$("#pwCheckResult").text("비밀번호가 일치합니다.");
+			} else {
+				pwCheck = false;
+				$("#pwCheckResult").css("color", "red");
+				$("#pwCheckResult").text("비밀번호가 일치하지 않습니다.");
+			}
+		});
+		
+		// 비밀번호 확인란 입력할 때 일치하는지
+		$("#userPwCheck").on("change", function(){
+			$("#pwCheckResult").show();
+			
+			if($("#userPwd").val() == $("#userPwCheck").val()){
+				pwCheck = true;
+				$("#pwCheckResult").css("color", "green");
+				$("#pwCheckResult").text("비밀번호가 일치합니다.");
+			} else {
+				pwCheck = false;
+				$("#pwCheckResult").css("color", "red");
+				$("#pwCheckResult").text("비밀번호가 일치하지 않습니다.");
+			}
+		});
+		
+		
+		
+				
+		// 회원가입 제출했을 때
+		$("#joinForm").on("submit", function(e){
+			// 아이디 중복체크가 안됐거나, 중복된 아이디 사용했을 때
+			if(!checkId) {
+				alert("아이디 중복체크를 진행하세요.");
+				$("#userId").focus();
+				e.preventDefault();
+				return false;
+			} 
+			
+			// 비밀번호 유효성 검사가 틀렸을 때
+			if(!pwValidation){
+				alert("영문, 숫자, 특수문자 조합의 8~16자리로 설정하세요.");
+				$("#userPwd").focus();
+				e.preventDefault();
+				return;
+			}
+			// 비밀번호와 비밀번호 확인이 일치하지 않을 때
+			if(!pwCheck) {
+				alert("비밀번호가 일치하지 않습니다.");
+				$("#userPwCheck").focus();
+				e.preventDefault();
+				return;
+			}
+			
+			
+			// 모두 true일 경우 아무것도 작성하지 X
+			alert("회원가입이 완료되었습니다!");
+		});
+	};
+		
+	
+	
+	
+	
+	
 	function submitForm() {
-	  const userSnswhether = document.getElementById("userSnswhether");
-	  const userEmailwhether = document.getElementById("userEmailwhether");
-	  Yncheck(Snswhether);
-	  Yncheck(Emailwhether);
-	  const xhr = new XMLHttpRequest();
-	  xhr.open("POST", "/join");
-	  xhr.onload = function() {
-	    console.log(xhr.responseText);
-	  };
-	  const formData = new FormData();
-	  formData.append("userSnswhether", Snswhether.value);
-	  formData.append("userEmailwhether", userEmailwhether.value);
-	  xhr.send(formData);
-	}
-
-
-
+		  const userSnswhether = document.getElementById("userSnswhether");
+		  const userEmailwhether = document.getElementById("userEmailwhether");
+		  Yncheck(Snswhether);
+		  Yncheck(Emailwhether);
+		  signUp();
+		  const xhr = new XMLHttpRequest();
+		  xhr.open("POST", "/join");
+		  xhr.onload = function() {
+		    console.log(xhr.responseText);
+		  };
+		  const formData = new FormData();
+		  formData.append("userSnswhether", Snswhether.value);
+		  formData.append("userEmailwhether", userEmailwhether.value);
+		  xhr.send(formData);
+		}
+	
+	
+	
+	
+//도로명api
 function execPostCode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -420,17 +556,17 @@ function execPostCode() {
 }
 
 
-/*const agreeChkAll = document.querySelector('input[name=agree_all]');
-agreeChkAll.addEventListener('change', (e) => {
-let agreeChk = document.querySelectorAll('input[name=agree]');
-for(let i = 0; i < agreeChk.length; i++){
-  agreeChk[i].checked = e.target.checked;
-}
-});*/
-
+//전체 동의
+function agreeAll(agreeAll)  {
+	  const checkboxes 
+	     = document.querySelectorAll('input[type="checkbox"]');
+	  
+	  checkboxes.forEach((checkbox) => {
+	    checkbox.checked = agreeAll.checked
+	  })
+	}
 
 //이메일 인증번호
-
 function checkEmail(email) {
     axios({
       method: 'POST',
@@ -470,15 +606,6 @@ function checkEmail(email) {
 		})
 	}
 	
-	/*function YnCheck(obj){
-		var checked = obj.checked;
-		if(checked){
-			obj.value="Y";
-		}else{
-			
-			obj.value="N";
-		}
-		}*/
 	
 	
 	

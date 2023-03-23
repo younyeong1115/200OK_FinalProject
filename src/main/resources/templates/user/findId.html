@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=3.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/login.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>이메일 찾기</title>
+</head>
+<body>
+<!--사이드바-->
+	<div class="fx">
+		<a href="#"> <img class="main"
+			src="https://www.slou.co.kr/img/front/btn/cartBtn.png" width="50"></a>
+		<a href="#"><img class="main"
+			src="https://www.slou.co.kr/img/front/btn/searchBtn.png" width="50"></a>
+	</div>
+
+
+	<!--title-->
+	<div class="d-box">
+		<div class="titl">
+			<div style="float: left; margin: 0 20px;">
+				<a href="../user/logo">
+				<img class="main" src="../image/logo.png" width="70"></a>
+			</div>
+			<ul class="f-list">
+				<li><a href="#">Best</a></li>
+				<li><a href="#">Products</a>
+					<ul class="list-s">
+						<li style="font-size: 0.8rem;"><a href="#">ring</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">bracelet</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">necklace</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">earing</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">watch</a></li>
+						<li style="font-size: 0.8rem;"><a href="#">object</a></li>
+					</ul></li>
+				<li><a href="#">QnA</a></li>
+				<li><a href="#">Notice</a></li>
+			</ul>
+				<ul class="s-list">
+				<li><a href="#">찜하기</a></li>
+				<li><a href="#">장바구니</a></li>
+				<li><a href="">검색</a></li>
+				<li><a href="user/login">로그인</a></li>
+			
+			</ul>
+		</div>
+	<br>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div class="w3-content w3-container w3-margin-top">
+		<div class="w3-container w3-card-4">
+			<form action="findId" method="post" id="idFindForm">
+				<div class="w3-center w3-large w3-margin-top">
+					<h3>아이디 찾기</h3>
+				</div>
+				<div>
+					<p>
+						<label>Name</label>
+						<input class="w3-input" type="text" id="userName" name="userName" required>
+					</p>
+					<p>
+						<label>Email</label>
+						<input class="w3-input" type="text" id="userEmail" name="userEmail" required>
+					</p>
+					<p class="w3-center">
+						<button type="submit" id=findBtn class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">find</button>
+						<button type="reset" onclick="history.go(-1);" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">Cancel</button>
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<!--footer1-->
+	<div class="d-box" style="background-color: #eee; padding: 30px 0px;">
+		<div class="dd-box">
+			<div class="container">
+				<div class="con1">
+					고객센터
+					<hr>
+					<p style="font-size: 1.1rem;">
+						1600-0000<br> 
+						<!-- <a href="#">카카오톡 플러스 친구</a> -->
+					</p>
+					<small>제품문의 · </small>
+					<p>평일 09:30 - 17:30 | 점심시간 12:30 - 13:30
+				</div>
+				<div class="con2">
+					기업고객 문의
+					<hr>
+					<p style="font-size: 1.1rem;">
+						02-2222-22222<br> <a href="#">help@200OK.com</a>
+					</p>
+					<p>평일 10:30 - 17:30 | 점심시간 12:00 - 13:00
+				</div>
+				<div class="con3">
+					Quick Menu
+					<hr>
+					<a href="#"> About US</a><br>
+					<a href="#" style="font-weight: bold;">개인정보처리방침</a><br>
+					<a href="#">이용약관</a>
+				</div>
+				<div class="con4">
+					(주)200OK | 대표이사 · 김행운 | 서울특별시 영등포구 hta로 200OK <br>
+					1600-0000 | <a href="#">luckyham@200OK.com</a> | 사업자등록번호 ·
+					000-00-0000
+					<p>
+						통신판매업신고 · 2023-서울송파-0000호 | 부가통신사업신고필증 · 000000 <br> 
+						개인정보보호 및 청소년보호 책임자 · 김행운 
+					<p>Copyright (c) 2023 200OK Inc. All rights reserved
+					<p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--footer2-->
+	<div class="d-box" style="background-color: #bbb;">
+		
+			<div calss="foo">
+				<div class="foo-ic">
+					<a href="#"><img
+						src="https://www.slou.co.kr/img/front/main/video.png"></a>
+				</div>
+				<div class="foo-ic">
+					<a href="#"><img
+						src="https://www.slou.co.kr/img/front/main/blog.png"></a>
+				</div>
+				<div class="foo-ic">
+					<a href="#"><img
+						src="https://www.slou.co.kr/img/front/main/facebook.png"></a>
+				</div>
+				<div class="foo-ic">
+					<a href="#"><img
+						src="https://www.slou.co.kr/img/front/main/instagram.png"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
