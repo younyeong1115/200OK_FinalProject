@@ -130,7 +130,7 @@ label {
 							<button type="button" id="btnIdCheck"
 								style="width: 70px; height: 40px;">중복체크</button>
 						</div>
-						<p id="idValidation" style="color: red; font-size: 0.5rem;">
+						<p id="idValidation" style="color: red; font-size: 0.3rem;">
 						아이디는 영문소문자, 숫자 조합의 4~16자리로 설정해주세요.</p>
 						<div class="input-wrapper">
 							<label for="userPwd">*Password</label>
@@ -139,8 +139,8 @@ label {
 							<input type="password" id="userPwd" name="userPwd" size="50"
 								placeholder="영문대소문자, 숫자, 특수문자 2가지 이상 조합으로 8~16자리" required>
 						</div>
-						<p id="pwValidation" style="color: red; font-size: 0.5rem;">
-							비밀번호는 영문대소문자, 숫자, 특수문자 2가지 이상 조합의 8~16자리로 설정해주세요.</p>
+						<p id="pwValidation" style="color: red; font-size: 0.3rem;" align="center">
+							   비밀번호는 영문대소문자, 숫자, 특수문자 2가지 이상 조합의 8~16자리로 설정해주세요.</p>
 						<div class="input-wrapper">
 							<label for="userPwCheck">비밀번호 확인</label>
 						</div>
@@ -217,34 +217,51 @@ label {
 							<span>이용약관</span>                            <span>개인정보처리방침</span>
 						</div>
 						
-						<div class="input-check" align="left"style="left: auto;">
-						<label for="agree_all">
+<div class="input-check" align="left"style="left: auto;">
+<!-- <label for="agree_all">
   <input type="checkbox" name="agree_all" id="agree_all">
   <span>모두 동의합니다</span>
-</label>
-<label for="agree">
-  <input type="checkbox" name="agree" value="1">
+</label> -->
+
+<!-- <label for="agree">
+  <input type="checkbox" onchange = "Yncheck(this);" name="agree" value="1">
   <span>이용약관 동의<strong>(필수)</strong></span>
 </label>
+
 <label for="agree">
-  <input type="checkbox" name="agree" value="2">
+  <input type="checkbox" onchange = "Yncheck(this);" name="agree" value="2">
   <span>개인정보 수집, 이용 동의<strong>(필수)</strong></span>
 </label>
+
 <label for="agree">
-  <input type="checkbox" name="agree" value="3">
+  <input type="checkbox" onchange = "Yncheck(this);" name="agree" value="3">
   <span>개인정보 이용 동의<strong>(필수)</strong></span>
+</label> -->
+        <!-- <label for="agree_all">
+            <input type="checkbox" name="agree_all" id="agree_all">
+            <span>모두 동의합니다</span>
+        </label>
+        <label for="Snswhether">
+            <input type="checkbox" name="snsAgree" value="n" id="Snswhether">
+            <span>sns 수신동의<strong class="select_disable">(선택)</strong></span>
+        </label>
+        
+        <label for="Emailwhether">
+            <input type="checkbox" name="emailAgree" value="n" id="Emailwhether">
+            <span>Email 수신동의<strong class="select_disable">(선택)</strong></span>
+        </label> -->
+        
+        <label for="userSnswhether">
+  <input type="checkbox" name="userSnswhether" value="Y" id="userSnswhether">
+  <span>SNS 수신동의</span>
 </label>
-<label for="agree">
-  <input type="checkbox" name="agree" value="4"">
-  <span>sns 수신동의<strong class="select_disable">(선택)</strong></span>
+<label for=" userEmailwhether">
+  <input type="checkbox" name="userEmailwhether" value="Y" id="userEmailwhether">
+  <span>Email 수신동의</span>
 </label>
-<label for="agree">
-  <input type="checkbox" name="agree" value="5" ">
-  <span>Email 수신동의<strong class="select_disable">(선택)</strong></span>
-</label>
-</div>
+    </div>
 						<div style="display: block; margin: 40px auto;">
-							<button type="submit" id="btnJoin">Create Account</button>
+							<button type="submit" id="submitForm()">Create Account</button>
 						</div>
 					</div>
 				</form>
@@ -323,6 +340,53 @@ label {
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+
+
+/*$("input:checkbox[id=Emailwhether]:checked").each(function(){
+	var checkVal = $(this).val();
+	console.log(checkVal);
+})*/
+
+/*function Yncheck(checkbox) {
+    var formData = new FormData(document.getElementById("join-form"));
+    formData.set(checkbox.name, checkbox.checked ? "y" : "n");
+    fetch("join", { method: "POST", body: formData });
+}
+
+document.getElementById("Snswhether").addEventListener("change", function() {
+    Yncheck(this);
+});
+
+document.getElementById("Emailwhether").addEventListener("change", function() {
+    Yncheck(this);
+});*/
+
+ function Yncheck(checkbox) {
+	  if (checkbox.checked == true) {
+	    checkbox.value = "Y";
+	  } else {
+	    checkbox.value = "N";
+	  }
+	} 
+
+	function submitForm() {
+	  const userSnswhether = document.getElementById("userSnswhether");
+	  const userEmailwhether = document.getElementById("userEmailwhether");
+	  Yncheck(Snswhether);
+	  Yncheck(Emailwhether);
+	  const xhr = new XMLHttpRequest();
+	  xhr.open("POST", "/join");
+	  xhr.onload = function() {
+	    console.log(xhr.responseText);
+	  };
+	  const formData = new FormData();
+	  formData.append("userSnswhether", Snswhether.value);
+	  formData.append("userEmailwhether", userEmailwhether.value);
+	  xhr.send(formData);
+	}
+
+
+
 function execPostCode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -356,37 +420,29 @@ function execPostCode() {
 }
 
 
-const agreeChkAll = document.querySelector('input[name=agree_all]');
+/*const agreeChkAll = document.querySelector('input[name=agree_all]');
 agreeChkAll.addEventListener('change', (e) => {
 let agreeChk = document.querySelectorAll('input[name=agree]');
 for(let i = 0; i < agreeChk.length; i++){
   agreeChk[i].checked = e.target.checked;
 }
-});
-
-
-
-
-
-
-
+});*/
 
 
 //이메일 인증번호
+
 function checkEmail(email) {
     axios({
       method: 'POST',
-      url: '/userEmailConfirm?userEmail=' + email
+      url: 'user/userEmailConfirm?userEmail=' + email
     })
       .then(function () {
         alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.");
         console.log("email : " + email);
+        chkEmailConfirm(email, $userEmailconfirm, $userEmailconfirmTxt);
       });
   }
-  
- 
-  
- 
+
 	// 이메일 인증번호 체크 함수
 	function chkEmailConfirm(data, $userEmailconfirm, $userEmailconfirmTxt){
 		$userEmailconfirm.on("keyup", function(){
@@ -399,8 +455,8 @@ function checkEmail(email) {
 					"font-size" : "10px"
 
 				})
-				
-			} else { 
+				//console.log("중복아이디");
+			} else { // 아니면 중복아님
 				emconfirmchk = true;
 				$userEmailconfirmTxt.html("<span id='emconfirmchk'>인증번호 확인 완료</span>")
 
@@ -411,10 +467,22 @@ function checkEmail(email) {
 
 				})
 			}
-		}) }
+		})
+	}
+	
+	/*function YnCheck(obj){
+		var checked = obj.checked;
+		if(checked){
+			obj.value="Y";
+		}else{
+			
+			obj.value="N";
+		}
+		}*/
 	
 	
-
+	
+	
 	
 	
 	
