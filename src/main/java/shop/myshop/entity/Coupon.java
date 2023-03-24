@@ -19,7 +19,7 @@ import lombok.ToString;
 @Data
 @ToString
 
-@Entity(name = "coupon")
+@Entity
 public class Coupon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

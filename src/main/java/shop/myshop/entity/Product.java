@@ -18,7 +18,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-@Entity(name = "product")
+@Entity
 public class Product {
 	
 	@Id

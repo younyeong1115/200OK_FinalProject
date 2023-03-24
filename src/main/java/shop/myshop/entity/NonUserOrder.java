@@ -19,7 +19,7 @@ import lombok.ToString;
 @Data
 @ToString
 
-@Entity(name = "nonuserorder")
+@Entity(name = "Nonuserorder")
 public class NonUserOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

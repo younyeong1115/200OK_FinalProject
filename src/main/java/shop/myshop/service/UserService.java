@@ -4,8 +4,9 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
@@ -20,7 +21,7 @@ public interface UserService {
 	public Boolean isUser(String id, String pwd) throws Exception;
 	public UserDTO findByUserId(String id) throws Exception;
 	public List<UserDTO> findAll() throws Exception;
-
+	public JsonNode getKakaoAccessToken(String code) ;
 	public String getUserId(String userName, String userEmail) throws Exception;
 	
 }

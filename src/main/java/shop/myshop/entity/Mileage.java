@@ -19,7 +19,7 @@ import lombok.ToString;
 @Data
 @ToString
 
-@Entity(name = "mileage")
+@Entity
 public class Mileage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
