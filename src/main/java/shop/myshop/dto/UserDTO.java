@@ -1,6 +1,5 @@
 package shop.myshop.dto;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -31,6 +30,7 @@ public class UserDTO {
 	private String userEmail;
 	private Role userRole;
 	private Date userRegdate;
+	private String userProvider;
 	
 	public UserDTO(String userId, String userPwd) {
 		this.userId = userId;

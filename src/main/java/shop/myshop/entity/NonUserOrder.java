@@ -42,8 +42,8 @@ public class NonUserOrder {
 	
 	@OneToOne
 	@NonNull
-	@JoinColumn(name="deliveryId")
-	private Delivery deliveryId;
+	@JoinColumn(name="nonuserId")
+	private NonUserDelivery nonuserId;
 	
 	@NonNull
 	@Column(nullable = false)

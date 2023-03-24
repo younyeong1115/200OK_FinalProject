@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.NonNull;
@@ -21,24 +23,22 @@ public class Delivery {
 	
 	@NonNull
 	@Column(nullable = false)
-	private String deliveryName;
+	private String deliveryAdd1;
 	
 	@NonNull
 	@Column(nullable = false)
-	private Integer deliveryZipcode;	
+	private String deliveryAdd2;
 	
 	@NonNull
-	@Column(nullable = false)
-	private String deliveryMobile;
-	
-	@NonNull
-	@Column(nullable = false)
-	private String deliveryAddress;
+	@Column(nullable = true)
+	private String deliveryAdd3;
 	
 	@Column(nullable = true)
 	private String deliveryMemo;
 	
+	@ManyToOne
+	@NonNull
+	@JoinColumn(name="userId")
+	private User userId;
 	
-	
-
 }

@@ -16,6 +16,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 import shop.myshop.entity.Delivery;
+import shop.myshop.entity.NonUserDelivery;
 import shop.myshop.entity.User;
 
 
@@ -32,7 +33,7 @@ public class NonUserOrderDTO {
 	private String nonUserName;
 	private String nonUserMobile;
 	private String nonUserEmail;
-	private Delivery deliveryId;
+	private NonUserDelivery nonuserId;
 	private String nonUserPayment;
 	private Timestamp nonUserRegdate;
 	private String nonUserStatus;

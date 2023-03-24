@@ -52,7 +52,6 @@ public class User {
 	@Column(nullable = true)
 	private String userPhone;
 	
-	
 	@NonNull
 	@Column(nullable = false)
 	private String userAddr1;
@@ -75,8 +74,6 @@ public class User {
 	@Column(nullable = false)
 	private String userEmail;
 	
-    	
-	
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
     private Role userRole;
@@ -86,6 +83,10 @@ public class User {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false )
 	private  Date userRegdate;
+	
+	@NonNull
+	@Column(nullable = true)
+	private String userProvider;
 	
 	@OneToMany(mappedBy = "userId")
 	private List<Cart> Cart = new ArrayList<Cart>();
@@ -117,5 +118,7 @@ public class User {
 	@OneToMany(mappedBy = "userId")
 	private List<ProductAnswer> productanswer= new ArrayList<ProductAnswer>();
 
+	@OneToMany(mappedBy = "userId")
+	private List<Delivery> delivery = new ArrayList<Delivery>();
 	
 }

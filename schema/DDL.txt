@@ -13,10 +13,12 @@ drop table PRODUCTQUESTION;
 drop table orders;
 drop table likes;
 drop table QUESTION;
+drop table delivery;
+drop table nonuserdelivery;
 drop table USER;
 drop table PRODUCT;
 drop table category;
-drop table delivery;
+
 
 create table USER(/* 회원 */
   user_id VARCHAR(32) PRIMARY KEY,
@@ -31,18 +33,29 @@ user_addr3 VARCHAR(50) ,
  user_snsWhether VARCHAR(50) DEFAULT 'N',
  user_email VARCHAR(50) NOT NULL,
  user_regdate  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- user_role  VARCHAR(20) DEFAULT 'USER'
+ user_role  VARCHAR(20) DEFAULT 'USER',
+user_provider VARCHAR(10) DEFAULT 'BASIC'
 );
 
 /*배송*/
-
 create table DELIVERY(/*배송 */
 delivery_Id  INTEGER AUTO_INCREMENT PRIMARY KEY,
- delivery_name      VARCHAR(20)  NOT NULL,
- delivery_zipcode   INTEGER NOT NULL,
- delivery_mobile    VARCHAR(40) NOT NULL,
- delivery_address  VARCHAR(50) NOT NULL,
-delivery_memo   VARCHAR(50)
+ delivery_add1  VARCHAR(50) NOT NULL,
+ delivery_add2  VARCHAR(50) NOT NULL,
+ delivery_add3  VARCHAR(50) ,
+delivery_memo   VARCHAR(50),
+user_id VARCHAR(32)
+);
+
+
+create table NONUSERDELIVERY(/*비회원배송 */
+nonuser_Id  INTEGER AUTO_INCREMENT PRIMARY KEY,
+nonuser_name      VARCHAR(20)  NOT NULL,
+nonuser_mobile    VARCHAR(40) NOT NULL,
+nonuser_add1  VARCHAR(50) NOT NULL,
+nonuser_add2  VARCHAR(50) NOT NULL,
+nonuser_add3  VARCHAR(50) ,
+nonuser_memo   VARCHAR(50)
 );
 
 /*주문*/
@@ -125,7 +138,7 @@ nonuser_pwd  VARCHAR(32)  NOT NULL,
 nonuser_name  VARCHAR(20)  NOT NULL,
 nonuser_mobile   VARCHAR(40)  NOT NULL,
 nonuser_email         VARCHAR(50),
-delivery_id  INTEGER NOT NULL,
+nonuser_Id  INTEGER NOT NULL,
 nonuser_payment    VARCHAR(20) NOT NULL,
 nonuser_regdate     TIMESTAMP  NOT NULL,
 nonuser_status    VARCHAR(20) NOT NULL
@@ -140,7 +153,7 @@ create table NONUSERORDERDETAIL(/* 비회원주문상세내역*/
  nondetail_code      INTEGER AUTO_INCREMENT  PRIMARY KEY,
  product_code   INTEGER  NOT NULL,
  nonuser_code           INTEGER  NOT NULL,
- delivery_id   INTEGER NOT NULL,
+nonuser_Id  INTEGER NOT NULL,
  nondetail_price   INTEGER NOT NULL
 );
 
@@ -265,7 +278,7 @@ ALTER TABLE ORDERS ADD FOREIGN KEY(delivery_id) REFERENCES DELIVERY(delivery_id)
 ALTER TABLE COUPON ADD FOREIGN KEY(user_id) REFERENCES USER(user_id);
 ALTER TABLE MILEAGE ADD FOREIGN KEY(user_id) REFERENCES USER(user_id);
 ALTER TABLE NONUSERORDER
-ADD FOREIGN KEY (delivery_id) REFERENCES DELIVERY(delivery_id);
+ADD FOREIGN KEY (nonuser_Id) REFERENCES  NONUSERDELIVERY(nonuser_Id);
 ALTER TABLE PRODUCT ADD FOREIGN KEY(category_no) REFERENCES CATEGORY(category_no);
 
 ALTER TABLE NOTICE ADD FOREIGN KEY (user_id) REFERENCES USER(user_id);
@@ -302,8 +315,8 @@ ALTER TABLE ORDERDETAIL  ADD FOREIGN KEY(order_code) REFERENCES ORDERS(order_cod
 ALTER TABLE PRODUCTANSWER ADD FOREIGN KEY (user_id) REFERENCES USER(user_id);
 ALTER TABLE PRODUCTANSWER ADD FOREIGN KEY (productquestion_no) REFERENCES PRODUCTQUESTION(productquestion_no);
 
-ALTER TABLE NONUSERORDERDETAIL  ADD FOREIGN KEY(nonuser_code  ) REFERENCES NONUSERORDER(nonuser_code);
-ALTER TABLE NONUSERORDERDETAIL ADD FOREIGN KEY(delivery_id) REFERENCES DELIVERY(delivery_id);
+ALTER TABLE NONUSERORDERDETAIL  ADD FOREIGN KEY(nonuser_code) REFERENCES NONUSERORDER(nonuser_code);
+ALTER TABLE NONUSERORDERDETAIL ADD FOREIGN KEY(nonuser_Id) REFERENCES  NONUSERDELIVERY(nonuser_Id);
 ALTER TABLE NONUSERORDERDETAIL ADD FOREIGN KEY(product_code) REFERENCES PRODUCT(product_code);
 
 ALTER TABLE REVIEW ADD FOREIGN KEY(product_code) REFERENCES PRODUCT(product_code);
@@ -314,3 +327,6 @@ ALTER TABLE productquestion
 ADD FOREIGN KEY (product_code) REFERENCES PRODUCT(product_code);
 ALTER TABLE productquestion 
 ADD FOREIGN KEY (user_id) REFERENCES USER (user_id);
+
+ALTER TABLE DELIVERY
+ADD FOREIGN KEY (user_id) REFERENCES USER(user_id);
