@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import shop.myshop.entity.User;
 
 
 
@@ -15,11 +16,12 @@ import lombok.ToString;
 @ToString
 public class DeliveryDTO {
 	
-	private Integer deliveryId;	
-	private String deliveryName;
-	private Integer deliveryZipcode;	
-	private String deliveryMobile;
-	private String deliveryAddress;
+private Integer deliveryId;	
+
+	private String deliveryAdd1;
+	private String deliveryAdd2;
+	private String deliveryAdd3;
 	private String deliveryMemo;
+	private User userId;
 	
 }
