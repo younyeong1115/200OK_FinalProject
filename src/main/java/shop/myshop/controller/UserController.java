@@ -22,6 +22,7 @@ import shop.myshop.dto.Role;
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
 import shop.myshop.service.CartService;
+import shop.myshop.service.FindPwdEmail;
 import shop.myshop.service.KakaoUserInfo;
 import shop.myshop.service.LikesService;
 import shop.myshop.service.ProductQuestionService;
@@ -34,9 +35,18 @@ import shop.myshop.service.UserService;
 @RequestMapping("user")
 public class UserController {
 
+	
+
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	RegisterMail registerMail;
+	
+	@Autowired
+	FindPwdEmail findPwdEmail;
 
+	
 	@Autowired
 	private CartService cartService;
 	
@@ -52,10 +62,25 @@ public class UserController {
 	@Autowired
 	private ProductQuestionService productQuestionService;
 
-	@Autowired
-	RegisterMail registerMail;
 
-	
+	@PostMapping("user/findPwd")
+	@ResponseBody
+	String findPwd(@RequestParam("userId") String userId, @RequestParam("userName") String userName,
+			@RequestParam("userEmail") String userEmail) throws Exception {
+		User user = userService.findUserPwd(userId, userName, userEmail);
+
+		if (user != null) {
+			// 임시 패스워드 메일 발송 및 변수 저장
+			String tempPwd = findPwdEmail.sendSimpleMessage(user.getUserEmail());
+			// System.out.println("tempPw : " + tempPw);
+			// 임시 패스워드 db 에 저장
+			userService.changeTempPwd(tempPwd, user.getUserId());
+
+			return "변경완료";
+		}
+		return null;
+	}
+
 
 	@GetMapping("login")
 	public String login(Model model, HttpSession httpSession) throws Exception {
@@ -81,49 +106,65 @@ public class UserController {
 	}
 
 
+	
 
 	@PostMapping("user/userEmailConfirm")
 	@ResponseBody
 	String userEmailConfirm(@RequestParam("userEmail") String email) throws Exception {
 
-		String code = registerMail.sendSimpleMessage(email);
-		System.out.println("인증코드 : " + code);
-		return code;
+	   String code = registerMail.sendSimpleMessage(email);
+	   System.out.println("인증코드 : " + code);
+	   return code;
 	}
-
-	@GetMapping("idFindForm")
-	public String findIdForm() {
-
-		return "user/findId.html";
-	}
-
-	@PostMapping(value = "findId")
-	@ResponseBody
-	public String findId(@RequestParam("userName") String userName, @RequestParam("userEmail") String userEmail)
-			throws Exception {
-		return userService.getUserId(userName, userEmail);
-
-	}
-
+	
+	
 	@GetMapping("joinForm")
-	public String join() {
-
-		return "user/signUp.html";
+	 public String join() {
+       
+		 return "user/signUp.html";
+    }
+	
+	
+	@GetMapping("idFindForm")
+	 public String findIdForm() {
+      
+		 return "user/findId.html";
+   }
+	
+	@GetMapping("pwdFindForm")
+	 public String findPwdForm() {
+     
+		 return "user/findPwd.html";
+  }
+	
+	@PostMapping("findId")
+	@ResponseBody
+	   public String findId(@RequestParam("userName") String userName,
+               @RequestParam("userEmail") String userEmail) throws Exception {
+		  
+	       
+	    return userService.getUserId(userName, userEmail);
+	      
 	}
+	
 
+	
+	
+	
+	
 	@PostMapping("join")
 	@ResponseBody
-	public String join(User user) {
-
+	 public String join(User user) {
+       
 		User newUser = null;
 		try {
-			newUser = userService.join(user);
+		newUser = userService.join(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return user.getUserName() + "님의 회원가입이 완료되었습니다.";
-	}
+	
+       return user.getUserName() + "님의 회원가입이 완료되었습니다.";
+    }
 
 	@GetMapping("logo")
 	public String index(HttpSession httpSession) {
@@ -157,6 +198,7 @@ public class UserController {
 		httpSession.invalidate();
 		return "redirect:/index.html";
 	}
+
 
 	@GetMapping("my-info")
 	public String myInfo(Model model, HttpSession httpSession) throws Exception {
@@ -230,7 +272,7 @@ public class UserController {
 
 		StringBuffer url = new StringBuffer();
 		url.append("https://kauth.kakao.com/oauth/authorize?");
-		url.append("client_id=" + "클라이언트 아이디");
+		url.append("client_id=" + "아이디");
 		url.append("&redirect_uri=http://localhost/ok/user/kakao");
 		url.append("&response_type=code");
 
@@ -242,7 +284,7 @@ public class UserController {
 
 		StringBuffer url = new StringBuffer();
 		url.append("https://kauth.kakao.com/oauth/logout?");
-		url.append("client_id=" + "클라이언트 아이디");
+		url.append("client_id=" + "아이디");
 		url.append("&logout_redirect_uri=http://localhost/ok/user/kakaologout");
 
 		return "redirect:" + url.toString();
