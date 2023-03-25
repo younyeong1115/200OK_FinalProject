@@ -17,10 +17,12 @@ import shop.myshop.entity.User;
 public class DeliveryDTO {
 	
 private Integer deliveryId;	
-
+private String deliveryName;
+private String deliveryMobile;
 	private String deliveryAdd1;
 	private String deliveryAdd2;
 	private String deliveryAdd3;
+	private String deliveryBasicyn;
 	private String deliveryMemo;
 	private User userId;
 	

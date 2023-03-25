@@ -40,9 +40,12 @@ user_provider VARCHAR(10) DEFAULT 'BASIC'
 /*배송*/
 create table DELIVERY(/*배송 */
 delivery_Id  INTEGER AUTO_INCREMENT PRIMARY KEY,
+delivery_name VARCHAR(50) NOT NULL,
+delivery_mobile VARCHAR(50) NOT NULL,
  delivery_add1  VARCHAR(50) NOT NULL,
  delivery_add2  VARCHAR(50) NOT NULL,
  delivery_add3  VARCHAR(50) ,
+ delivery_basicYn  VARCHAR(3) DEFAULT 'N',/*기본배송지 여부 */
 delivery_memo   VARCHAR(50),
 user_id VARCHAR(32)
 );

@@ -161,18 +161,24 @@ INSERT INTO MILEAGE values(9,  now(), '구매에 대한MILEAGE',10000,'test08');
 INSERT INTO MILEAGE values(10,  now(),'구매에 대한MILEAGE',10000,'test09');
 INSERT INTO MILEAGE values(11, now(), '구매에 대한MILEAGE',10000,'test10');
 
-
-INSERT INTO DELIVERY values(1, '11111','서울특별시 강남구 압구정동', '123호', '부재시 경비실에 맡겨주세요','test01');
-INSERT INTO DELIVERY values(2, '11111', '서울특별시 동작구 대방동', '123호', '부재시 문자 남겨주세요','test02');
-INSERT INTO  DELIVERY values(3, '11111','서울특별시 마포구 합정동', '123호', '부재시 문자 남겨주세요','test03');
-INSERT INTO  DELIVERY values(4, '11111','대구광역시 달서구 본리동', '123호', '배송 전에 미리 연락 바랍니다','test03');
-INSERT INTO DELIVERY values(5, '11111','부산광역시 금정구 구서동' '123호', '부재시 경비실에 맡겨주세요','test04');
-INSERT INTO DELIVERY values(6, '11111', '서울특별시 서초구 서초동', '123호', '배송전에 미리 연락 바랍니다','test05');
-INSERT INTO DELIVERY values(7, '11111','인천광역시 부평구 삼산동',  '123호','부재시 문자 남겨주세요','test06');
-INSERT INTO DELIVERY values(8, '11111','서울특별시 강동구 상일동', '123호', '부재시 문자 남겨주세요','test07');
-INSERT INTO DELIVERY values(9, '11111','제주특별자치도 제주시 추자면', '123호', '배송전에 미리 연락 바랍니다','test01');
-INSERT INTO DELIVERY values(10, '11111','경기도 광명시 하안동',  '123호','부재시 문자 남겨주세요','test02');
-
+/*배송*/
+INSERT INTO DELIVERY values(1, '한지성','010-111-111','11111','서울특별시 강남구 압구정동', '123호','Y', '부재시 경비실에 맡겨주세요','test01');
+INSERT INTO DELIVERY values(2, '이용복','010-222-222','11111', '서울특별시 동작구 대방동', '123호','Y', '부재시 문자 남겨주세요','test02');
+INSERT INTO DELIVERY 
+VALUES (3, '황현진', '010-333-3333', '11111', '서울특별시 마포구 합정동', '123호', 'Y', '부재시 문자 남겨주세요', 'test03');
+INSERT INTO  DELIVERY values(4, '이용복','010-333-3333','11111','대구광역시 달서구 본리동', '123호','N','배송 전에 미리 연락 바랍니다','test03');
+INSERT INTO DELIVERY 
+VALUES (5, '한지성', '010-333-3333', '11111', '부산광역시 금정구 구서동', '123호', 'Y', '부재시 경비실에 맡겨주세요', 'test04');
+INSERT INTO DELIVERY (delivery_Id, delivery_name, delivery_mobile, delivery_add1, delivery_add2, delivery_add3, delivery_basicYn, delivery_memo, user_id) 
+VALUES (6, '크리스토퍼', '010-333-3333', '11111', '서울특별시 서초구 서초동', '123호', 'Y', '배송전에 미리 연락 바랍니다', 'test05');
+INSERT INTO DELIVERY (delivery_Id, delivery_name, delivery_mobile, delivery_add1, delivery_add2, delivery_add3, delivery_basicYn, delivery_memo, user_id) 
+VALUES (7, '김우진', '010-333-3333', '11111', '인천광역시 부평구 삼산동', '123호', 'Y', '부재시 문자 남겨주세요', 'test06');
+INSERT INTO DELIVERY (delivery_Id, delivery_name, delivery_mobile, delivery_add1, delivery_add2, delivery_add3, delivery_basicYn, delivery_memo, user_id) 
+VALUES (8, '박진영', '010-333-3333', '11111', '서울특별시 강동구 상일동', '123호', 'Y', '부재시 문자 남겨주세요', 'test07');
+INSERT INTO DELIVERY (delivery_Id, delivery_name, delivery_mobile, delivery_add1, delivery_add2, delivery_add3, delivery_basicYn, delivery_memo, user_id) 
+VALUES (9, '한지성', '010-333-3333', '11111', '제주특별자치도 제주시 추자면', '123호', 'N', '배송전에 미리 연락 바랍니다', 'test01');
+INSERT INTO DELIVERY (delivery_Id, delivery_name, delivery_mobile, delivery_add1, delivery_add2, delivery_add3, delivery_basicYn, delivery_memo, user_id) 
+VALUES (10, '한지성', '010-333-3333', '11111', '경기도 광명시 하안동', '123호', 'N', '부재시 문자 남겨주세요', 'test02');
 
 
 /*비회원 배송*/
@@ -219,7 +225,6 @@ INSERT INTO REVIEW values(6, 6,'test06',6, '상품상태가 좋아요','★★�
 INSERT INTO REVIEW values(7, 7,'test07',7, '배송이 빨라요','★★★★★',now(),'review7_image1','review7_image2','review7_image3');
 INSERT INTO REVIEW values(8, 8,'test08',8, '잘 착용하겠습니다','★★★★★',now(),'review8_image1','review8_image2','review8_image3');
 INSERT INTO REVIEW values(9, 9,'test09',9, '마음에 들어요','★★★★★' ,now(),'review9_image1','review9_image2','review9_image3');
-INSERT INTO REVIEW values(10, 10,'test10',10,'우정템으로 구매했습니다','★★★★★' ,now(),'review10_image1','review10_image2','review10_image3');
 
 
 /*주문 상세*/
@@ -268,4 +273,3 @@ INSERT INTO COUPON values(6, '이벤트쿠폰' , now(), '5%할인','제한없음
 INSERT INTO COUPON values(7, '월정기쿠폰' , now(), '5%할인','제한없음','제한없음', now()+30,'Y','test07');
 INSERT INTO COUPON values(8, '이벤트쿠폰' , now(), '5%할인','제한없음','무통장입금', now()+7,'N','test08');
 INSERT INTO COUPON values(9, '월정기쿠폰' , now(), '5%할인','제한없음','제한없음', now()+30,'Y','test09');
-INSERT INTO COUPON values(10, '월정기쿠폰' , now(), '5%할인','제한없음','제한없음', now()+30,'N','test10');
