@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import shop.myshop.entity.User;
 
-
+  
 @Transactional
 @Repository
 public interface UserRepository extends JpaRepository<User, String>{
