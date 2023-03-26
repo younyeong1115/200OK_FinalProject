@@ -62,7 +62,12 @@
       <div th:text = "'👋   ' +${user.userName} + '님 환영 합니다!'" class="name"></div>
     </div>    
     
-    <div class="modify">i</div>    
+    
+    <div class="modify">
+    <button onclick="location.href='edituserform'">회원정보 수정</button>
+    <button onclick="location.href='adresslist'">배송지 관리</button>
+    
+    </div>    
   </div>
   <br>
   <div class="summaryContainer">
@@ -89,28 +94,28 @@
       
       <div class="item">
         <div>
-          <div class="green number">6</div>
+          <div class="green number">[[${beforeDeposit}]]</div>
           <div class="text">입금 전</div>
         </div>
         <div class="icon"> > </div>
       </div>     
       <div class="item">
         <div>
-          <div class="number">0</div>
+          <div class="number">[[${PreparingProduct}]]</div>
           <div class="text">배송 준비 중</div>
         </div>
         <div class="icon"> > </div>
       </div>     
       <div class="item">
         <div>
-          <div class="green number">1</div>
+          <div class="green number">[[${shipping}]]</div>
           <div class="text">배송 중</div>
         </div>
         <div class="icon"> > </div>
       </div>     
       <div class="item">
         <div>
-          <div class="green number">3</div>
+          <div class="green number">[[${completed}]]</div>
           <div class="text">배송 완료</div>
         </div>
       </div>     
@@ -119,7 +124,7 @@
     
   </div>  
   
-  <br>
+ <!--  <br>
   <div class="listContainer">
     <a href="#" class="item">
         <div class="icon">ii</div>
@@ -186,7 +191,7 @@
       <div>고객센터</div>
     </a>
   </div>
-</div>
+</div> -->
 
 
 	<!--footer1-->
@@ -255,6 +260,7 @@
 			</div>
 		</div>
 	</div>
+
 
   
 </body>
