@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,12 +13,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.ToString;
+import lombok.Setter;
 
-@Data
-@ToString
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Product {
 	
@@ -27,11 +30,15 @@ public class Product {
 	
 	@NonNull
 	@Column(nullable = false)
+	private String productName;
+	
+	@NonNull
+	@Column(nullable = false)
 	private String productPrice;
 	
 	@NonNull
 	@Column(nullable = false)
-	private String productThumbNail;
+	private String productThumbnail;
 	
 	@NonNull
 	@Column(nullable = false)
@@ -51,7 +58,7 @@ public class Product {
 	
 	@NonNull
 	@Column(nullable = false)
-	private Integer productSize;
+	private String productSize;
 	
 	@NonNull
 	@Column(nullable = false)
@@ -65,8 +72,9 @@ public class Product {
 	@Column(nullable = false)
 	private String productDetail;
 	
-	@ManyToOne
+
 	@NonNull
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="categoryNo")
 	private Category categoryNo;
 	
@@ -88,5 +96,16 @@ public class Product {
 	@OneToMany(mappedBy = "productCode")
 	private List<ProductQuestion> productquestion = new ArrayList<ProductQuestion>();
 	
+	@Override
+	public String toString() {
+		return "Product [productCode=" + productCode + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", productThumbnail=" + productThumbnail + ", productImage1=" + productImage1 + ", productImage2="
+				+ productImage2 + ", productPostingYn=" + productPostingYn + ", productSaleingYn=" + productSaleingYn
+				+ ", productSize=" + productSize + ", productStock=" + productStock + ", productSale=" + productSale
+				+ ", productDetail=" + productDetail + ",productCategory"+ categoryNo.getCategoryNo()+"]";
+	}
+	
+
+
 	
 }

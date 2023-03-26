@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +39,7 @@ public class Mileage {
 	@Column(nullable = false)
 	private Integer mileagePrice;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@NonNull
 	@JoinColumn(name="userId")
 	private User userId;

@@ -41,5 +41,8 @@ public class Answer {
 	@NonNull
 	@JoinColumn(name="qusetionNo")
 	private Question questionNo;
+	
+
+
 
 }

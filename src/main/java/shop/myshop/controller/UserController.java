@@ -1,7 +1,5 @@
 package shop.myshop.controller;
 
-import java.util.Optional;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -22,17 +20,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import shop.myshop.annotation.MySecured;
 import shop.myshop.dto.Role;
-import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
 import shop.myshop.exception.UserNotFoundException;
-import shop.myshop.service.CartService;
 import shop.myshop.service.FindPwdEmail;
 import shop.myshop.service.KakaoUserInfo;
-import shop.myshop.service.LikesService;
-import shop.myshop.service.ProductQuestionService;
-import shop.myshop.service.QuestionService;
 import shop.myshop.service.RegisterMail;
-import shop.myshop.service.ReviewService;
 import shop.myshop.service.UserService;
 
 @Slf4j
@@ -52,23 +44,6 @@ public class UserController {
 	FindPwdEmail findPwdEmail;
 
 	
-	@Autowired
-	private CartService cartService;
-	
-	@Autowired
-	private LikesService likesService;
-	
-	@Autowired
-	private ReviewService reviewService;
-	
-	@Autowired
-	private QuestionService questionService;
-	
-	@Autowired
-	private ProductQuestionService productQuestionService;
-
-	
-	
 	
 	//중복아이디 검사
 	@GetMapping("checkuserId")
@@ -80,35 +55,6 @@ public class UserController {
 		    
 	} 
 	
-	
-	
-
-	
-
-
-	@GetMapping("login")
-	public String login(Model model, HttpSession httpSession) throws Exception {
-		if (httpSession.getAttribute("user") != null) {
-			User user = (User) httpSession.getAttribute("user");
-			model.addAttribute("user", user);
-			return "redirect:user/my-info";
-		}
-		return "user/login-form";
-	}
-
-	//
-	@PostMapping("login")
-	public String login(@RequestParam("id") String id, @RequestParam("password") String password,
-			HttpSession httpSession) throws Exception {
-		System.out.println(id);
-		if (!userService.isUser(id, password)) {
-			return "redirect:loginfail";
-		}
-
-		httpSession.setAttribute("user", userService.findByUserId(id));
-		return "redirect:/main.html";
-	}
-
 
 	
 	//회원가입 메일인증코드
@@ -200,6 +146,46 @@ public class UserController {
 		}
 	} 
 	
+//------▲영림 ------ ▼윤영---------------------------------------------------------------------------
+	
+
+
+	@GetMapping("login")
+	public String login(Model model, HttpSession httpSession) throws Exception {
+		if (httpSession.getAttribute("user") != null) {
+			User user = (User) httpSession.getAttribute("user");
+			model.addAttribute("user", user);
+			return "redirect:user/my-info";
+		}
+		return "user/login-form";
+	}
+
+	//
+	@PostMapping("login")
+	public String login(@RequestParam("id") String id, @RequestParam("password") String password,
+			HttpSession httpSession) throws Exception {
+		System.out.println(id);
+		if (!userService.isUser(id, password)) {
+			return "redirect:loginfail";
+		}
+
+		httpSession.setAttribute("user", userService.findByUserId(id));
+		return "redirect:/main.html";
+	}
+
+	@PostMapping("join2")
+	public String join2(User user) {
+	    System.out.println("!!   " + user);
+
+	    try {
+	        userService.join(user);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return "redirect:/mypage/home";
+	}
+	
 	
 	@GetMapping("logo")
 	public String index(HttpSession httpSession) {
@@ -235,22 +221,6 @@ public class UserController {
 	}
 
 
-	@GetMapping("my-info")
-	public String myInfo(Model model, HttpSession httpSession) throws Exception {
-		if (httpSession.getAttribute("user") != null) {
-
-			UserDTO user = (UserDTO) httpSession.getAttribute("user");
-			
-			model.addAttribute("cartCount", cartService.getCartCount(user.getUserId()));
-			model.addAttribute("LikesCount", likesService.getLikesCount(user.getUserId()));
-			model.addAttribute("BoardCount", reviewService.getReviewCount(user.getUserId()) + questionService.getQuestionCount(user.getUserId())  +  productQuestionService.getProductQuestionCount(user.getUserId()));//리뷰 + 상품 질문 + 질문
-			model.addAttribute("user", user);
-		} else {
-			model.addAttribute("user", new UserDTO());
-		}
-
-		return "user/my-info";
-	}
 
 	@RequestMapping(value = "/kakao", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session,
@@ -325,23 +295,7 @@ public class UserController {
 		return "redirect:" + url.toString();
 	}
 
-	// 카카오 탈퇴(연결 끊기)
-	/*
-	 * @GetMapping("kakaoquitterms") public String kakaoQuitTerms(HttpSession
-	 * session) { StringBuffer url = new StringBuffer();
-	 * url.append("https://kapi.kakao.com/v1/user/unlink?");
-	 * url.append("Authorization=" + session.getAttribute("access_tocken"));
-	 * url.append("&logout_redirect_uri=http://localhost/ok/user/kakaounlink");
-	 * 
-	 * //System.out.println("----"+session.getAttribute("access_tocken"));
-	 * //url.append("Authorization=" + session.getAttribute("access_tocken"));
-	 * 
-	 * return "redirect:" + url.toString(); }
-	 * 
-	 * @GetMapping("kakaounlink") public String kakaoQuit(HttpSession session) {
-	 * 
-	 * return "redirect:/index.html"; }
-	 */
+
 
 	@GetMapping("kakaologout")
 	public String kakaoLogout(HttpSession httpSession) {

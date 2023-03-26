@@ -2,6 +2,7 @@ package shop.myshop.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class NonUserOrderDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer nonDetailCode;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@NonNull
 	@JoinColumn(name="productCode")
 	private Product productCode;

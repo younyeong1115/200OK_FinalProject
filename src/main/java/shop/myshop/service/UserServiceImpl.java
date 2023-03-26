@@ -32,7 +32,6 @@ import com.google.gson.JsonParser;
 
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
-import shop.myshop.exception.UserNotFoundException;
 import shop.myshop.repository.UserRepository;
 
 
@@ -82,14 +81,12 @@ public class UserServiceImpl implements UserService{
 
     
 
-	@Override
-	public String getUserId(String userName, String userEmail) throws Exception {
-	    String userId = userDao.findByUserNameAndUserEmail(userName, userEmail);
-	    if (userId == null) {
-	        throw new UserNotFoundException();
-	    }
-	    return userId;
-	}
+  //아이디찾기
+  	@Override
+  	public String getUserId(String userName, String userEmail) throws Exception {
+  		return userDao.findByUserNameAndUserEmail(userName,userEmail);
+
+  	}
 
 
 

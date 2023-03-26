@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class Orders {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderCode;
 	
-	@ManyToOne
+	 @ManyToOne(fetch = FetchType.LAZY)
 	@NonNull
 	@JoinColumn(name="userId")
 	private User userId;
@@ -60,7 +61,18 @@ public class Orders {
 	private List<Review> review = new ArrayList<Review>();
 	
 	
-	
+	@Override
+	public String toString() {
+	return "Orders{" +
+	"orderCode=" + orderCode +
+	", userId=" + userId.getUserId() +
+	", orderRegdate=" + orderRegdate +
+	", orderDeliveryCharge=" + orderDeliveryCharge +
+	", orderPayment='" + orderPayment + ' ' +
+	", deliveryId=" + deliveryId.getDeliveryId() +
+	", orderStatus='" + orderStatus + ' ' +
+	'}';
+	}
 	
 	
 }

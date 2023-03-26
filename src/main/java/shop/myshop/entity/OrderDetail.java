@@ -2,6 +2,7 @@ package shop.myshop.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class OrderDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer detailCode;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@NonNull
 	@JoinColumn(name="productCode")
 	private Product productCode;
@@ -45,6 +46,13 @@ public class OrderDetail {
 	@NonNull
 	@Column(nullable = false)
 	private Integer orderDetailPrice;
+	
+	@Override
+	public String toString() {
+		return "OrderDetail [detailCode=" + detailCode + ", productCode=" + productCode.getProductCode() + ", orderCode=" + orderCode.getOrderCode()
+				+ ", deliveryId=" + deliveryId + ", orderDetailSale=" + orderDetailSale + ", orderDetailMileage="
+				+ orderDetailMileage + ", orderDetailPrice=" + orderDetailPrice + "]";
+	}
 	
 	
 	

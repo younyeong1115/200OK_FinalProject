@@ -2,6 +2,7 @@ package shop.myshop.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,12 +39,12 @@ public class Cart {
 	@Column(nullable = false)
 	private Integer cartTotalprice;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@NonNull
 	@JoinColumn(name="productCode")
 	private Product productCode;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@NonNull
 	@JoinColumn(name="userId")
 	private User userId;

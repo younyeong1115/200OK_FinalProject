@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -81,6 +82,7 @@ public class User {
 	@NonNull
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.S")
 	@Column(nullable = false )
 	private  Date userRegdate;
 	
@@ -120,5 +122,25 @@ public class User {
 
 	@OneToMany(mappedBy = "userId")
 	private List<Delivery> delivery = new ArrayList<Delivery>();
+	
+	@Override
+	public String toString() {
+	return "User{" +
+	"userId='" + userId + ' ' +
+	", userName='" + userName + ' ' +
+	", userPwd='" + userPwd + ' ' +
+	", userMobile='" + userMobile + ' ' +
+	", userPhone='" + userPhone + ' ' +
+	", userAddr1='" + userAddr1 + ' ' +
+	", userAddr2='" + userAddr2 + ' ' +
+	", userAddr3='" + userAddr3 + ' ' +
+	", userEmailwhether='" + userEmailwhether + ' ' +
+	", userSnswhether='" + userSnswhether + ' ' +
+	", userEmail='" + userEmail + ' ' +
+	", userRole=" + userRole +
+	", userRegdate=" + userRegdate +
+	", userProvider='" + userProvider + ' ' +
+	'}';
+	}
 	
 }

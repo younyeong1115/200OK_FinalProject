@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0">
+<link th:href="@{/assets/css/main.css}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <title>bonus</title>
 <style type="text/css"></style>
@@ -42,7 +43,7 @@
 				<li><a href="#">Notice</a></li>
 			</ul>
 			<ul class="s-list">
-				<li><a href="aa">찜하기</a></li>
+				<li><a href="#">찜하기</a></li>
 				<li><a href="#">장바구니</a></li>
 				<li><a href="">검색</a></li>
 				<li><a href="user/login">로그인</a></li>
@@ -50,7 +51,11 @@
 				
 			</ul>
 		</div>
-
+		<!-- <div class="story">
+			<h1>Brand Story</h1>
+			<h4>같은 시간을 자더라도 더 깊게, 더 편하게, 더 깨끗하게</h4>
+			
+		</div> -->
 	</div>
 
 	<!--section1-->
@@ -63,8 +68,8 @@
 					<span class="best">New</span> <br>단잠키트</a>
 		</div>
 		<div class="fs-s">
-			<a href="#">
-				<img src="https://images.unsplash.com/photo-1547104442-e19471629c09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+			<a href="#"><img
+				src="https://images.unsplash.com/photo-1547104442-e19471629c09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
 				width="530px">
 				<p>
 					<span class="best">Best</span> <br>토퍼 매트리스 프리미엄 10.0</a>
