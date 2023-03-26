@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>이메일 찾기</title>
+<title>아이디 찾기</title>
 </head>
 <body>
 <!--사이드바-->
@@ -69,11 +69,11 @@
 				<div>
 					<p>
 						<label>Name</label>
-						<input class="w3-input" type="text" id="userName" name="userName" required>
+						<input class="w3-input" type="text" id="userName" name="userName">
 					</p>
 					<p>
 						<label>Email</label>
-						<input class="w3-input" type="text" id="userEmail" name="userEmail" required>
+						<input class="w3-input" type="text" id="userEmail" name="userEmail">
 					</p>
 					<p class="w3-center">
 						<button type="submit" id=findBtn class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">find</button>
@@ -174,5 +174,27 @@
 		</div>
 	</div>
 	
+	
+	<script>
+	
+	function validateForm() {
+		  var userName = document.getElementById("userName").value;
+		  var userEmail = document.getElementById("userEmail").value;
+
+		  if (userName == "" || userEmail == "") {
+		    alert('모든 필수입력사항을 확인해주세요.');
+		    event.preventDefault();
+		    return false;
+		  }
+
+		  return true;
+		}
+
+		document.getElementById("idFindForm").addEventListener("submit", function(event) {
+		  validateForm();
+		});
+
+	
+	</script>
 </body>
 </html>

@@ -9,11 +9,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-
-import org.apache.http.NameValuePair;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -32,6 +32,7 @@ import com.google.gson.JsonParser;
 
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
+import shop.myshop.exception.UserNotFoundException;
 import shop.myshop.repository.UserRepository;
 
 
@@ -57,7 +58,8 @@ public class UserServiceImpl implements UserService{
         List<User> list = userDao.findByUserIdAndUserPwd(id, pwd);
         return list.stream().anyMatch((user) -> user.getUserId().equals(id) && user.getUserPwd().equals(pwd));
     }
-
+	
+	
    
     @Override
     public UserDTO findByUserId(String id) throws Exception {
@@ -79,23 +81,24 @@ public class UserServiceImpl implements UserService{
 
 
     
-	//아이디찾기
+
 	@Override
 	public String getUserId(String userName, String userEmail) throws Exception {
-		return userDao.findByUserNameAndUserEmail(userName,userEmail);
-		
-		
-		
+	    String userId = userDao.findByUserNameAndUserEmail(userName, userEmail);
+	    if (userId == null) {
+	        throw new UserNotFoundException();
+	    }
+	    return userId;
 	}
-	
 
-	//비밀번호찾기
+
+
 	@Override
 	public User findUserPwd(String userId, String userName, String userEmail) throws Exception {
 		return userDao.findByUserIdAndUserNameAndUserEmail(userId, userName, userEmail);
 	}
 		
-		//임시비번발급후 변경
+	
 		@Override	
 		public int changeTempPwd(String tempPwd, String userId) throws Exception {
 			return userDao.updateTempPwd(tempPwd, userId);
@@ -109,7 +112,7 @@ public class UserServiceImpl implements UserService{
 	        final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 	 
 	        postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
-	        postParams.add(new BasicNameValuePair("client_id", "아이디")); // REST API KEY
+	        postParams.add(new BasicNameValuePair("client_id", "4f66648509a057edfe2a0b9e3bbf285a")); // REST API KEY
 	        postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost/ok/user/kakao")); //최종으로 깃에 올릴때는 꼭 지우고 올리기!!!
 	        postParams.add(new BasicNameValuePair("code", code)); // 로그인 과정중 얻은 code 값
 	 
@@ -192,10 +195,18 @@ public class UserServiceImpl implements UserService{
         return userInfo;
     }
 
-	
-}
-	
+
+
+	@Override
+	  public boolean UserIdExists(String userId) throws Exception {
+		Optional<User> optionalUser =  userDao.existsByUserId(userId);
+		
+	        return optionalUser.isPresent();
+	    }
+
+	}
 
 	
+
 	
 	

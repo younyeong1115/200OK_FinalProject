@@ -1,6 +1,7 @@
 package shop.myshop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -28,4 +29,6 @@ public interface UserService {
 	public User findUserPwd(String userId, String userName, String userEmail) throws Exception;
 	
 	public int changeTempPwd(String tempPwd, String userId) throws Exception;
+	public boolean UserIdExists(String userId) throws Exception;
+
 }

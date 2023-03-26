@@ -1,5 +1,7 @@
 package shop.myshop.controller;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -17,10 +19,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import lombok.extern.slf4j.Slf4j;
 import shop.myshop.annotation.MySecured;
 import shop.myshop.dto.Role;
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
+import shop.myshop.exception.UserNotFoundException;
 import shop.myshop.service.CartService;
 import shop.myshop.service.FindPwdEmail;
 import shop.myshop.service.KakaoUserInfo;
@@ -31,6 +35,7 @@ import shop.myshop.service.RegisterMail;
 import shop.myshop.service.ReviewService;
 import shop.myshop.service.UserService;
 
+@Slf4j
 @Controller
 @RequestMapping("user")
 public class UserController {
@@ -62,24 +67,23 @@ public class UserController {
 	@Autowired
 	private ProductQuestionService productQuestionService;
 
-
-	@PostMapping("user/findPwd")
+	
+	
+	
+	//중복아이디 검사
+	@GetMapping("checkuserId")
 	@ResponseBody
-	String findPwd(@RequestParam("userId") String userId, @RequestParam("userName") String userName,
-			@RequestParam("userEmail") String userEmail) throws Exception {
-		User user = userService.findUserPwd(userId, userName, userEmail);
+	 public boolean checkUserId(@RequestParam("userId") String userId) throws Exception {
+		 boolean exist = userService.UserIdExists(userId);
+		
+		    return exist;
+		    
+	} 
+	
+	
+	
 
-		if (user != null) {
-			// 임시 패스워드 메일 발송 및 변수 저장
-			String tempPwd = findPwdEmail.sendSimpleMessage(user.getUserEmail());
-			// System.out.println("tempPw : " + tempPw);
-			// 임시 패스워드 db 에 저장
-			userService.changeTempPwd(tempPwd, user.getUserId());
-
-			return "변경완료";
-		}
-		return null;
-	}
+	
 
 
 	@GetMapping("login")
@@ -107,7 +111,7 @@ public class UserController {
 
 
 	
-
+	//회원가입 메일인증코드
 	@PostMapping("user/userEmailConfirm")
 	@ResponseBody
 	String userEmailConfirm(@RequestParam("userEmail") String email) throws Exception {
@@ -137,35 +141,66 @@ public class UserController {
 		 return "user/findPwd.html";
   }
 	
-	@PostMapping("findId")
-	@ResponseBody
-	   public String findId(@RequestParam("userName") String userName,
-               @RequestParam("userEmail") String userEmail) throws Exception {
-		  
-	       
-	    return userService.getUserId(userName, userEmail);
-	      
-	}
 	
+	
+	//아이디 찾기
+	@PostMapping("findId")
+	public String findId(@RequestParam("userName") String userName,
+	                     @RequestParam("userEmail") String userEmail,
+	                     Model model) {
+	    try {
+	        String userId = userService.getUserId(userName, userEmail);
+	        model.addAttribute("userId", userId);
+	        return "user/findIdResult.html";
+	    } catch (UserNotFoundException e) {
+	        model.addAttribute("errorMessage", "일치하는 사용자 정보가 없습니다.");
+	        return "user/findIdFail.html";
+	    } catch (Exception e) {
+	        model.addAttribute("errorMessage", "오류가 발생했습니다. 다시 시도해주세요.");
+	        return "user/findIdFail.html";
+	    }
+	}
 
 	
+	//비밀번호 찾은 후 임시비번 발송
+	@PostMapping("user/findPwd")
+	public String findPwd(@RequestParam("userId") String userId, @RequestParam("userName") String userName,
+	@RequestParam("userEmail") String userEmail, Model model) {
+	try {
+	User user = userService.findUserPwd(userId, userName, userEmail);
 	
+	if (user != null) {
+		String tempPwd = findPwdEmail.sendSimpleMessage(user.getUserEmail());
+		userService.changeTempPwd(tempPwd, user.getUserId());
+
+		model.addAttribute("message", "임시비밀번호 변경이 완료되었습니다. 메일을 확인해주세요.");
+		return "user/findPwdResult.html";
+	}
+		return "user/findPwdfail.html"; 
+	}catch (Exception e) {
+		return "user/findPwdfail.html"; 
+}
+} 
+
 	
+
 	
 	@PostMapping("join")
-	@ResponseBody
-	 public String join(User user) {
-       
+	public String join(User user, Model model) {
+
+	
 		User newUser = null;
 		try {
-		newUser = userService.join(user);
+			newUser = userService.join(user);
+			model.addAttribute("userName", newUser.getUserName());
+			return "user/signUpResult.html";
 		} catch (Exception e) {
 			e.printStackTrace();
+			return "error.html";
 		}
+	} 
 	
-       return user.getUserName() + "님의 회원가입이 완료되었습니다.";
-    }
-
+	
 	@GetMapping("logo")
 	public String index(HttpSession httpSession) {
 		if (httpSession.getAttribute("user") == null) {
@@ -272,7 +307,7 @@ public class UserController {
 
 		StringBuffer url = new StringBuffer();
 		url.append("https://kauth.kakao.com/oauth/authorize?");
-		url.append("client_id=" + "아이디");
+		url.append("client_id=" + "4f66648509a057edfe2a0b9e3bbf285a");
 		url.append("&redirect_uri=http://localhost/ok/user/kakao");
 		url.append("&response_type=code");
 
@@ -284,7 +319,7 @@ public class UserController {
 
 		StringBuffer url = new StringBuffer();
 		url.append("https://kauth.kakao.com/oauth/logout?");
-		url.append("client_id=" + "아이디");
+		url.append("client_id=" + "4f66648509a057edfe2a0b9e3bbf285a");
 		url.append("&logout_redirect_uri=http://localhost/ok/user/kakaologout");
 
 		return "redirect:" + url.toString();

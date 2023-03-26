@@ -1,6 +1,7 @@
 package shop.myshop.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -26,8 +27,10 @@ public interface UserRepository extends JpaRepository<User, String>{
    @Query(value = "select u FROM User u where u.userId=:userId and u.userName=:userName and u.userEmail=:userEmail")
 	User findByUserIdAndUserNameAndUserEmail(@Param("userId")String userId, @Param("userName")String userName, @Param("userEmail")String userEmail) throws Exception; 
    
-
-
+   @Query(value = "select u.userId from User u  where u.userId=:userId")
+   	Optional<User> existsByUserId(@Param("userId")String userId)  throws Exception;
+   
+     
 	
 	  @Modifying
 	  @Query(value ="update User u set u.userPwd=:userPwd where u.userId=:userId") 
