@@ -54,7 +54,7 @@ INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_ad
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_addr1, user_addr2, user_addr3, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test08', '크리스토퍼', 'pw08', '010-8888-8888', '02-888-8888', '11111','서울특별시 강동구 성내동','00아파트', 'Y', 'Y', 'test08@gmail.com', now());
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_addr1, user_addr2, user_addr3, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test09', '박진영', 'pw09', '010-9999-9999', '02-999-9999', '11111','서울특별시 강동구 성내동','00아파트', 'N', 'N', 'test09@gmail.com', now());
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_addr1, user_addr2, user_addr3, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test10', '김우진', 'pw10', '010-1010-1010', '02-101-1010', '11111','서울특별시 강동구 성내동','00아파트', 'Y', 'N', 'test10@gmail.com', now());
-INSERT INTO USER values('ADMIN', '김행운', 'pass', '010-8877-8888', '02-888-8888', '11111','서울특별시 강동구 성내동','00아파트', 'Y', 'N', 'admin@gmail.com', now(), 'admin','BASIC');
+INSERT INTO USER values('ADMIN', '김행운', 'pass', '010-8877-8888', '02-888-8888', '11111','서울특별시 강동구 성내동','00아파트', 'Y', 'N', 'admin@gmail.com', now(), 'ADMIN','BASIC');
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_addr1, user_addr2, user_addr3, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test11', '김럭키', 'pw01', '010-0000-0000', '02-000-0000', '00000','인천광역시 남동구 서창동','00아파트', 'Y', 'Y', 'luckyham0914@naver.com', now());
 
 
