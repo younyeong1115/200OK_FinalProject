@@ -12,12 +12,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.Setter;
 import lombok.ToString;
 
-@Data
+@NoArgsConstructor
 @ToString
+@Getter
+@Setter
 @Entity
 public class Notice {
 	@Id
@@ -38,8 +45,10 @@ public class Notice {
 	private String noticeContent;
 	
 	@NonNull
-	@Column(nullable = false)
+	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.S")
+	@Column(nullable = false )
 	private Date noticeRegdate;
 	
 	@NonNull

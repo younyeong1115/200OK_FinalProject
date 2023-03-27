@@ -1,6 +1,8 @@
 package shop.myshop.dto;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
+import org.apache.catalina.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,10 +17,10 @@ import lombok.ToString;
 public class NoticeDTO {
 	
 	private Integer noticeNo;
-	private String userId;
+	private User userId;
 	private String noticeTitle;
 	private String noticeContent;
-	private Timestamp noticeRegdate;
+	private Date noticeRegdate;
 	private Integer noticeCategory;
 	private String noticeImage;
 
