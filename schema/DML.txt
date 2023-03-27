@@ -25,9 +25,9 @@ INSERT INTO PRODUCT values(3,"pendant earring",80000,"1_thumbNail","1_image1","1
 INSERT INTO PRODUCT values(4,"pendant earring",80000,"4_thumbNail","4_image1","4_image2","y","y","S",30,0,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",2);
 INSERT INTO PRODUCT values(5,"pendant earring",80000,"4_thumbNail","4_image1","4_image2","y","y","M",0,25,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",2);
 INSERT INTO PRODUCT values(6,"pendant earring",80000,"4_thumbNail","4_image1","4_image2","y","y","L",30,2,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",2);
-INSERT INTO PRODUCT values(7,"pendant ring",120000,"7_thumbNail","7_image1","7_image2","y","y","S",1,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
-INSERT INTO PRODUCT values(8,"pendant ring",120000,"7_thumbNail","7_image1","7_image2","y","y","M",5,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
-INSERT INTO PRODUCT values(9,"pendant ring",120000,"7_thumbNail","7_image1","7_image2","y","n","L",16,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
+INSERT INTO PRODUCT values(7,"pendant ring",120000,"image/7_thumbNail","7_image1","7_image2","y","y","S",1,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
+INSERT INTO PRODUCT values(8,"pendant ring",240000,"image/8_thumbNail","7_image1","7_image2","y","y","M",5,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
+INSERT INTO PRODUCT values(9,"pendant ring",190000,"image/9_thumbNail","7_image1","7_image2","y","n","L",16,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
 INSERT INTO PRODUCT values(10,"pendant ring",120000,"10_thumbNail","10_image1","10_image2","y","y","S",1,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
 INSERT INTO PRODUCT values(11,"pendant ring",120000,"10_thumbNail","10_image1","10_image2","y","y","M",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
 INSERT INTO PRODUCT values(12,"pendant ring",120000,"10_thumbNail","10_image1","10_image2","y","y","L",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
@@ -42,6 +42,7 @@ INSERT INTO PRODUCT values(20,"first perfume",250000,"20_thumbNail","20_image1",
 INSERT INTO PRODUCT values(21,"pendant necklace",170000,"21_thumbNail","21_image1","21_image2","y","n","S",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
 INSERT INTO PRODUCT values(22,"pendant necklace",170000,"22_thumbNail","22_image1","22_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
 INSERT INTO PRODUCT values(23,"pendant necklace",170000,"23_thumbNail","23_image1","23_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
+
 
 /*회원*/
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_addr1, user_addr2, user_addr3, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test01', '한지성', 'pw01', '010-1111-1111', '02-111-1111', '11111','인천광역시 남동구 서창동','00아파트', 'Y', 'Y', 'test01@gmail.com', now());
@@ -236,7 +237,7 @@ INSERT INTO ORDERDETAIL values(6, 6, 6, 6, 10000, 20000,50000);
 INSERT INTO ORDERDETAIL values(7, 7, 7, 7, 10000, 20000,50000);
 INSERT INTO ORDERDETAIL values(8, 8, 8, 8, 10000, 20000,50000);
 INSERT INTO ORDERDETAIL values(9, 9, 9, 9, 10000, 20000,50000);
-INSERT INTO ORDERDETAIL values(10, 10, 10, 10, 10000, 20000,50000);
+
 
 /*비회원주문*/
 INSERT INTO NONUSERORDER values(1, 'nonpw01', '김태연','010-3030-1111', 'non01@gmail.com',11,'통합결제',now(), '결제완료');
@@ -248,7 +249,7 @@ INSERT INTO NONUSERORDER values(6, 'nonpw06', '최수영','010-3030-6666','non06
 INSERT INTO NONUSERORDER values(7, 'nonpw07', '서주현','010-3030-7777','non07@gmail.com',17,'무통장입금',now(),'입금전');
 INSERT INTO NONUSERORDER values(8, 'nonpw08', '권유리','010-3030-8888','non08@gmail.com',18,'통합결제',now(), '상품준비중');
 INSERT INTO NONUSERORDER values(9, 'nonpw09', '정수정','010-3030-9999','non09@gmail.com',19,'통합결제',now(), '결제완료');
-INSERT INTO NONUSERORDER values(10, 'nonpw10', '김예림','010-3333-1010','non10@gmail.com',20,'통합결제',now(), '배송완료');
+
 
 
 /*비회원 주문 상세*/
@@ -261,7 +262,7 @@ INSERT INTO NONUSERORDERDETAIL values(6, 1, 6, 16, 80000);
 INSERT INTO NONUSERORDERDETAIL values(7, 1, 7, 17, 80000);
 INSERT INTO NONUSERORDERDETAIL values(8, 1, 8, 18, 80000);
 INSERT INTO NONUSERORDERDETAIL values(9, 1, 9, 19, 80000);
-INSERT INTO NONUSERORDERDETAIL values(10, 1, 10, 20, 80000);
+
 
 /*쿠폰*/
 INSERT INTO COUPON values(1, '월정기쿠폰' , now(), '5%할인','제한없음','제한없음', now()+30,'Y','test01');
