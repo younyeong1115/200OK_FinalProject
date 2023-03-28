@@ -3,6 +3,7 @@
 
 <th:block layout:fragment="content">
 <head>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>product list</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -182,32 +183,25 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 
 
 
-
-
-
-
-
-
-
-
 </style>
 </head>
+<body>
 <section>
   <div class="container">
     <div class="div-1">
       <span>Ring</span>
     </div>
     <div class="w3-bar">
-      <a href="#" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">ALL</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">GOLD</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">SILVER</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">ETC</a>
-    </div>
+  <a id="all-btn" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">ALL</a>
+  <a id="gold-btn" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">GOLD</a>
+  <a id="silver-btn" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">SILVER</a>
+  <a id="etc-btn" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">ETC</a>
+</div>
     <br>
     <br>
     <br>
     <br>
-    <div id="productList"></div>
+  
     <!-- Category 4 Products -->
     <div class="row">
       <div class="col-md-12">
@@ -235,7 +229,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
       <div class="col-md-4" th:each="product : ${productList5}">
         <div class="product-item">
           <div class="pi-img-wrapper">
-            <img src="#" class="img-responsive" th:src="@{${product.productThumbnail}}">
+            <img src="#" class="img-responsive" th:src="@{/image/__${product.productThumbnail}__.jpg}">
             
           </div>
           <h3><a href="#" th:text="${product.productName}"></a></h3>
@@ -253,7 +247,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
         <div class="col-md-4" th:each="product : ${productList6}">
         <div class="product-item">
           <div class="pi-img-wrapper">
-            <img src="#" class="img-responsive" th:src="@{${product.productThumbnail}}" >
+            <img src="#" class="img-responsive" th:src="@{/image/__${product.productThumbnail}__.jpg}" >
             <div>
              
             </div>
@@ -264,76 +258,34 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
         </div>
       </div>
     </div>
-      
-      
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 </section>
-</th:block>
-
-<script type="text/javascript">
-
+<script >
 $(document).ready(function() {
-	  // gold 버튼 클릭
-	  $('#gold').click(function() {
-	    $.ajax({
-	      url: '/ringlist',
-	      type: 'GET',
-	      data: { categoryNo: 4 },
-	      success: function(data) {
-	        $('#productList').html(data);
-	      }
-	    });
+	  // "ALL" button clicked
+	  $("#all-btn").click(function() {
+	    $(".row").show();
 	  });
-
-	  // silver 버튼 클릭
-	  $('#silver').click(function() {
-	    $.ajax({
-	      url: '/ringlist',
-	      type: 'GET',
-	      data: { categoryNo: 5 },
-	      success: function(data) {
-	        $('#productList').html(data);
-	      }
-	    });
+	  
+	  // "GOLD" button clicked
+	  $("#gold-btn").click(function() {
+	    $(".row").hide();
+	    $(".row:nth-of-type(3)").show(); // Category 4 Products
 	  });
-
-	  // etc 버튼 클릭
-	  $('#etc').click(function() {
-	    $.ajax({
-	      url: '/ringlist',
-	      type: 'GET',
-	      data: { categoryNo: 6 },
-	      success: function(data) {
-	        $('#productList').html(data);
-	      }
-	    });
+	  
+	  // "SILVER" button clicked
+	  $("#silver-btn").click(function() {
+	    $(".row").hide();
+	    $(".row:nth-of-type(4)").show(); // Category 5 Products
+	  });
+	  
+	  // "ETC" button clicked
+	  $("#etc-btn").click(function() {
+	    $(".row").hide();
+	    $(".row:nth-of-type(5)").show(); // Category 6 Products
 	  });
 	});
-
-
-
-
-
-
-
 </script>
-
-
+</body>
+</th:block>
 </html>
-
