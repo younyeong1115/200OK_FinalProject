@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block layout:fragment="content">
+<head>
+<title>product list</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<style type="text/css">
+/* 전체 사이즈 */
+section {
+  border: 2px solid #fff;
+  width : 1080px;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px
+}
+
+section > .container {
+  /* border: 2px solid; 밖에 큰박스 */
+  width : 1080px;
+  height: 370px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+section > .container > .div-2 {
+  /* align-items: center; 세로 중앙 */
+  display: flex;
+  flex-direction: row;
+  height: 370px;
+}
+
+section > .container > .div-2 > .flex-item-1 {
+  flex-grow: 1;
+  background-color: #bcbcbc;
+  border: 1px solid #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+section > .container > .div-2 > .flex-item-2 {
+  flex-grow: 1;
+  background-color: #bcbcbc;
+  border: 1px solid #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+section > .container > .div-2 > .flex-item-3 {
+  flex-grow: 1;
+  background-color: #bcbcbc;
+  border: 1px solid #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+section > .container > .div-2 > .flex-item-4 {
+  flex-grow: 1;
+  background-color: #bcbcbc;
+  border: 1px solid #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* 이미지 */
+img{
+  width: 250px;
+  height: 370px;
+  display:inline-block;
+}
+
+/* 이상품 어때요? */
+.div-1 {
+  color: rgb(51, 51, 51);
+  font-size: 28px;
+  line-height: 100px;
+  letter-spacing: -0.3px;
+  font-weight: bold;
+  
+  margin-bottom: 27px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 세일,가격 */
+.sale1{
+  color: rgb(250, 98, 47);
+  font-size: 16px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.price1 {
+  color: rgb(51, 51, 51);
+  font-size: 16px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.price2 {
+  padding-top: 1px;
+  color: rgb(181, 181, 181);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: line-through;
+ /* 텍스트 밑줄 */
+}
+
+/* 리뷰 첫번째 */
+section > .container > .div-2 > .flex-item-1 > .review1 {
+  padding-top: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  cursor: pointer;
+  position:relative;
+}
+
+/* 후기 999+ 위치 변경*/
+.review1-icon{
+/*   border: 2px solid red; */
+  width: 15px;
+  height: 15px;
+}
+
+.review2-icon{
+/*   border: 2px solid red; */
+  width: 15px;
+  height: 15px;
+}
+
+/* 후기 999+ */
+section > .container > .div-2 > .flex-item-1 > .review1 > .review-number1 {
+  /* border: 3px solid;
+  width: 100px;
+  height: 20px; */
+  
+  /* absolute 절대적위치 정하는 속성 (left) */
+/*   position: absolute;
+  left: 5%; */
+  align-items: center;
+  padding-left: 3px;
+  font-weight: 500;
+}
+
+/* 리뷰 두번째 */
+section > .container > .div-2 > .flex-item-2 > .review2 {
+  padding-top: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  cursor: pointer;
+  position:relative;
+}
+
+section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
+  align-items: center;
+  padding-left: 3px;
+  font-weight: 500;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-4 {
+  width: 25%;
+}
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<section>
+  <div class="container">
+    <div class="div-1">
+      <span>Ring</span>
+    </div>
+    <div class="w3-bar">
+      <a href="#" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">ALL</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">GOLD</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">SILVER</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">ETC</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="productList"></div>
+    <!-- Category 4 Products -->
+    <div class="row">
+      <div class="col-md-12">
+        
+      </div>
+      <div class="col-md-4" th:each="product : ${productList4}">
+        <div class="product-item">
+          <div class="pi-img-wrapper">
+          
+            <img src="#" class="img-responsive"  th:src="@{/image/__${product.productThumbnail}__.jpg}" >
+      
+          </div>
+          <h3><a href="#" th:text="${product.productName}"></a></h3>
+          <div class="pi-price" th:text="${product.productPrice}"></div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 5 Products -->
+    <div class="row">
+      <div class="col-md-12">
+       
+      </div>
+      <div class="col-md-4" th:each="product : ${productList5}">
+        <div class="product-item">
+          <div class="pi-img-wrapper">
+            <img src="#" class="img-responsive" th:src="@{${product.productThumbnail}}">
+            
+          </div>
+          <h3><a href="#" th:text="${product.productName}"></a></h3>
+          <div class="pi-price" th:text="${product.productPrice}"></div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 6 Products -->
+    <div class="row">
+      <div class="col-md-12">
+       
+      </div>
+        <div class="col-md-4" th:each="product : ${productList6}">
+        <div class="product-item">
+          <div class="pi-img-wrapper">
+            <img src="#" class="img-responsive" th:src="@{${product.productThumbnail}}" >
+            <div>
+             
+            </div>
+          </div>
+          <h3><a href="#" th:text="${product.productName}"></a></h3>
+          <div class="pi-price" th:text="${product.productPrice}"></div>
+       
+        </div>
+      </div>
+    </div>
+      
+      
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</section>
+</th:block>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	  // gold 버튼 클릭
+	  $('#gold').click(function() {
+	    $.ajax({
+	      url: '/ringlist',
+	      type: 'GET',
+	      data: { categoryNo: 4 },
+	      success: function(data) {
+	        $('#productList').html(data);
+	      }
+	    });
+	  });
+
+	  // silver 버튼 클릭
+	  $('#silver').click(function() {
+	    $.ajax({
+	      url: '/ringlist',
+	      type: 'GET',
+	      data: { categoryNo: 5 },
+	      success: function(data) {
+	        $('#productList').html(data);
+	      }
+	    });
+	  });
+
+	  // etc 버튼 클릭
+	  $('#etc').click(function() {
+	    $.ajax({
+	      url: '/ringlist',
+	      type: 'GET',
+	      data: { categoryNo: 6 },
+	      success: function(data) {
+	        $('#productList').html(data);
+	      }
+	    });
+	  });
+	});
+
+
+
+
+
+
+
+</script>
+
+
+</html>
+
