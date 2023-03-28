@@ -20,29 +20,74 @@ INSERT INTO CATEGORY values(18,"objet","etc");
 
 /*상품*/
 INSERT INTO PRODUCT values(1,"pendant  earring",80000,"1_thumbNail","1_image1","1_image2","y","y","S",30,2,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",1);
-INSERT INTO PRODUCT values(2,"pendant earring",80000,"1_thumbNail","1_image1","1_image2","y","y","M",10,5,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",1);
-INSERT INTO PRODUCT values(3,"pendant earring",80000,"1_thumbNail","1_image1","1_image2","y","y","L",16,3,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",1);
-INSERT INTO PRODUCT values(4,"pendant earring",80000,"4_thumbNail","4_image1","4_image2","y","y","S",30,0,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",2);
-INSERT INTO PRODUCT values(5,"pendant earring",80000,"4_thumbNail","4_image1","4_image2","y","y","M",0,25,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",2);
-INSERT INTO PRODUCT values(6,"pendant earring",80000,"4_thumbNail","4_image1","4_image2","y","y","L",30,2,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",2);
+INSERT INTO PRODUCT values(2,"lucky earring",180000,"2_thumbNail","2_image1","2_image2","y","y","M",10,5,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",1);
+INSERT INTO PRODUCT values(3,"simple earring",200000,"3_thumbNail","3_image1","3_image2","y","y","L",16,3,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",1);
+INSERT INTO PRODUCT values(4,"pendant earring",150000,"4_thumbNail","4_image1","4_image2","y","y","S",30,0,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",2);
+INSERT INTO PRODUCT values(5,"lucky earring",100000,"5_thumbNail","5_image1","5_image2","y","y","M",0,25,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",2);
+INSERT INTO PRODUCT values(6,"happy earring",160000,"6_thumbNail","6_image1","6_image2","y","y","L",30,2,"우아하고 세련된 디자인,귀에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",2);
+
+
 INSERT INTO PRODUCT values(7,"pendant ring",120000,"7_thumbNail","7_image1","7_image2","y","y","S",1,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
-INSERT INTO PRODUCT values(8,"pendant ring",240000,"8_thumbNail","7_image1","7_image2","y","y","M",5,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
-INSERT INTO PRODUCT values(9,"pendant ring",190000,"9_thumbNail","7_image1","7_image2","y","n","L",16,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
-INSERT INTO PRODUCT values(10,"pendant ring",120000,"10_thumbNail","10_image1","10_image2","y","y","S",1,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
-INSERT INTO PRODUCT values(11,"pendant ring",120000,"11_thumbNail","10_image1","10_image2","y","y","M",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
-INSERT INTO PRODUCT values(12,"pendant ring",120000,"12_thumbNail","10_image1","10_image2","y","y","L",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
+INSERT INTO PRODUCT values(8,"lucky ring",240000,"8_thumbNail","7_image1","7_image2","y","y","M",5,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
+INSERT INTO PRODUCT values(9,"simple ring",190000,"9_thumbNail","7_image1","7_image2","y","n","L",16,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
+INSERT INTO PRODUCT values(10,"lucky ring",200000,"10_thumbNail","10_image1","10_image2","y","y","S",1,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
+INSERT INTO PRODUCT values(11,"simple ring",240000,"11_thumbNail","11_image1","11_image2","y","y","M",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
+INSERT INTO PRODUCT values(12,"pendant ring",320000,"12_thumbNail","12_image1","12_image2","y","y","L",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
 INSERT INTO PRODUCT values(13,"pendant bracelet",170000,"13_thumbNail","13_image1","13_image2","y","y","S",1,32,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",7);
-INSERT INTO PRODUCT values(14,"pendant bracelet",170000,"13_thumbNail","13_image1","13_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",7);
-INSERT INTO PRODUCT values(15,"pendant bracelet",170000,"13_thumbNail","13_image1","13_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",7);
-INSERT INTO PRODUCT values(16,"pendant bracelet",170000,"16_thumbNail","16_image1","16_image2","y","y","S",1,32,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",7);
-INSERT INTO PRODUCT values(17,"pendant bracelet",170000,"16_thumbNail","16_image1","16_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",7);
-INSERT INTO PRODUCT values(18,"pendant bracelet",170000,"16_thumbNail","16_image1","16_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",7);
+INSERT INTO PRODUCT values(14,"simple bracelet",280000,"14_thumbNail","14_image1","14_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",7);
+INSERT INTO PRODUCT values(15,"first bracelet",350000,"15_thumbNail","15_image1","15_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",7);
+INSERT INTO PRODUCT values(16,"pendant bracelet",620000,"16_thumbNail","16_image1","16_image2","y","y","S",1,32,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",8);
+INSERT INTO PRODUCT values(17,"lucky bracelet",450000,"17_thumbNail","17_image1","17_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",8);
+INSERT INTO PRODUCT values(18,"happy bracelet",540000,"18_thumbNail","18_image1","18_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",8);
+
 INSERT INTO PRODUCT values(19,"first candle",300000,"19_thumbNail","19_image1","19_image2","y","y","one",11,20,"천연 원료들의 향을 재해석한 독특한 향초",17);
 INSERT INTO PRODUCT values(20,"first perfume",250000,"20_thumbNail","20_image1","200_image2","y","y","50ml",110,200,"천연 원료들의 향을 재해석한 독특한 향수",16);
-INSERT INTO PRODUCT values(21,"pendant necklace",170000,"21_thumbNail","21_image1","21_image2","y","n","S",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
-INSERT INTO PRODUCT values(22,"pendant necklace",170000,"22_thumbNail","22_image1","22_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
-INSERT INTO PRODUCT values(23,"pendant necklace",170000,"23_thumbNail","23_image1","23_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
+INSERT INTO PRODUCT values(21,"pendant necklace",770000,"21_thumbNail","21_image1","21_image2","y","n","S",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
+INSERT INTO PRODUCT values(22,"simple necklace",670000,"22_thumbNail","22_image1","22_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
+INSERT INTO PRODUCT values(23,"lucky necklace",870000,"23_thumbNail","23_image1","23_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
+INSERT INTO PRODUCT values(24,"simple ring",250000,"24_thumbNail","24_image1","24_image2","y","y","S",1,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",6);
+INSERT INTO PRODUCT values(25,"happy ring",450000,"25_thumbNail","25_image1","25_image2","y","y","M",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",6);
+INSERT INTO PRODUCT values(26,"pendant ring",280000,"26_thumbNail","26_image1","26_image2","y","y","L",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",6);
+INSERT INTO PRODUCT values(27,"pendant ring",120000,"27_thumbNail","27_image1","27_image2","y","y","S",1,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
+INSERT INTO PRODUCT values(28,"lucky ring",240000,"28_thumbNail","27_image1","27_image2","y","y","M",5,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
 
+INSERT INTO PRODUCT values(29,"lucky ring",200000,"29_thumbNail","29_image1","29_image2","y","y","S",1,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
+INSERT INTO PRODUCT values(30,"simple ring",240000,"30_thumbNail","30_image1","30_image2","y","y","M",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
+
+INSERT INTO PRODUCT values(31,"happy ring",450000,"31_thumbNail","31_image1","31_image2","y","y","M",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",6);
+INSERT INTO PRODUCT values(32,"pendant ring",280000,"32_thumbNail","32_image1","32_image2","y","y","L",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",6);
+
+
+INSERT INTO PRODUCT values(33,"lucky ring",240000,"33_thumbNail","33_image1","33_image2","y","y","M",5,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",4);
+INSERT INTO PRODUCT values(34,"simple ring",240000,"34_thumbNail","34_image1","34_image2","y","y","M",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",5);
+INSERT INTO PRODUCT values(35,"pendant ring",280000,"35_thumbNail","35_image1","35_image2","y","y","L",10,2,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",6);
+
+
+
+INSERT INTO PRODUCT values(36,"pendant bracelet",260000,"36_thumbNail","36_image1","36_image2","y","y","S",1,32,"우아하고 세련된 디자인,손에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",9);
+INSERT INTO PRODUCT values(37,"simple bracelet",150000,"37_thumbNail","37_image1","37_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",9);
+INSERT INTO PRODUCT values(38,"happy bracelet",560000,"38_thumbNail","38_image1","38_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",9);
+
+
+INSERT INTO PRODUCT values(39,"pendant necklace",570000,"39_thumbNail","39_image1","39_image2","y","n","S",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",11);
+INSERT INTO PRODUCT values(40,"simple necklace",670000,"40_thumbNail","40_image1","40_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",11);
+INSERT INTO PRODUCT values(41,"lucky necklace",870000,"41_thumbNail","41_image1","41_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",11);
+INSERT INTO PRODUCT values(42,"pendant necklace",570000,"42_thumbNail","42_image1","42_image2","y","n","S",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",12);
+INSERT INTO PRODUCT values(43,"simple necklace",670000,"43_thumbNail","43_image1","43_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",12);
+INSERT INTO PRODUCT values(44,"lucky necklace",870000,"44_thumbNail","44_image1","44_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",12);
+
+
+
+INSERT INTO PRODUCT values(45,"pendant earring",170000,"45_thumbNail","45_image1","45_image2","y","n","S",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",3);
+INSERT INTO PRODUCT values(46,"simple earring",150000,"46_thumbNail","46_image1","46_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",3);
+INSERT INTO PRODUCT values(47,"lucky erring",200000,"47_thumbNail","47_image1","47_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",3);
+
+INSERT INTO PRODUCT values(48,"opal",100000,"48_thumbNail","48_image1","48_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",18);
+
+
+INSERT INTO PRODUCT values(49,"gold watch",880000,"49_thumbNail","49_image1","49_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",13);
+INSERT INTO PRODUCT values(50,"lucky watch",950000,"50_thumbNail","50_image1","50_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",14);
+INSERT INTO PRODUCT values(51,"pocket watch",1000000,"51_thumbNail","51_image1","51_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",15);
 
 /*회원*/
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_addr1, user_addr2, user_addr3, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test01', '한지성', 'pw01', '010-1111-1111', '02-111-1111', '11111','인천광역시 남동구 서창동','00아파트', 'Y', 'Y', 'test01@gmail.com', now());

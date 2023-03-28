@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-				>
+>
 <head>
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <title>product list</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
 
 <style type="text/css">
@@ -194,7 +195,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 <section>
   <div class="container">
     <div class="div-1">
-      <span>Ring</span>
+      <span>Earring</span>
     </div>
     <div class="w3-bar">
   <a id="all-btn" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">ALL</a>
@@ -212,7 +213,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
       <div class="col-md-12">
         
       </div>
-      <div class="col-md-4" th:each="product : ${productList4}">
+      <div class="col-md-4" th:each="product : ${productList1}">
         <div class="product-item">
           <div class="pi-img-wrapper">
           
@@ -231,7 +232,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
       <div class="col-md-12">
        
       </div>
-      <div class="col-md-4" th:each="product : ${productList5}">
+      <div class="col-md-4" th:each="product : ${productList2}">
         <div class="product-item">
           <div class="pi-img-wrapper">
             <img src="#" class="img-responsive" th:src="@{/image/__${product.productThumbnail}__.jpg}">
@@ -249,7 +250,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
       <div class="col-md-12">
        
       </div>
-        <div class="col-md-4" th:each="product : ${productList6}">
+        <div class="col-md-4" th:each="product : ${productList3}">
         <div class="product-item">
           <div class="pi-img-wrapper">
             <img src="#" class="img-responsive" th:src="@{/image/__${product.productThumbnail}__.jpg}" >
@@ -275,19 +276,19 @@ $(document).ready(function() {
 	  // "GOLD" button clicked
 	  $("#gold-btn").click(function() {
 	    $(".row").hide();
-	    $(".row:nth-of-type(3)").show(); // Category 4 Products
+	    $(".row:nth-of-type(3)").show(); // Category 7 Products
 	  });
 	  
 	  // "SILVER" button clicked
 	  $("#silver-btn").click(function() {
 	    $(".row").hide();
-	    $(".row:nth-of-type(4)").show(); // Category 5 Products
+	    $(".row:nth-of-type(4)").show(); // Category 8 Products
 	  });
 	  
 	  // "ETC" button clicked
 	  $("#etc-btn").click(function() {
 	    $(".row").hide();
-	    $(".row:nth-of-type(5)").show(); // Category 6 Products
+	    $(".row:nth-of-type(5)").show(); // Category 9 Products
 	  });
 	});
 </script>
