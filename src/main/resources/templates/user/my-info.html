@@ -29,7 +29,10 @@
       <div th:text = "'👋   ' +${user.userName} + '님 환영 합니다!'" class="name"></div>
     </div>    
     
-    <div class="modify">i</div>    
+    <div class="modify">
+    <button onclick="location.href='edituserform'">회원정보수정</button>
+    <button onclick="location.href='adresslist'">배송지관리</button>
+    </div>    
   </div>
   <br>
   <div class="summaryContainer">
@@ -56,28 +59,28 @@
       
       <div class="item">
         <div>
-          <div class="green number">6</div>
+       	 <div class="green number" th:text = "${beforeDeposit}"></div>
           <div class="text">입금 전</div>
         </div>
         <div class="icon"> > </div>
       </div>     
       <div class="item">
         <div>
-          <div class="number">0</div>
+          <div class="green number" th:text = "${PreparingProduct}"></div>
           <div class="text">배송 준비 중</div>
         </div>
         <div class="icon"> > </div>
       </div>     
       <div class="item">
         <div>
-          <div class="green number">1</div>
+           <div class="green number" th:text = "${shipping}"></div>
           <div class="text">배송 중</div>
         </div>
         <div class="icon"> > </div>
       </div>     
       <div class="item">
         <div>
-          <div class="green number">3</div>
+          <div class="green number" th:text = "${completed}"></div>
           <div class="text">배송 완료</div>
         </div>
       </div>     
