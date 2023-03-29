@@ -18,6 +18,9 @@ public interface  ProductService {
 
 	List<ProductDTO> getProductListByCategory(Category categoryNo);
 	
+	//----------------------------------------------------------------------
+		Product findByProductCode(@Param("productCode")int productCode);
+	
 
 
 

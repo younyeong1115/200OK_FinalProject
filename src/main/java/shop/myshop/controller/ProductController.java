@@ -3,14 +3,18 @@ package shop.myshop.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import shop.myshop.dto.ProductDTO;
 import shop.myshop.entity.Category;
+import shop.myshop.entity.Product;
 import shop.myshop.service.CategoryService;
 import shop.myshop.service.ProductService;
 
@@ -175,6 +179,24 @@ public class ProductController {
 
 	    return "product/objectlist";
 	}
+	
+	//--------------------------------------------------------------------------------------
+	
+		@GetMapping("productdetail/{productCode}")
+		public String detail(@PathVariable int productCode, Model model,HttpSession httpSession) throws Exception {
+			Product product = productService.findByProductCode(productCode);
+			model.addAttribute("product", product);
+			model.addAttribute("bonus", Integer.parseInt(product.getProductPrice())/100);
+			
+			//물건의 size가 s,m,l중 하나가 아닌 경우 one size 뷰로 이동 
+//			if(!(product.getProductSize().equals("S")||product.getProductSize().equals("M")||product.getProductSize().equals("L"))) {
+//				return "product/product-detail-onesize";
+//			} 디벨롭 필요 상품사이즈별 옵션 사항
+			
+
+			return "product/product-detail-onesize";
+
+		}
 
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import shop.myshop.dto.ProductDTO;
@@ -37,6 +38,13 @@ public class ProductServiceImpl implements ProductService{
 
 	    return productDtoList;
 	}
+	
+	//----------------------------------------------------------------------
+	
+	@Override
+	public Product findByProductCode(@Param("productCode")int productCode) {
+			return productDao.findByProductCode(productCode);
+		}
 }
 
 

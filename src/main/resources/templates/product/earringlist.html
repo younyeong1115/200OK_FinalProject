@@ -543,7 +543,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
             <img src="#" class="img-responsive"  th:src="@{/image/__${product.productThumbnail}__.jpg}" >
       
           </div>
-          <h3><a href="#" th:text="${product.productName}"></a></h3>
+          <h3><a th:href="@{'productdetail/' + ${product.productCode}}" th:text="${product.productName}"></a></h3>
           <div class="pi-price" th:text="${product.productPrice}"></div>
           
         </div>
@@ -561,7 +561,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
             <img src="#" class="img-responsive" th:src="@{/image/__${product.productThumbnail}__.jpg}">
             
           </div>
-          <h3><a href="#" th:text="${product.productName}"></a></h3>
+          <h3><a th:href="@{'productdetail/' + ${product.productCode}}" th:text="${product.productName}"></a></h3>
           <div class="pi-price" th:text="${product.productPrice}"></div>
           
         </div>
@@ -581,7 +581,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
              
             </div>
           </div>
-          <h3><a href="#" th:text="${product.productName}"></a></h3>
+          <h3><a th:href="@{'productdetail/' + ${product.productCode}}" th:text="${product.productName}"></a></h3>
           <div class="pi-price" th:text="${product.productPrice}"></div>
        
         </div>
