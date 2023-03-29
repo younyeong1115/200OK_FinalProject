@@ -41,7 +41,7 @@ INSERT INTO PRODUCT values(17,"lucky bracelet",450000,"17_thumbNail","17_image1"
 INSERT INTO PRODUCT values(18,"happy bracelet",540000,"18_thumbNail","18_image1","18_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",8);
 
 INSERT INTO PRODUCT values(19,"first candle",300000,"19_thumbNail","19_image1","19_image2","y","y","one",11,20,"천연 원료들의 향을 재해석한 독특한 향초",17);
-INSERT INTO PRODUCT values(20,"first perfume",250000,"20_thumbNail","20_image1","200_image2","y","y","50ml",110,200,"천연 원료들의 향을 재해석한 독특한 향수",16);
+INSERT INTO PRODUCT values(20,"first perfume",250000,"20_thumbNail","20_image1","20_image2","y","y","50ml",110,200,"천연 원료들의 향을 재해석한 독특한 향수",16);
 INSERT INTO PRODUCT values(21,"pendant necklace",770000,"21_thumbNail","21_image1","21_image2","y","n","S",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
 INSERT INTO PRODUCT values(22,"simple necklace",670000,"22_thumbNail","22_image1","22_image2","y","n","M",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
 INSERT INTO PRODUCT values(23,"lucky necklace",870000,"23_thumbNail","23_image1","23_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",10);
@@ -88,6 +88,25 @@ INSERT INTO PRODUCT values(48,"opal",100000,"48_thumbNail","48_image1","48_image
 INSERT INTO PRODUCT values(49,"gold watch",880000,"49_thumbNail","49_image1","49_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",13);
 INSERT INTO PRODUCT values(50,"lucky watch",950000,"50_thumbNail","50_image1","50_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",14);
 INSERT INTO PRODUCT values(51,"pocket watch",1000000,"51_thumbNail","51_image1","51_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",15);
+
+INSERT INTO PRODUCT values(52,"gorgeous watch",980000,"52_thumbNail","52_image1","52_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",13);
+INSERT INTO PRODUCT values(53,"nice watch",1580000,"53_thumbNail","53_image1","53_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",13);
+
+INSERT INTO PRODUCT values(54,"gorgeous watch",980000,"54_thumbNail","54_image1","54_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",14);
+INSERT INTO PRODUCT values(55,"nice watch",1580000,"55_thumbNail","55_image1","55_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",14);
+
+INSERT INTO PRODUCT values(56,"gorgeous hourglass",980000,"56_thumbNail","56_image1","56_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",15);
+INSERT INTO PRODUCT values(57,"nice clock",1580000,"57_thumbNail","57_image1","57_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",15);
+
+
+INSERT INTO PRODUCT values(58,"nice perfume",250000,"58_thumbNail","58_image1","58_image2","y","y","50ml",110,200,"천연 원료들의 향을 재해석한 독특한 향수",16);
+INSERT INTO PRODUCT values(59,"gorgeous perfume",350000,"59_thumbNail","59_image1","59_image2","y","y","50ml",110,200,"천연 원료들의 향을 재해석한 독특한 향수",16);
+
+INSERT INTO PRODUCT values(60,"nice candle",300000,"60_thumbNail","60_image1","60_image2","y","y","one",11,20,"천연 원료들의 향을 재해석한 독특한 향초",17);
+INSERT INTO PRODUCT values(61,"gorgeous candle",350000,"61_thumbNail","61_image1","61_image2","y","y","one",11,20,"천연 원료들의 향을 재해석한 독특한 향초",17);
+
+INSERT INTO PRODUCT values(62,"gorgeous pearls",300000,"62_thumbNail","62_image1","63_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",18);
+INSERT INTO PRODUCT values(63,"gorgeous gemstone",150000,"63_thumbNail","63_image1","63_image2","y","n","L",11,20,"우아하고 세련된 디자인,팔에 부드럽게 달라붙는 착용감과 함께 어떤 스타일에도 잘 어울리는 제품",18);
 
 /*회원*/
 INSERT INTO USER (user_id, user_name, user_pwd, user_mobile, user_phone, user_addr1, user_addr2, user_addr3, user_emailWhether, user_snsWhether, user_email, user_regdate) values('test01', '한지성', 'pw01', '010-1111-1111', '02-111-1111', '11111','인천광역시 남동구 서창동','00아파트', 'Y', 'Y', 'test01@gmail.com', now());
