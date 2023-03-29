@@ -34,10 +34,6 @@ public class Cart {
 	@NonNull
 	@Column(nullable = false)
 	private Integer cartQuantity;
-	
-	@NonNull
-	@Column(nullable = false)
-	private Integer cartTotalprice;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NonNull

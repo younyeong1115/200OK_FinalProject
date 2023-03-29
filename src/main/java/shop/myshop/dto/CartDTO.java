@@ -15,7 +15,6 @@ public class CartDTO {
 	
 	private Integer cartNo;
 	private Integer cartQuantity;
-	private Integer cartTotalprice;
 	private Integer productCode;
 	private String userId;
 

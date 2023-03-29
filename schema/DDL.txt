@@ -230,7 +230,6 @@ user_id VARCHAR(32) NOT NULL
 create table CART(/*장바구니*/
 cart_no INTEGER AUTO_INCREMENT PRIMARY KEY,
 cart_quantity INTEGER NOT NULL,/*수량*/
-cart_totalprice INTEGER NOT NULL,
 product_code INTEGER NOT NULL,
 user_id   VARCHAR(32) NOT NULL
 );
