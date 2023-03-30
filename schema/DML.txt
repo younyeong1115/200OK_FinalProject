@@ -247,39 +247,31 @@ INSERT INTO DELIVERY (delivery_Id, delivery_name, delivery_mobile, delivery_add1
 VALUES (10, '한지성', '010-333-3333', '11111', '경기도 광명시 하안동', '123호', 'N', '부재시 문자 남겨주세요', 'test02');
 
 
-/*비회원 배송*/
-INSERT INTO NONUSERDELIVERY values(1, '김현정', '010-1010-1111', '11111','서울특별시 마포구 합정동', '123호','부재시 문자 남겨주세요');
-INSERT INTO NONUSERDELIVERY values(2, '김지연',  '010-1011-2222', '11111','대구광역시 달서구 본리동',  '123호','배송 전에 미리 연락 바랍니다');
-INSERT INTO NONUSERDELIVERY values(3, '추소정',  '010-1012-3333', '11111','부산광역시 금정구 구서동',  '123호','부재시 경비실에 맡겨주세요');
-INSERT INTO NONUSERDELIVERY values(4, '박수빈', '010-1013-4444', '11111','서울특별시 서초구 서초동',  '123호','배송전에 미리 연락 바랍니다');
-INSERT INTO NONUSERDELIVERY values(5, '손주연',  '010-1014-5555', '11111','인천광역시 부평구 삼산동',  '123호','부재시 문자 남겨주세요');
-INSERT INTO NONUSERDELIVERY values(6, '이여름',  '010-1015-6666', '11111','서울특별시 강동구 상일동',  '123호','부재시 문자 남겨주세요');
-INSERT INTO NONUSERDELIVERY values(7, '임다영',  '010-1016-7777', '11111','제주특별자치도 제주시 추자면',  '123호','배송전에 미리 연락 바랍니다');
-INSERT INTO NONUSERDELIVERY values(8, '유연정',  '010-1017-8888', '11111','경기도 광명시 하안동',  '123호','부재시 문자 남겨주세요');
-INSERT INTO NONUSERDELIVERY values(9, '남다원', '010-1018-9999', '11111','서울특별시 강남구 압구정동', '123호', '부재시 경비실에 맡겨주세요');
-INSERT INTO NONUSERDELIVERY values(10, '이루다',  '010-1019-2000','11111', '서울특별시 동작구 대방동', '123호', '부재시 문자 남겨주세요');
-INSERT INTO NONUSERDELIVERY values(11, '김태연',  '010-3030-1111', '11111','서울특별시 마포구 합정동', '123호', '부재시 문자 남겨주세요');
-INSERT INTO NONUSERDELIVERY values(12, '임윤아',  '010-3030-2222', '11111','대구광역시 달서구 본리동', '123호', '배송 전에 미리 연락 바랍니다');
-INSERT INTO NONUSERDELIVERY values(13, '김효연',  '010-3030-3333', '11111','부산광역시 금정구 구서동' ,'123호', '부재시 경비실에 맡겨주세요');
-INSERT INTO NONUSERDELIVERY values(14, '이순규',  '010-3030-4444','11111', '서울특별시 서초구 서초동', '123호', '배송전에 미리 연락 바랍니다');
-INSERT INTO NONUSERDELIVERY values(15, '황미영', '010-3030-5555', '11111','인천광역시 부평구 삼산동',  '123호','부재시 문자 남겨주세요');
-INSERT INTO NONUSERDELIVERY values(16, '최수영',  '010-3030-6666', '11111','서울특별시 강동구 상일동', '123호', '부재시 문자 남겨주세요');
-INSERT INTO NONUSERDELIVERY values(17, '서주현',  '010-3030-7777', '11111','제주특별자치도 제주시 추자면', '123호', '배송전에 미리 연락 바랍니다');
-INSERT INTO NONUSERDELIVERY values(18, '권유리',  '010-3030-8888', '11111','경기도 광명시 하안동',  '123호','부재시 문자 남겨주세요');
-INSERT INTO NONUSERDELIVERY values(19, '정수정',  '010-3030-9999', '11111','서울특별시 강남구 압구정동',  '123호','부재시 경비실에 맡겨주세요');
-INSERT INTO NONUSERDELIVERY values(20, '김예림',  '010-3333-1010', '11111','서울특별시 동작구 대방동',  '123호','부재시 문자 남겨주세요');
 
 
 /*주문*/
-INSERT INTO ORDERS values(1, 'test01', now(), 3000, '통합결제', 1,'결제완료');
-INSERT INTO ORDERS values(2, 'test02', now(), 3000, '무통장입금', 2,'입금전');
-INSERT INTO ORDERS values(3, 'test03', now(), 3000, '통합결제', 3,'배송중');
-INSERT INTO ORDERS values(4, 'test04', now(), 3000, '통합결제', 4,'배송완료');
-INSERT INTO ORDERS values(5, 'test06', now(), 3000, '통합결제', 6,'결제완료');
-INSERT INTO ORDERS values(6, 'test07', now(), 3000, '무통장입금', 7,'입금전');
-INSERT INTO ORDERS values(7, 'test08', now(), 3000, '무통장입금', 8,'상품준비중');
-INSERT INTO ORDERS values(8, 'test09', now(), 3000, '통합결제', 9,'결제완료');
-INSERT INTO ORDERS values(9, 'test10', now(), 3000, '통합결제', 10,'배송완료');
+INSERT INTO ORDERS values(1, 'test01', now(), 500000, '통합결제', 1,'결제완료');
+INSERT INTO ORDERS values(2, 'test02', now(), 800000, '무통장입금', 2,'입금전');
+INSERT INTO ORDERS values(3, 'test03', now(), 350000, '통합결제', 3,'배송중');
+INSERT INTO ORDERS values(4, 'test04', now(), 540000, '통합결제', 4,'배송완료');
+INSERT INTO ORDERS values(5, 'test06', now(), 300000, '통합결제', 6,'결제완료');
+INSERT INTO ORDERS values(6, 'test07', now(), 250000, '무통장입금', 7,'입금전');
+INSERT INTO ORDERS values(7, 'test08', now(), 290000, '무통장입금', 8,'상품준비중');
+INSERT INTO ORDERS values(8, 'test09', now(), 56000, '통합결제', 9,'결제완료');
+INSERT INTO ORDERS values(9, 'test10', now(), 34000, '통합결제', 10,'배송완료');
+
+
+/*주문아이템*/
+INSERT INTO ORDERITEM values(1, 5,1,1);
+INSERT INTO ORDERITEM values(2, 2,2,1);
+INSERT INTO ORDERITEM values(3, 3,2,2);
+INSERT INTO ORDERITEM values(4, 1,1,2);
+INSERT INTO ORDERITEM values(5, 2,4,3);
+INSERT INTO ORDERITEM values(6, 5,5,4);
+INSERT INTO ORDERITEM values(7, 4,8,5);
+INSERT INTO ORDERITEM values(8, 1,9,6);
+INSERT INTO ORDERITEM values(9, 1,6,7);
+INSERT INTO ORDERITEM values(10, 1,5,7);
 
 /*리뷰*/
 INSERT INTO REVIEW values(1, 1,'test01', 1, '너무 예뻐요', '★★★★★',now(),'review1_image1','review1_image2','review1_image3');
@@ -304,29 +296,6 @@ INSERT INTO ORDERDETAIL values(8, 8, 8, 8, 10000, 20000,50000);
 INSERT INTO ORDERDETAIL values(9, 9, 9, 9, 10000, 20000,50000);
 
 
-/*비회원주문*/
-INSERT INTO NONUSERORDER values(1, 'nonpw01', '김태연','010-3030-1111', 'non01@gmail.com',11,'통합결제',now(), '결제완료');
-INSERT INTO NONUSERORDER values(2, 'nonpw02', '임윤아','010-3030-2222','non02@gmail.com' ,12,'무통장입금',now(),'입금전');
-INSERT INTO NONUSERORDER values(3, 'nonpw03', '김효연','010-3030-3333','non03@gmail.com',13,'통합결제',now(),'상품준비중');
-INSERT INTO NONUSERORDER values(4, 'nonpw04', '이순규','010-3030-4444','non04@gmail.com',14,'통합결제',now(),'배송완료');
-INSERT INTO NONUSERORDER values(5, 'nonpw05', '황미영','010-3030-5555','non05@gmail.com',15,'무통장입금',now(),'입금완료');
-INSERT INTO NONUSERORDER values(6, 'nonpw06', '최수영','010-3030-6666','non06@gmail.com',16,'통합결제',now(), '결제완료');
-INSERT INTO NONUSERORDER values(7, 'nonpw07', '서주현','010-3030-7777','non07@gmail.com',17,'무통장입금',now(),'입금전');
-INSERT INTO NONUSERORDER values(8, 'nonpw08', '권유리','010-3030-8888','non08@gmail.com',18,'통합결제',now(), '상품준비중');
-INSERT INTO NONUSERORDER values(9, 'nonpw09', '정수정','010-3030-9999','non09@gmail.com',19,'통합결제',now(), '결제완료');
-
-
-
-/*비회원 주문 상세*/
-INSERT INTO NONUSERORDERDETAIL values(1, 1, 1, 11, 80000);
-INSERT INTO NONUSERORDERDETAIL values(2, 1, 2, 12, 80000);
-INSERT INTO NONUSERORDERDETAIL values(3, 1, 3, 13, 80000);
-INSERT INTO NONUSERORDERDETAIL values(4, 1, 4, 14, 80000);
-INSERT INTO NONUSERORDERDETAIL values(5, 1, 5, 15, 80000);
-INSERT INTO NONUSERORDERDETAIL values(6, 1, 6, 16, 80000);
-INSERT INTO NONUSERORDERDETAIL values(7, 1, 7, 17, 80000);
-INSERT INTO NONUSERORDERDETAIL values(8, 1, 8, 18, 80000);
-INSERT INTO NONUSERORDERDETAIL values(9, 1, 9, 19, 80000);
 
 
 /*쿠폰*/
