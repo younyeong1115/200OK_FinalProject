@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>order</title>
+<style type="text/css">
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p,
+span {
+  margin: 0;
+}
+
+a {
+  color: black;
+}
+
+img {
+  display: block;
+  width: 80%;
+  height: 80px;
+  margin: auto;
+}
+
+.cart {
+  width: 80%;
+  margin: auto;
+  padding: 30px;
+}
+
+.cart ul {
+  background-color: whitesmoke;
+  padding: 30px;
+  margin-bottom: 50px;
+  border: whitesmoke solid 1px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.cart ul :first-child {
+  color: limegreen;
+}
+
+table {
+  border-top: solid 1.5px black;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+thead {
+  text-align: center;
+  font-weight: bold;
+}
+
+tbody {
+  font-size: 12px;
+}
+
+td {
+  padding: 15px 0px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.cart__list__detail :nth-child(3) {
+  vertical-align: top;
+}
+
+.cart__list__detail :nth-child(3) a {
+  font-size: 12px;
+}
+
+.cart__list__detail :nth-child(3) p {
+  margin-top: 6px;
+  font-weight: bold;
+}
+
+.cart__list__smartstore {
+  font-size: 12px;
+  color: gray;
+}
+
+.cart__list__option {
+  vertical-align: top;
+  padding: 20px;
+}
+
+.cart__list__option p {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.cart__list__option p::after {
+  content: "";
+  width: 90%;
+  height: 1px;
+  background-color: lightgrey;
+  left: 0px;
+  top: 25px;
+  position: absolute;
+}
+
+.cart__list__optionbtn {
+  background-color: white;
+  font-size: 10px;
+  border: lightgrey solid 1px;
+  padding: 7px;
+}
+
+.cart__list__detail :nth-child(4),
+.cart__list__detail :nth-child(5),
+.cart__list__detail :nth-child(6) {
+  border-left: 2px solid whitesmoke;
+}
+
+.cart__list__detail :nth-child(5),
+.cart__list__detail :nth-child(6) {
+  text-align: center;
+}
+
+.cart__list__detail :nth-child(5) button {
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.cart__mainbtns {
+  width: 420px;
+  height: 200px;
+  padding-top: 40px;
+  display: block;
+  margin: auto;
+}
+
+.cart__bigorderbtn {
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+  margin: auto;
+  border-radius: 5px;
+}
+
+.cart__bigorderbtn.left {
+  background-color: white;
+  border: 1px lightgray solid;
+}
+
+.cart__bigorderbtn.right {
+  background-color: blue;
+  color: white;
+  border: none;
+}
+
+table, tr {
+	border: 1px solid gray;
+	border-top: 2px solid black;
+}
+
+.c2 {
+	font-size: 10px;
+}
+
+#request {
+	font-size: 10px;
+	color: blue;
+}
+
+#easy {
+	color: red;
+	border: 1px solid red;
+}
+
+.c1 {
+	background-color: #F6F6F6;
+}
+
+</style>
+</head>
+<body>
+    <section class="cart">
+        <div class="cart__information">
+           
+        </div>
+        <table class="cart__list">
+            <form>
+                <thead>
+                    <tr>
+                        
+                        <td colspan="2">상품정보</td>
+                        <td>옵션</td>
+                        <td>상품금액</td>
+                        <td>배송비</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cart__list__detail">
+                       
+                        <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
+                        <td><a href="#">애플 공식 브랜드스토어</a><span class="cart__list__smartstore"> 스마트스토어</span>
+                            <p>Apple 매직 키보드 - 한국어(MK2A3KH/A)</p>
+                            <sapn class="price">116,62원</sapn><span
+                                style="text-decoration: line-through; color: lightgray;">119,000</span>
+                        </td>
+                        <td class="cart__list__option">
+                            <p>모델명 : 키보드 - 한국어 MK2A3KH/A / 1개</p>
+                            
+                        </td>
+                        <td><span class="price">116,620원</span><br>
+                           
+                        </td>
+                        <td>무료</td>
+                    </tr>
+                    <tr class="cart__list__detail">
+                        
+                        <td style="width: 13%;">
+                            <img src="image/mouse.jpg" alt="magic mouse">
+                        </td>
+                        <td style="width: 27%;"><a href="#">컴퓨존</a><span class="cart__list__smartstore"> 스마트스토어</span>
+                            <p>[애플] Magic Mouse [MK2E3KH/A]</p>
+                            <span class=" price">88,900원</span>
+                        </td>
+                        <td class="cart__list__option" style="width: 27%;">
+                            <p>상품 주문 수량: 1개</p>
+                           
+                        </td>
+                        <td style="width: 15%;"><span class="price">88,900원</span><br>
+                           
+                        </td>
+                        <td style="width: 15%;">무료</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </form>
+        </table>
+       
+	<form action="https://www.w3schools.com/action_page.php">
+		<h3>주문자 정보 입력</h3>
+		<table>
+			<tr>
+				<td>
+					<p>
+						&emsp;주문자정보&emsp;<small class="c2">비회원으로 상품구매 시 반드시 본인인증을
+							하셔야 합니다.&emsp;</small><input type="submit" value="휴대폰인증"> <input
+							type="submit" value="아이핀인증">
+						
+					</p>
+					<p>
+						&emsp;주소&emsp;&emsp;&emsp;&emsp;<input type="text" name="adress"
+							value="" disabled> <input type="submit" value="주소찾기">
+					</p>
+					<p>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="url"
+							name="userurl" value="" disabled>
+					</p>
+					<p>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="url"
+							name="userurl1">
+					</p>
+					<p>
+						&emsp;휴대전화&emsp;&emsp;<select name="areacode">
+							<option value="seoul">02</option>
+							<option value="smartp">010</option>
+							<option value="gyeonggi">031</option>
+							<option value="incheon">032</option>
+						</select>&nbsp;<small>-</small>&nbsp;<input type="tel" name="middlenumber">&nbsp;<small>-</small>&nbsp;<input
+							type="tel" name="lastnumber">&nbsp;<input type="checkbox">&nbsp;<small>SMS수신동의</small>
+					</p>
+					<p>
+						&emsp;이메일&emsp;&emsp;&emsp;<input type="email" name="useremail">&nbsp;<small>@</small>&nbsp;<input
+							type="email" name="site">&nbsp;<select name="site">
+							<option value="self">직접입력</option>
+							<option value="naver">naver.com</option>
+							<option value="daum">daum.net</option>
+							<option value="google">google.com</option>
+						</select>
+				</td>
+			</tr>
+
+		</table>
+		<small class="c2">*SK플래닛㈜는 통신판매중계자로서 통신판매의 당사자가 아니며,개별판매자가 등록한
+			상품정보 및 거래에 대해 SK플래닛에는 일체의 책임을 지지 않습니다.</small> <br>
+		<h3>배송지 정보 입력</h3>
+		<table>
+			<tr class="c1">
+				<td>
+					<p>
+						&emsp;배송지선택&emsp;&nbsp;&nbsp;&nbsp;<input type="submit"
+							value="주문자 정보와 동일">
+					</p> <br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>
+						&emsp;받으시는 분&emsp;&nbsp;&nbsp;<input type="text" name="Username">
+					</p>
+					<p>
+						&emsp;주소&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;<input
+							type="text" name="adress" value="" disabled> <input
+							type="submit" value="주소찾기">&nbsp;<input type="checkbox"><small>배송지목록에
+							추가</small>
+					</p>
+					<p>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<input
+							type="url" name="userurl" value="" disabled>
+					</p>
+					<p>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<input
+							type="url" name="userurl1">
+					</p>
+					<p>
+						&emsp;휴대전화&emsp;&emsp;&nbsp;&nbsp;&nbsp;<select name="areacode">
+							<option value="smartp">010</option>
+							<option value="seoul">02</option>
+							<option value="gyeonggi">031</option>
+							<option value="incheon">032</option>
+						</select>&nbsp;<small>-</small>&nbsp;<input type="tel" name="middlenumber">&nbsp;<small>-</small>&nbsp;<input
+							type="tel" name="lastnumber">&nbsp;<input type="checkbox"><small>안심번호
+							사용(무료)</small>&nbsp;<font size="2" title="안심번호 대충 설명하는 내용">ⓠ</font>&nbsp;<input
+							type="checkbox"><small>집전화 추가 입력</small>
+					</p>
+					<p>
+						&emsp;배송요구사항&nbsp;&nbsp;&nbsp;<input type="text"
+							name="request">&nbsp;<small>{0자/50자}</small>
+					</p>
+					<p id="request">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;*특정한
+						배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</p>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<h3>결제 정보 입력</h3>
+		<table>
+			<tr class="c1">
+				<td>
+					<p>
+						&emsp;신용카드&emsp;&emsp; <input type="radio" name="creaditCard1"><small>신용카드(일반)</small>&emsp;&emsp;
+						<input type="radio" name="creaditCard2"><small>신용카드(법인)</small>&emsp;&emsp;
+						<input type="radio" name="creaditCard3"><small>해외발급카드</small>
+					</p>
+					<p>
+						&emsp;현금결제&emsp;&emsp;&nbsp;<input type="radio" name="Money1"><small>무통장입금</small>&emsp;&emsp;&emsp;&nbsp;&nbsp;<input
+							type="radio" name="Money2"><small>실시간계좌이체</small>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>
+						&emsp;카드선택&emsp;&emsp;<select name="creaditcardcompany">
+							<option value="none">선택하세요</option>
+							<option value="Shinhan">신한카드</option>
+							<option value="Woori">우리카드</option>
+							<option value="NH">NH농협</option>
+						</select>
+					</p>
+					<p>
+						&emsp;할부방식&emsp;&emsp;<select name="installment">
+							<option value="instant">일시불</option>
+							<option value="3month">3개월</option>
+							<option value="6month">6개월</option>
+							<option value="year">12개월</option>
+						</select>
+					</p>
+					<p>
+						&emsp;결제안내&emsp;&emsp;<input id="easy" type="submit"
+							value="간편결제안내">&emsp;<input type="submit" value="공인인증안내">&emsp;<input
+							type="submit" value="안전결제안내">&emsp;<input type="submit"
+							value="안심클릭안내">&emsp;<input type="submit"
+							value="해외발급카드안내">
+					</p>
+
+
+
+				</td>
+			</tr>
+		</table>
+
+	</form>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<br>
+
+        
+        
+        <div class="cart__mainbtns">
+            <button class="cart__bigorderbtn left">홈으로 이동하기</button>
+            <button class="cart__bigorderbtn right">주문하기</button>
+        </div>
+    </section>
+</body>
+</html>
