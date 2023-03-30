@@ -84,8 +84,6 @@ public class Product {
 	@OneToMany(mappedBy = "productCode")
 	private List<Cart> cart = new ArrayList<Cart>();
 
-	@OneToMany(mappedBy = "productCode")
-	private List<NonUserOrderDetail> nonuserorderdetail = new ArrayList<NonUserOrderDetail>();
 	
 	@OneToMany(mappedBy = "productCode")
 	private List<OrderDetail> orderdetail = new ArrayList<OrderDetail>();
@@ -95,6 +93,9 @@ public class Product {
 	
 	@OneToMany(mappedBy = "productCode")
 	private List<ProductQuestion> productquestion = new ArrayList<ProductQuestion>();
+	
+	@OneToMany(mappedBy = "productCode")
+	private List<OrderItem> orderitem = new ArrayList<OrderItem>();
 	
 	@Override
 	public String toString() {

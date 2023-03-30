@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import shop.myshop.entity.NonUserDelivery;
-import shop.myshop.entity.NonUserOrder;
+import shop.myshop.entity.Orders;
 import shop.myshop.entity.Product;
 
 
@@ -16,12 +15,20 @@ import shop.myshop.entity.Product;
 @Getter
 @Setter
 @ToString
-public class NonUserOrderDetailDTO {
+public class OrderitemDTO {
+
+
+	private Integer orderitemCode ;
+
+
+	private Integer orderitemQuantity;
 	
-	private Integer nonDetailCode;
+
 	private Product productCode;
-	private NonUserOrder nonUserCode;
-	private NonUserDelivery nonuserId;
-	private Integer nonDetailPrice;
-		
+	
+
+	private Orders orderCode;
+	
+	
+	
 }

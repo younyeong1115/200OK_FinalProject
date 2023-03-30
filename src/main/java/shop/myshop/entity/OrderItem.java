@@ -18,23 +18,22 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
-@DynamicInsert   //(insert 시 null 인필드 제외)
-@DynamicUpdate //(update 시 null 인필드 제외)
+@DynamicInsert // (insert 시 null 인필드 제외)
+@DynamicUpdate // (update 시 null 인필드 제외)
 @NoArgsConstructor
 @ToString
 @Getter
 @Setter
-@Entity
-public class Cart {
-	
+@Entity(name = "Orderitem")
+public class OrderItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cartNo;
-	
+	private Integer orderitemCode ;
+
 	@NonNull
 	@Column(nullable = false)
-	private Integer cartQuantity;
-
+	private Integer orderitemQuantity;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NonNull
 	@JoinColumn(name="productCode")
@@ -42,8 +41,7 @@ public class Cart {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NonNull
-	@JoinColumn(name="userId")
-	private User userId;
-
-
+	@JoinColumn(name="orderCode")
+	private Orders orderCode;
+	
 }

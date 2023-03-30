@@ -1,6 +1,6 @@
 package shop.myshop.dto;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,17 +18,26 @@ import shop.myshop.entity.User;
 @Setter
 @ToString
 public class OrdersDTO {
-	
+
 	private Integer orderCode;
+
+	
 	private User userId;
-	private Timestamp orderRegdate;
-	private Integer orderDeliveryCharge;
+
+	
+	private Date orderRegdate;
+
+	
 	private String orderPayment;
+
+	
 	private Delivery deliveryId;
+
+	
 	private String orderStatus;
 	
 	
-	
+	private String orderTotalPrice;
 	
 	
 }
