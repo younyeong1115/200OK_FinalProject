@@ -28,7 +28,8 @@
 					<li><a href="#">Best</a></li>
 					<li><a href="#">Products</a>
 						<ul class="list-s">
-							<li style="font-size: 0.8rem;"><a href="product/ringlist">ring</a></li>
+						
+						<li style="font-size: 0.8rem;"><a th:href="@{/product/ringlist}">ring</a></li>
 						<li style="font-size: 0.8rem;"><a href="product/braceletlist">bracelet</a></li>
 						<li style="font-size: 0.8rem;"><a href="product/necklacelist">necklace</a></li>
 						<li style="font-size: 0.8rem;"><a href="product/earringlist">earring</a></li>
@@ -42,7 +43,7 @@
 				<div th:if="${userName eq ''}">
 					<ul class="s-list">
 						<li><a href="#">찜하기</a></li>
-						<li><a href="#">장바구니</a></li>
+						<li><a th:href="@{/cart/cartform}">장바구니</a></li>
 						<li><a href="#">검색</a></li>
 						<li><a href="user/login">로그인</a></li>
 						
@@ -52,7 +53,7 @@
 				<div th:if="${userName ne ''}">
 					<ul class="s-list">
 						<li><a href="#">찜하기</a></li>
-						<li><a href="#">장바구니</a></li>
+						<li><a th:href="@{/cart/cartform}">장바구니</a></li>
 						<li><a href="#">검색</a></li>
 						<li><a href="mypage/home">마이페이지</a></li>
 						<li><a href="user/logout">로그아웃</a></li>
@@ -72,62 +73,3 @@
 </th:block>
 
 </html>
-
-<!-- <!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org">
-
-<th:block th:fragment="headerFragment">
-<head>
-    Common Head
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body>
-	 사이드바
-<div class="fx">
-		<a href="#"> <img class="main"
-			src="https://www.slou.co.kr/img/front/btn/cartBtn.png" width="50"></a>
-		<a href="#"><img class="main"
-			src="https://www.slou.co.kr/img/front/btn/searchBtn.png" width="50"></a>
-	</div>
-
-
-	title
-	<div class="d-box">
-		<div class="titl">
-			<div style="float: left; margin: 0 20px;">
-				<a href="../user/logo">
-				<img class="main" src="../image/logo.png" width="70"></a>
-			</div>
-			<ul class="f-list">
-				<li><a href="#">Best</a></li>
-				<li><a href="#">Products</a>
-					<ul class="list-s">
-						<li style="font-size: 0.8rem;"><a href="#">ring</a></li>
-						<li style="font-size: 0.8rem;"><a href="#">bracelet</a></li>
-						<li style="font-size: 0.8rem;"><a href="#">necklace</a></li>
-						<li style="font-size: 0.8rem;"><a href="#">earing</a></li>
-						<li style="font-size: 0.8rem;"><a href="#">watch</a></li>
-						<li style="font-size: 0.8rem;"><a href="#">object</a></li>
-					</ul></li>
-				<li><a href="#">QnA</a></li>
-				<li><a href="#">Notice</a></li>
-			</ul>
-				<ul class="s-list">
-				<li><a href="#">찜하기</a></li>
-				<li><a href="#">장바구니</a></li>
-				<li><a href="">검색</a></li>
-				<li><a href="user/login">로그인</a></li>
-				<li><a href= "error">error</a></li> 
-			</ul>
-		</div>
-
-
-
-		<br>
-</body>
-
-</head>
-</th:block>
-
-</html> -->
