@@ -19,4 +19,6 @@ public interface CartService {
 	public List<Product> getProductCode(String userId) throws Exception;
 	
 	public List<Integer> getCartQuantity(String userId) throws Exception;
+	
+	void deleteByUserIdAndProductCode(String userId, int productCode) throws Exception;
 }

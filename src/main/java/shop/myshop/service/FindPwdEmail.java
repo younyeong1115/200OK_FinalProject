@@ -47,7 +47,7 @@ public class FindPwdEmail implements MailServiceInter {
 		msgg += tempPwd + "</strong><div><br/> ";
 		msgg += "</div>";
 		message.setText(msgg, "utf-8", "html");// 내용
-		message.setFrom(new InternetAddress("메일주소", "200Ok_Admin"));// 보내는 사람
+		message.setFrom(new InternetAddress("luckyham0914@naver.com", "200Ok_Admin"));// 보내는 사람
 
 		return message;
 	}

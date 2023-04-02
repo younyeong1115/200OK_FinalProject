@@ -33,6 +33,10 @@ public class CartServiceImpl implements CartService{
 	public List<Integer> getCartQuantity(String userId) throws Exception{
 		return cartDao.getCartQuantity(userId);
 	}
+	@Override
+	public void deleteByUserIdAndProductCode(String userId, int productCode) throws Exception{
+		 cartDao.deleteByUserIdAndProductCode(userId, productCode);
+	}
 
 }
 	

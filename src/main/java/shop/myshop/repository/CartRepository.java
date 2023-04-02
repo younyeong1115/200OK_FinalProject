@@ -2,7 +2,10 @@ package shop.myshop.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -25,5 +28,10 @@ public interface CartRepository extends JpaRepository<Cart, Integer> {
 	
 	@Query("SELECT c.cartQuantity FROM Cart c WHERE c.userId.userId = :userId")
 	List<Integer> getCartQuantity(@Param("userId") String userId) throws Exception;
+	
+	@Modifying
+	 @Transactional
+	@Query("DELETE FROM Cart c WHERE c.userId.userId = :userId AND c.productCode.productCode = :productCode")
+	void deleteByUserIdAndProductCode(@Param("userId") String userId,@Param("productCode") int productCode);
 
 }

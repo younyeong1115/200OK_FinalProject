@@ -5,16 +5,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import shop.myshop.entity.OrderItem;
 import shop.myshop.entity.Orders;
 
 @Repository
-public interface OrdersRepository extends JpaRepository<Orders, String> {
+public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
 	
 	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------	
 	
-	@Query("SELECT COUNT(o) FROM Orders o WHERE o.userId.userId=:userId and orderStatus=:orderStatus")
-	int getOrdersCount(@Param("userId") String userId ,@Param("orderStatus") String orderStatus);
-
+	
 	
     
 	

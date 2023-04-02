@@ -277,7 +277,7 @@
 			    console.log("hi");
 			    var orderTotalprice = parseInt(document.getElementById('orderTotalprice').value);
 			    var deliveryMobile = $('#deliveryMobile').val();
-			    var deliveryName = $('#deliveryName').val();
+			    var deliveryName = document.getElementsByName('deliveryName')[0].value;
 			    var deliveryAdd1 = $('#deliveryAdd1').val();
 			    var deliveryAdd2 = $('#deliveryAdd2').val();
 			    var deliveryAdd3 = $('#deliveryAdd3').val();
@@ -295,23 +295,6 @@
 			    // 리다이렉트 수행하기
 			    window.location.href = "/ok/order/payment?" + params;
 			}
-
-			/* function onPaymentButtonClick() {
-				  if (document.getElementById('cashPayment').checked) {
-				    // 현금결제인 경우
-				    alert("hi");
-				    document.querySelector('#payment-form input[name="orderStatus"]').value = '입금전';
-				    document.querySelector('#payment-form input[name="orderPayment"]').value = '무통장입금';
-				    document.getElementById('payment-form').submit();
-				  } else if (document.getElementById('creditPayment').checked) {
-				    // 카드결제인 경우
-				    alert("bye");
-				    requestPay();
-				  } else {
-				    // 결제 방법을 선택하지 않은 경우
-				    alert('결제 방법을 선택해주세요.');
-				  }
-				} */
 
 			function requestPay() {
 				IMP.request_pay({
