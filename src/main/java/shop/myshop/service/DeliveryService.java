@@ -18,11 +18,13 @@ public interface DeliveryService {
 
 	public DeliveryDTO save(DeliveryDTO deliveryDTO);
 
-	public Integer getByDeliveryId(@Param("userId") String userId) throws Exception;
+	public Integer getByDeliveryId(String userId) throws Exception;
 
-	public void updateBasicyn(@Param("deliveryId") int deliveryId) throws Exception;
+	public void updateBasicyn(int deliveryId) throws Exception;
 
 	public DeliveryDTO findByDeliveryId(int deliveryId) throws Exception;
 
 	public void deleteByDeliveryId(int deliveryId) throws Exception;
+	
+	public Delivery findBydeliveryBasicynAndDeliveryId(String userId) throws Exception;
 }

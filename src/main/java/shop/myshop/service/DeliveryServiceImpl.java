@@ -39,10 +39,12 @@ public class DeliveryServiceImpl implements DeliveryService {
 		return deliveryDao.getByDeliveryId(userId);
 	}
 
+	@Override
 	public void updateBasicyn(@Param("deliveryId") int deliveryId) throws Exception {
 		deliveryDao.updateBasicyn(deliveryId);
 	}
 
+	@Override
 	public DeliveryDTO findByDeliveryId(int deliveryId) throws Exception {
 		Delivery delivery = deliveryDao.findById(deliveryId)
 				.orElseThrow(() -> new Exception("배송지가 존재하지 않습니다."));
@@ -51,8 +53,15 @@ public class DeliveryServiceImpl implements DeliveryService {
 		return deliveryDTO;
 	}
 	
+	@Override
 	public void deleteByDeliveryId(int deliveryId) throws Exception{
 		deliveryDao.deleteByDeliveryId(deliveryId);
+	}
+
+	@Override
+	public Delivery findBydeliveryBasicynAndDeliveryId(String userId) throws Exception {
+		
+		return deliveryDao.findBydeliveryBasicynAndDeliveryId(userId);
 	}
 
 }

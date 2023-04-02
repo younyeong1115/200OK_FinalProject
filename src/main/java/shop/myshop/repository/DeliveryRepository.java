@@ -29,6 +29,10 @@ public interface DeliveryRepository extends JpaRepository<Delivery, Integer> {
 	 @Query("update Delivery set deliveryBasicyn = 'N' where deliveryId=:deliveryId")
 	 void updateBasicyn(@Param("deliveryId")int deliveryId) throws Exception;
 	 
+	 //select * from delivery where user_Id = "test01" and delivery_basicYn = "Y";
+	 @Query("select d from Delivery d where d.userId.userId = :userId and d.deliveryBasicyn = 'Y'")
+	 Delivery findBydeliveryBasicynAndDeliveryId(@Param("userId") String userId) throws Exception;
+	 
 	 Delivery findByDeliveryId(int deliveryId);
 	 
 	 void deleteByDeliveryId(int deliveryId);
