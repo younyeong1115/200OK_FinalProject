@@ -3,12 +3,7 @@ drop table ANSWER;
 drop table PRODUCTANSWER;
 drop table CART;
 drop table NOTICE;
-drop table mileage;
-drop table orderdetail;
-
 drop table REVIEW;
-drop table coupon;
-
 drop table PRODUCTQUESTION;
 drop table orderitem;
 drop table orders;
@@ -59,8 +54,14 @@ create table  ORDERS(/* 주문*/
  order_regdate TIMESTAMP  NOT NULL,
  order_totalPrice INTEGER NOT NULL,
  order_payment VARCHAR(20) NOT NULL,
- delivery_id INTEGER NOT NULL,
- order_status VARCHAR(20) NOT NULL
+ order_status VARCHAR(20) NOT NULL,
+ delivery_name VARCHAR(50) NOT NULL,
+delivery_mobile VARCHAR(50) NOT NULL,
+ delivery_add1  VARCHAR(50) NOT NULL,
+ delivery_add2  VARCHAR(50) NOT NULL,
+ delivery_add3  VARCHAR(50) ,
+delivery_memo   VARCHAR(50)
+
 );
 
 create table  ORDERITEM(/* 주문아이템*/
@@ -72,16 +73,7 @@ product_code INTEGER NOT NULL,
 );
 
 
-/*주문상세내역*/
-create table ORDERDETAIL(/* 주문상세내역*/
- detail_code      INTEGER AUTO_INCREMENT  PRIMARY KEY,
- product_code   INTEGER  NOT NULL,
- order_code           INTEGER  NOT NULL,
- delivery_id   INTEGER NOT NULL,
- order_detailSale    INTEGER ,
- order_detailMileage INTEGER ,
- order_detailPrice   INTEGER NOT NULL
-);
+
 
 
 /*리뷰*/
@@ -100,33 +92,8 @@ create table REVIEW(/* 리뷰 */
 
 
 
-CREATE TABLE COUPON (/*쿠폰*/
-  coupon_code INTEGER AUTO_INCREMENT PRIMARY KEY,
-  coupon_name VARCHAR(20) NOT NULL,
-  coupon_usedate TIMESTAMP NOT NULL,
-  coupon_benefit VARCHAR(20) NOT NULL,
-  coupon_price VARCHAR(20) NOT NULL,
-  coupon_payment VARCHAR(20) NOT NULL,
-  coupon_expdate TIMESTAMP NOT NULL,
-  coupon_useYN VARCHAR(10) NOT NULL,
-  user_id VARCHAR(32)  NOT NULL
-);
 
 
-
-
-
-
-/*적립금*/
-
-create table MILEAGE(/* 적립금 */
-mileage_code INTEGER AUTO_INCREMENT PRIMARY KEY,
- mileage_regdate     TIMESTAMP  NOT NULL,
- mileage_content   VARCHAR(50) NOT NULL,
- mileage_price      INTEGER  NOT NULL,
-user_id VARCHAR(32)  NOT NULL
-
-);
 
 
 
@@ -241,15 +208,13 @@ category_sub VARCHAR(20) NOT NULL
 
 
 
-ALTER TABLE ORDERS ADD FOREIGN KEY(delivery_id) REFERENCES DELIVERY(delivery_id);
+
 
 
 ALTER TABLE ORDERITEM ADD FOREIGN KEY(product_code) REFERENCES PRODUCT(product_code);
 ALTER TABLE ORDERITEM ADD FOREIGN KEY(order_code) REFERENCES ORDERS(order_code);
 
 
-ALTER TABLE COUPON ADD FOREIGN KEY(user_id) REFERENCES USER(user_id);
-ALTER TABLE MILEAGE ADD FOREIGN KEY(user_id) REFERENCES USER(user_id);
 
 ALTER TABLE PRODUCT ADD FOREIGN KEY(category_no) REFERENCES CATEGORY(category_no);
 
@@ -275,10 +240,6 @@ ALTER TABLE LIKES ADD FOREIGN KEY (product_code) REFERENCES PRODUCT(product_code
 
 ALTER TABLE ORDERS ADD FOREIGN KEY(user_id) REFERENCES USER(user_id);
 
-
-ALTER TABLE ORDERDETAIL ADD FOREIGN KEY(delivery_id) REFERENCES DELIVERY(delivery_id);
-ALTER TABLE ORDERDETAIL ADD FOREIGN KEY(product_code) REFERENCES PRODUCT(product_code);
-ALTER TABLE ORDERDETAIL  ADD FOREIGN KEY(order_code) REFERENCES ORDERS(order_code);
 
 ALTER TABLE PRODUCTANSWER ADD FOREIGN KEY (user_id) REFERENCES USER(user_id);
 ALTER TABLE PRODUCTANSWER ADD FOREIGN KEY (productquestion_no) REFERENCES PRODUCTQUESTION(productquestion_no);

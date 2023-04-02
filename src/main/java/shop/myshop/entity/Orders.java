@@ -54,10 +54,7 @@ public class Orders {
 	@Column(nullable = false)
 	private String orderPayment;
 
-	@OneToOne
-	@NonNull
-	@JoinColumn(name = "deliveryId")
-	private Delivery deliveryId;
+	
 
 	@NonNull
 	@Column(nullable = false)
@@ -67,7 +64,31 @@ public class Orders {
 	@Column(nullable = false)
 	private String orderTotalPrice;
 	
-
+	
+	@NonNull
+	@Column(nullable = false)
+	private String deliveryName;
+	
+	@NonNull
+	@Column(nullable = false)
+	private String deliveryMobile;
+	
+	@NonNull
+	@Column(nullable = false)
+	private String deliveryAdd1;
+	
+	@NonNull
+	@Column(nullable = false)
+	private String deliveryAdd2;
+	
+	
+	@Column(nullable = true)
+	private String deliveryAdd3;
+	
+	
+	@Column(nullable = true)
+	private String deliveryMemo;
+	
 	@OneToMany(mappedBy = "orderCode")
 	private List<OrderItem> orderitem = new ArrayList<OrderItem>();
 
@@ -78,7 +99,14 @@ public class Orders {
 	public String toString() {
 		return "Orders{" + "orderCode=" + orderCode + ", userId=" + userId.getUserId() + ", orderRegdate="
 				+ orderRegdate + ", orderPayment='" + orderPayment
-				+ ' ' + ", deliveryId=" + deliveryId.getDeliveryId() + ", orderStatus='" + orderStatus + ' ' + '}';
+				+ ' ' + ", orderStatus='" + orderStatus + ' ' +", deliveryName='" + deliveryName + ' '+
+				", deliveryMobile='" + deliveryMobile + ' '+
+				", deliveryAdd1='" + deliveryAdd1 + ' '+
+				", deliveryAdd2='" + deliveryAdd2 + ' '+
+				", deliveryAdd3='" + deliveryAdd3 + ' '+
+				", deliveryMemo='" + deliveryMemo + ' ' + '}';
 	}
+	
+	
 
 }

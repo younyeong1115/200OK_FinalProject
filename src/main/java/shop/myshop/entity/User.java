@@ -93,8 +93,7 @@ public class User {
 	@OneToMany(mappedBy = "userId")
 	private List<Cart> Cart = new ArrayList<Cart>();
 	
-	@OneToMany(mappedBy = "userId")
-	private List<Coupon> coupon = new ArrayList<Coupon>();
+	
 
 	@OneToMany(mappedBy = "userId")
 	private List<Orders> orders = new ArrayList<Orders>();
@@ -105,8 +104,7 @@ public class User {
 	@OneToMany(mappedBy = "userId")
 	private List<ProductQuestion> productquestion = new ArrayList<ProductQuestion>();
 	
-	@OneToMany(mappedBy = "userId")
-	private List<Mileage> mileage = new ArrayList<Mileage>();
+	
 	
 	@OneToMany(mappedBy = "userId")
 	private List<Review> review = new ArrayList<Review>();

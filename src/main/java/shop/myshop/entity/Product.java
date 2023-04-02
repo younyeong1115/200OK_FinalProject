@@ -85,8 +85,6 @@ public class Product {
 	private List<Cart> cart = new ArrayList<Cart>();
 
 	
-	@OneToMany(mappedBy = "productCode")
-	private List<OrderDetail> orderdetail = new ArrayList<OrderDetail>();
 	
 	@OneToMany(mappedBy = "productCode")
 	private List<Review> Review = new ArrayList<Review>();

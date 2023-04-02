@@ -31,13 +31,24 @@ public class OrdersDTO {
 	private String orderPayment;
 
 	
-	private Delivery deliveryId;
-
-	
 	private String orderStatus;
 	
 	
 	private String orderTotalPrice;
+	
+	private String deliveryName;
+	
+	private String deliveryMobile;
+	
+	private String deliveryAdd1;
+	
+	private String deliveryAdd2;
+	
+	private String deliveryAdd3;
+	
+	private String deliveryMemo;
+	
+	
 	
 	
 }
