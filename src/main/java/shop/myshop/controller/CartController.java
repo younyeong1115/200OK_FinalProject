@@ -28,6 +28,7 @@ import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.Cart;
 import shop.myshop.entity.Product;
 import shop.myshop.service.CartService;
+import shop.myshop.service.DeliveryService;
 import shop.myshop.service.ProductService;
 
 @Controller
@@ -39,6 +40,9 @@ public class CartController {
 
 	@Autowired
 	private ProductService productservice;
+	
+	@Autowired
+	private DeliveryService deliveryservice;
 
 	// 장바구니 폼으로 이동
 	@GetMapping("cartform")
@@ -81,10 +85,10 @@ public class CartController {
 	}
 
 	@GetMapping("orderform")
-	public String orderForm(HttpSession session, Model model) {
+	public String orderForm(HttpSession session, Model model) throws Exception {
 
 		model.addAttribute("selectedProducts", session.getAttribute("selectedProducts"));
-
+		System.out.println(session.getAttribute("selectedProducts"));
 		// 세션에 저장된 selectedProducts list 가져오기
 		List<Map<String, String>> selectedProducts = (List<Map<String, String>>) model.getAttribute("selectedProducts");
 
@@ -108,15 +112,18 @@ public class CartController {
 		for (int i = 0; i < productCodeList.size(); i++) {
 			Product product = productservice.findByProductCode(productCodeList.get(i));
 			int quantity = quantityList.get(i);
-//			priceList 
-//			totalPrice += Integer.parseInt(product.getProductPrice()) * quantity;
+			priceList.add(Integer.parseInt(product.getProductPrice()) * quantity);
+			totalPrice += Integer.parseInt(product.getProductPrice()) * quantity;
 			
-
 		}
-
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		//딜리버리 서비스에서 deliveryDao.findBydeliveryBasicynAndDeliveryId(userId);이거 가져와서 기본 배송지 초기화
+		model.addAttribute("delivery", deliveryservice.findBydeliveryBasicynAndDeliveryId(user.getUserId()));
+		model.addAttribute("user", user);
 		model.addAttribute("totalPrice", totalPrice + 3000);
 		model.addAttribute("product", list);
 		model.addAttribute("quantity", quantityList);
+		model.addAttribute("price", priceList);
 
 		return "product/order.html";
 	}
