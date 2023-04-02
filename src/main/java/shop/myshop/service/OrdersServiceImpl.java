@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import shop.myshop.entity.Orders;
 import shop.myshop.repository.OrdersRepository;
 
 
@@ -20,7 +21,10 @@ public class OrdersServiceImpl implements OrdersService{
 	public int getOrdersCount(String userId,String orderStatus) {
 		return ordersDao.getOrdersCount(userId, orderStatus);
 	}
-	
+	@Override
+	public void orderSave(Orders orders) {
+		ordersDao.save(orders);
+	}
 
 }
 	
