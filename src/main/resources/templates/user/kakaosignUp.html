@@ -119,6 +119,7 @@ label {
 					<br>
 					 [[${userName}]]님 가입을 환영 합니다!
 					 <input type="hidden" name="userName" required th:value ="${userName}">
+					 <input type="hidden" name="userProvider" required th:value ="KAKAO">
 					 <input type="hidden" name="userId" required th:value ="${userId}">
 					  <input type="hidden" name="userEmail" required th:value ="${userEmail}">
 					<div class="input-essential" align="right" style="right: auto;color: dark gray; ;font-size:0.5rem;">
