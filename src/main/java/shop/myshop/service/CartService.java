@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import shop.myshop.entity.Cart;
 import shop.myshop.entity.Product;
 
 
@@ -20,5 +21,10 @@ public interface CartService {
 	
 	public List<Integer> getCartQuantity(String userId) throws Exception;
 	
-	void deleteByUserIdAndProductCode(String userId, int productCode) throws Exception;
+	public Cart getCart(String userId,int productCode) throws Exception;
+	
+	public void deleteByUserIdAndProductCode(String userId, int productCode) throws Exception;
+	
+	public void saveCart(Cart cart) throws Exception;
+	
 }

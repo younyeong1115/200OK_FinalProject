@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-				layout:decorate="~{layout/layout}">
-				
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
 <th:block layout:fragment="content">
-<head>
+	<head>
 
-<link th:href="@{/assets/css/poduct-detail.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{/assets/css/poduct-detail.css}" rel="stylesheet"
+	type="text/css" />
 <style type="text/css"></style>
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
 
 
 
-<div class="shCMSshop">
+		<div class="shCMSshop">
 		<div class="shopView">
 			<div class="viewHeader">
 				<!-- 상품이미지 -->
@@ -22,86 +23,109 @@
 					<div class="mainImg">
 					  <img th:src="@{/image/__${product.productThumbnail}__.jpg}" >
 						<!-- <img src="main.jpg" alt=""> -->
-					</div>
-					  <ul class="subImg">
-						<li> <img src="#" class="img-responsive"  th:src="@{/image/__${product.productThumbnail}__.jpg}" alt="서브 이미지1" ></li>
-						<!-- <li><img src="sub02.jpg" alt="서브 이미지2"></li>
+						</div>
+						<ul class="subImg">
+							<li><img src="#" class="img-responsive"
+								th:src="@{/image/__${product.productThumbnail}__.jpg}"
+								alt="서브 이미지1"></li>
+							<!-- <li><img src="sub02.jpg" alt="서브 이미지2"></li>
 						<li><img src="sub01.jpg" alt="서브 이미지3"></li>
 						<li><img src="sub01.jpg" alt="서브 이미지4"></li> -->
-					</ul>
-				</div>
-				<!-- 상품 설명 -->
-				<div class="productInfo">
-					<h3>[[${product.productName}]]</h3>
+						</ul>
+					</div>
+					<!-- 상품 설명 -->
+					<div class="productInfo">
+					<h3>[[${product.productName}]]<!-- <span>1kg/3kg/5kg</span>  --></h3>
 					<div class="price">
-					
 						<!-- sale,cost-price 빠지면 글씨가 밀려서 글자색 하얀색으로바꿈 css에서 수정 가능 -->
 						<span class="sale">20<span>%</span></span>
 						<span class="cost-price">9,000원</span>
 						<!--  -->
-						
 						<span class="sale-price">[[${product.productPrice}]] ₩</span>
 					</div>
 					<div class="manufact">CODE         <span>   [[${product.productCode}]]</span></div>
 					<div class="categori">POINT           <span>[[${bonus}]] ₩(1%)</span></div>
 					<div class="origin">SIZE          <span>    S,M,L</span></div>
 					<div class="items">
-						<select class="" name="" id="option">
-							<option value="" selected>선택하세요</option>
-							<option value="">ONE -  <span>[[${product.productPrice}]]원</span></option>
-						</select>
+							<select class="" name="" id="option">
+								<option value="" selected>선택하세요</option>
+								<option value="">ONE - <span>[[${product.productPrice}]]원</span></option>
+							</select>
 
-					</div>
-					<div class="all-price">총 상품금액 <span>0</span>원</div>
-					<div class="btn">
-						<a href="">장바구니</a>
-						<a href="">구매하기</a>
+						</div>
+						<div class="all-price">
+							총 상품금액 <span>0</span>원
+						</div>
+						<div class="btn">
+							<!-- <a href="addToCart()" onclick="">장바구니</a>  -->
+							<a id="cartLink" href="#">장바구니</a>
+							<a id="buy" href="#">구매하기</a>
+						</div>
 					</div>
 				</div>
-			</div>
-<!-- 하단의 탭부분 시작 -->
-			<div class="viewBody">
-			<!-- 	<ul class="contentNav">
+				<!-- 하단의 탭부분 시작 -->
+				<div class="viewBody">
+					<!-- 	<ul class="contentNav">
 					<li class="active"><a href="">상품 정보</a></li>
 					<li><a href="">상품 후기<span>(<span class="count">20</span>)</span></a></li>
 					<li><a href="">Q & A <span></span></a></li>
 					<li><a href="">반품 / 교환</a></li>
 				</ul> -->
-				<!-- 탭부분 끝 -->
-				<br><hr>
-				<!-- 상품정보 -->
-				<table class="tproduct-info active">
-					<tr>
-						<td>제품명</td>
-						<td>[[${product.productName}]]</td>
-						<td>제품코드</td>
-						<td>[[${product.productCode}]]</td>
-					</tr>
-					<tr>
-						<td>사이즈</td>
-						<td>S ,M ,L </td>
-						<td>제조사</td>
-						<td>200OK</td>
-					</tr>
+					<!-- 탭부분 끝 -->
+					<br>
+					<hr>
+					<!-- 상품정보 -->
+					<table class="tproduct-info active">
+						<tr>
+							<td>제품명</td>
+							<td>[[${product.productName}]]</td>
+							<td>제품코드</td>
+							<td>[[${product.productCode}]]</td>
+						</tr>
+						<tr>
+							<td>사이즈</td>
+							<td>ONE</td>
+							<td>제조사</td>
+							<td>200OK</td>
+						</tr>
 
-				</table>
-				
-				<div align="center">
-					  <ul class="contentImg">
-						<li> <img th:src="@{/image/__${product.productImage1}__.jpg}" alt="내용 이미지1" ></li>
-						<br><br><br><br>
-						<li><span th:text="${product.productDetail}" style="font-size: 15px; font-weight: bold;"></span></li>
-						<br><br><br><br>
-						<li> <img th:src="@{/image/__${product.productImage2}__.jpg}" alt="내용 이미지2" ></li>
-					</ul>
+					</table>
+
+					<div align="center">
+						<ul class="contentImg">
+							<li><img th:src="@{/image/__${product.productImage1}__.jpg}"
+								alt="내용 이미지1"></li>
+							<br>
+							<br>
+							<br>
+							<br>
+							<li><span th:text="${product.productDetail}"
+								style="font-size: 15px; font-weight: bold;"></span></li>
+							<br>
+							<br>
+							<br>
+							<br>
+							<li><img th:src="@{/image/__${product.productImage2}__.jpg}"
+								alt="내용 이미지2"></li>
+						</ul>
+					</div>
+
 				</div>
-				
 			</div>
 		</div>
-	</div>
-<script>
+		<script>
 var price_sum = 0;
 var options = [];
+
+var productCode = "[[${product.productCode}]]";
+var cartUrl = "/ok/cart/insertcart?productCode=" + productCode ;
+document.getElementById("cartLink").setAttribute("href", cartUrl);
+
+var ordertUrl = "/ok/order/eachorder?productCode=" + productCode ;
+document.getElementById("buy").setAttribute("href", ordertUrl);
+
+
+
 
 // 가격초기화 되지않는 문제
  $(document).ready(function(){
@@ -126,7 +150,68 @@ var options = [];
       }
       // console.log(options);
    });
+   
+ // + 버튼 클릭 이벤트 핸들러
+   $('.items').on('click', '.plus', function() {
+     var count = parseInt($(this).siblings('.number').val());  // 현재 수량
+     var price = parseInt($(this).parent().siblings('.item-price').text().replace('원', '').trim());  // 상품 가격
+     var newCount = count + 1;  // 증가된 수량
+     var newPrice = price * newCount;  // 변경된 가격
+     
+     $(this).siblings('.number').val(newCount);  // 수량 변경
+     $(this).parent().siblings('.item-price').text(newPrice + '원');  // 가격 변경
+     
+     calculateTotalPrice();  // 총 상품 금액 계산 함수 호출
+   });
 
+   // - 버튼 클릭 이벤트 핸들러
+   $('.items').on('click', '.minur', function() {
+     var count = parseInt($(this).siblings('.number').val());  // 현재 수량
+     var price = parseInt($(this).parent().siblings('.item-price').text().replace('원', '').trim());  // 상품 가격
+     
+     if (count > 1) {
+       var newCount = count - 1;  // 감소된 수량
+       var newPrice = price * newCount;  // 변경된 가격
+
+       $(this).siblings('.number').val(newCount);  // 수량 변경
+       $(this).parent().siblings('.item-price').text(newPrice + '원');  // 가격 변경
+
+       calculateTotalPrice();  // 총 상품 금액 계산 함수 호출
+     }
+   });
+   
+// x 버튼 클릭 이벤트 핸들러
+   $('.items').on('click', '.item-close', function() {
+     var price = parseInt($(this).siblings('.item-price').text().replace('원', '').trim());
+     var count = parseInt($(this).siblings('.item-count').find('.number').val());
+     var itemTotalPrice = price * count;
+
+     $(this).parent().remove();  // 해당 상품 삭제 
+
+      // 총 상품 금액 갱신
+     var totalPrice = parseInt($('.all-price span').html());
+     totalPrice = totalPrice - itemTotalPrice;
+
+     if (totalPrice > 0) {
+       $('.all-price span').html(totalPrice);
+     } else {
+       $('.all-price span').html('0원');
+     }
+   });
+
+   // 총 상품 금액 계산 함수
+   function calculateTotalPrice() {
+     var totalPrice = 0;
+
+     $('.items .item').each(function() {
+       var price = parseInt($(this).find('.item-price').text().replace('원', '').trim());
+       var itemTotalPrice = price ;
+       totalPrice += itemTotalPrice;
+     });
+
+     $('.all-price span').html(totalPrice);
+   } 
+   
    // 탭 변경 부분 - 완
    $('.contentNav li').click(function(e){
       e.preventDefault();
@@ -174,6 +259,6 @@ var price_sum = 0;
 });
 var price_sum = 0;
 </script>
-</body>
+	</body>
 </th:block>
 </html>

@@ -1,74 +1,95 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-				layout:decorate="~{layout/layout}">
-				
-<th:block layout:fragment="content">
-<head>
-<link th:href="@{/assets/css/cart.css}" rel="stylesheet" type="text/css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<style type="text/css"></style>
-</head>
-<body>
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
 
-<div class="cart_table">
-             <p>CART</p> 
-             <ul class="cart_list">
-    <li>
-        <div class="checkbox">
-            <input type="checkbox" name="all_chk" id="all_chk">
-            <label for="all_chk">전체선택</label>
-        </div>
-        <div class="del_btn">삭제 (<span class="num">0</span>)</div>
-    </li>
-    <!-- 제품 리스트 반복문 시작 -->
-    <li th:each="product,productStat  : ${product}">
-   		<input type="hidden" th:value="${product.productCode}" id="item_chk01" name = "productCode">
- 
-        <div class="checkbox">
-            <input type="checkbox" name="item_chk" id="item_chk01">
-            <label for="item_chk01"></label>
-        </div>
-        <div class="item_detail">
-       
-            <img  th:src="@{/image/__${product.productThumbnail}__.jpg}">
-            <p class="name"><strong th:text="${product.productName}"></strong></p>
-            <p class="txt" th:text="'size  :  '+${product.productSize}"></p>
-        </div>
-        <div class="opt_info">
-            <div class="price_btn">
-            	<input type="text" th:value="${quantity[__${productStat.index}__]}" class="number">
-                <!-- <input type="button" value="-" class="minus_btn">
+<th:block layout:fragment="content">
+	<head>
+<link th:href="@{/assets/css/cart.css}" rel="stylesheet" type="text/css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style type="text/css"></style>
+	</head>
+	<body>
+
+		<div class="cart_table">
+			<p>CART</p>
+			<ul class="cart_list">
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" name="all_chk" id="all_chk"> <label
+							for="all_chk">전체선택</label>
+					</div>
+					<!-- <div class="del_btn">
+						삭제 (<span class="num">0</span>)
+					</div> -->
+				</li>
+				<!-- 제품 리스트 반복문 시작 -->
+				<li th:each="product,productStat  : ${product}"><input
+					type="hidden" th:value="${product.productCode}" id="item_chk01"
+					name="productCode">
+
+					<div class="checkbox">
+						<input type="checkbox" name="item_chk" id="item_chk01"> <label
+							for="item_chk01"></label>
+					</div>
+					<div class="item_detail">
+
+						<img th:src="@{/image/__${product.productThumbnail}__.jpg}">
+						<p class="name">
+							<strong th:text="${product.productName}"></strong>
+						</p>
+						<p class="txt" th:text="'size  :  '+${product.productSize}"></p>
+					</div>
+					<div class="opt_info">
+						<div class="price_btn">
+							<input type="text"
+								th:value="${quantity[__${productStat.index}__]}" class="number">
+							<!-- <input type="button" value="-" class="minus_btn">
                 <input type="text" value="1" class="number">
                 <input type="button" value="+" class="plus_btn"> -->
-            </div>
-            <div class="total_p">
-                <strong class="price_unit" th:text="${product.productPrice} + '원'"></strong>
-                <span class="del_li_btn"><img src="https://tictoc-web.s3.ap-northeast-2.amazonaws.com/web/img/icon/btn_del_circle.svg"></span>
-            </div>
-        </div>
-    </li>
-    <!-- 제품 리스트 반복문 끝 -->
-</ul>
-         
+						</div>
+						<div class="total_p">
+							<strong class="price_unit"
+								th:text="${product.productPrice} + '원'"></strong> <span
+								class="del_li_btn"
+								th:onclick="'deleteCart(' + ${product.productCode} + ')'">
+								<img
+								src="https://tictoc-web.s3.ap-northeast-2.amazonaws.com/web/img/icon/btn_del_circle.svg">
+							</span>
+						</div>
+					</div></li>
+				<!-- 제품 리스트 반복문 끝 -->
+			</ul>
 
-            <div class="cart_total_area">
-                <p>결제 정보</p>
 
-                <div class="cart_total_price">
-                    <p>총 상품금액 <strong class="item_price">[[${totalPrice}]]</strong>원 <span class="plus_ic"></span></p>
-                    <p>총 배송비 <strong class="delivery_price">3000</strong>원 <span class="equal_ic"></span></p>
-                    <p>총 결제금액 <strong class="total_price color-red">[[${totalPrice+3000}]]</strong>원</p>
-                </div>
-            </div>
+			<div class="cart_total_area">
+				<p>결제 정보</p>
 
-            <div class="btn_box">
-                <button type="button" onclick="goBack()" class="btn wh-btn">계속 쇼핑하기</button>
-               <button type="button" class="btn black-btn" onclick="sendCartData()">구매하기</button>
-            </div>
+				<div class="cart_total_price">
+					<p>
+						총 상품금액 <strong class="item_price">[[${totalPrice}]]</strong>원 <span
+							class="plus_ic"></span>
+					</p>
+					<p>
+						총 배송비 <strong class="delivery_price">3000</strong>원 <span
+							class="equal_ic"></span>
+					</p>
+					<p>
+						총 결제금액 <strong class="total_price color-red">[[${totalPrice+3000}]]</strong>원
+					</p>
+				</div>
+			</div>
 
-        </div>
+			<div class="btn_box">
+				<button type="button" onclick="goBack()" class="btn wh-btn">계속
+					쇼핑하기</button>
+				<button type="button" class="btn black-btn" onclick="sendCartData()">구매하기</button>
+			</div>
 
+		</div>
+		
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 
 $(document).ready(function(){
@@ -165,41 +186,27 @@ quantities.forEach(quantity => {
   });
 });
 
-// 삭제 버튼 클릭 시
-const deleteButtons = document.querySelectorAll('.del_li_btn');
-deleteButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    const item = this.closest('li');
-    item.remove();
-    calculateTotalPrice();
-  });
-});
 
 
+//삭제 버튼 클릭 시
+function deleteCart(productCode){
+	console.log(productCode);
+	
+		axios({
+		    method: 'get',
+		    url: 'cartdelete?productCode=' + productCode
+		})
+		    .then(function (response) {
+		      // 삭제 성공
+		      //alert("hi");
+		      window.location.href = 'cartform';
+		    })
+		    .catch(function (error) {
+		      // 삭제 실패 시 에러 메시지 출력
+		      alert(error);
+		    })
+}
 
-/* 	function sendCartData() {
-		  var checkedItems = $('input[name="item_chk"]:checked');
-		  var selectedProducts = [];
-		  checkedItems.each(function() {
-			
-		    var productCode = $(this).closest('li').find('input[name="productCode"]').val();
-		    selectedProducts.push({productCode: productCode });
-		  });
-
-		  $.ajax({
-		    type: "POST",
-		    url: "addcart",
-		    contentType: "application/json",
-		    data: JSON.stringify({ products: selectedProducts }),
-		    success: function(data) {
-		     
-		    },
-		    error: function(xhr, status, error) {
-		      // 오류 처리 로직을 작성
-		    }
-		  });
-		} */
-		
 		function sendCartData() {
 			  var checkedItems = $('input[name="item_chk"]:checked');
 			  var selectedProducts = [];
@@ -224,6 +231,6 @@ deleteButtons.forEach(button => {
 			}
 	
 </script>
-</body>
+	</body>
 </th:block>
 </html>

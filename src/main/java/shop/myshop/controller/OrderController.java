@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.OrderItem;
 import shop.myshop.entity.Orders;
+import shop.myshop.entity.Product;
 import shop.myshop.entity.User;
 import shop.myshop.service.CartService;
 import shop.myshop.service.OrderItemService;
@@ -27,33 +28,29 @@ import shop.myshop.service.ProductService;
 @RequestMapping("order")
 public class OrderController {
 
-
 	@Autowired
 	private OrdersService ordersService;
 
 	@Autowired
 	private OrderItemService orderItemService;
-	
+
 	@Autowired
 	private CartService cartService;
-	
+
 	@Autowired
 	private ProductService productService;
 
 
 
-
-	
-	
 // ------▲영림 ------ ▼윤영---------------------------------------------------------------------------
-
 
 	@GetMapping("payment")
 	public String handlePaymentRequest(HttpSession session, @RequestParam("orderTotalprice") String orderTotalprice,
 			@RequestParam("deliveryName") String deliveryName, @RequestParam("deliveryMobile") String deliveryMobile,
 			@RequestParam("deliveryAdd1") String deliveryAdd1, @RequestParam("deliveryAdd2") String deliveryAdd2,
-			@RequestParam("deliveryAdd3") String deliveryAdd3, @RequestParam("deliveryMemo") String deliveryMemo) throws Exception {
-		
+			@RequestParam("deliveryAdd3") String deliveryAdd3, @RequestParam("deliveryMemo") String deliveryMemo)
+			throws Exception {
+
 		UserDTO userDTO = (UserDTO) session.getAttribute("user");
 		ModelMapper modelMapper = new ModelMapper();
 		User user = modelMapper.map(userDTO, User.class);
@@ -74,17 +71,18 @@ public class OrderController {
 		order.setDeliveryMemo(deliveryMemo);
 
 		ordersService.orderSave(order);
-		
-		//주문 품목 장바구니 삭제 ,오더 아이템 추가
-		List<Map<String, String>> selectedProducts = (List<Map<String, String>>) session.getAttribute("selectedProducts");
+
+		// 주문 품목 장바구니 삭제 ,오더 아이템 추가
+		List<Map<String, String>> selectedProducts = (List<Map<String, String>>) session
+				.getAttribute("selectedProducts");
 		List<Integer> productCodeList = new ArrayList<>();
 		List<Integer> quantityList = new ArrayList<>();
 		for (Map<String, String> map : selectedProducts) {
 			productCodeList.add(Integer.parseInt(map.get("productCode")));
 			quantityList.add(Integer.parseInt(map.get("quantity")));
 		}
-		
-		for(int i =0; i<productCodeList.size();i++) {
+
+		for (int i = 0; i < productCodeList.size(); i++) {
 			cartService.deleteByUserIdAndProductCode(user.getUserId(), productCodeList.get(i));
 			OrderItem orderItem = new OrderItem();
 			orderItem.setOrderCode(order);
@@ -92,22 +90,19 @@ public class OrderController {
 			orderItem.setProductCode(productService.findByProductCode(productCodeList.get(i)));
 			orderItemService.orderItemrSave(orderItem);
 		}
-		
-		//selectedProducts 세션에서 삭제
 
+		// selectedProducts 세션에서 삭제
 
 		return "product/success-payment";
 	}
 
-	
-	
-	
 	@GetMapping("paymentapi")
 	public String handlePaymentapiRequest(HttpSession session, @RequestParam("orderTotalprice") String orderTotalprice,
 			@RequestParam("deliveryName") String deliveryName, @RequestParam("deliveryMobile") String deliveryMobile,
 			@RequestParam("deliveryAdd1") String deliveryAdd1, @RequestParam("deliveryAdd2") String deliveryAdd2,
-			@RequestParam("deliveryAdd3") String deliveryAdd3, @RequestParam("deliveryMemo") String deliveryMemo) throws Exception {
-		
+			@RequestParam("deliveryAdd3") String deliveryAdd3, @RequestParam("deliveryMemo") String deliveryMemo)
+			throws Exception {
+
 		UserDTO userDTO = (UserDTO) session.getAttribute("user");
 		ModelMapper modelMapper = new ModelMapper();
 		User user = modelMapper.map(userDTO, User.class);
@@ -128,17 +123,18 @@ public class OrderController {
 		order.setDeliveryMemo(deliveryMemo);
 
 		ordersService.orderSave(order);
-		
-		//주문 품목 장바구니 삭제 ,오더 아이템 추가
-		List<Map<String, String>> selectedProducts = (List<Map<String, String>>) session.getAttribute("selectedProducts");
+
+		// 주문 품목 장바구니 삭제 ,오더 아이템 추가
+		List<Map<String, String>> selectedProducts = (List<Map<String, String>>) session
+				.getAttribute("selectedProducts");
 		List<Integer> productCodeList = new ArrayList<>();
 		List<Integer> quantityList = new ArrayList<>();
 		for (Map<String, String> map : selectedProducts) {
 			productCodeList.add(Integer.parseInt(map.get("productCode")));
 			quantityList.add(Integer.parseInt(map.get("quantity")));
 		}
-		
-		for(int i =0; i<productCodeList.size();i++) {
+
+		for (int i = 0; i < productCodeList.size(); i++) {
 			cartService.deleteByUserIdAndProductCode(user.getUserId(), productCodeList.get(i));
 			OrderItem orderItem = new OrderItem();
 			orderItem.setOrderCode(order);
@@ -146,17 +142,10 @@ public class OrderController {
 			orderItem.setProductCode(productService.findByProductCode(productCodeList.get(i)));
 			orderItemService.orderItemrSave(orderItem);
 		}
-		
-		//selectedProducts 세션에서 삭제
 
+		// selectedProducts 세션에서 삭제
 
 		return "product/success-paymentapi";
 	}
 
-	
-	
-	
-	
-	
-	
 }

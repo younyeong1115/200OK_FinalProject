@@ -78,7 +78,12 @@ public class NoticeController {
 		notice.setNoticeRegdate(today);
 		ModelMapper modelMapper = new ModelMapper();
 		UserDTO user =  (UserDTO) session.getAttribute("user");
+		
 		User userEntity = modelMapper.map(user, User.class);
+		System.out.println("userDTO  : " + user);
+		System.out.println("userEntity  : " + userEntity);
+		
+		
 		notice.setUserId(userEntity);
 		System.out.println("노티스 객체  " + notice);
 
@@ -149,28 +154,5 @@ public class NoticeController {
 		return "board/notice-update";
 	}
 	
-	
 
-	/*
-	 * //스마트 에디터 이미지 업로드
-	 * 
-	 * @RequestMapping(value="/singleImageUploader.do") public String
-	 * simpleImageUploader( HttpServletRequest req, SmartEditor smartEditor) throws
-	 * UnsupportedEncodingException{ String callback = smartEditor.getCallback();
-	 * String callback_func = smartEditor.getCallback_func(); String file_result =
-	 * ""; String result = ""; MultipartFile multiFile = smartEditor.getFiledata();
-	 * try{ if(multiFile != null && multiFile.getSize() > 0 &&
-	 * StringUtils.isNotBlank(multiFile.getName())){
-	 * if(multiFile.getContentType().toLowerCase().startsWith("image/")){ String
-	 * oriName = multiFile.getName(); String uploadPath =
-	 * req.getServletContext().getRealPath("/img"); String path = uploadPath +
-	 * "/smarteditor/"; File file = new File(path); if(!file.exists()){
-	 * file.mkdirs(); } String fileName = UUID.randomUUID().toString();
-	 * smartEditor.getFiledata().transferTo(new File(path + fileName)); file_result
-	 * += "&bNewLine=true&sFileName=" + oriName + "&sFileURL=/img/smarteditor/" +
-	 * fileName; }else{ file_result += "&errstr=error"; } }else{ file_result +=
-	 * "&errstr=error"; } } catch (Exception e){ e.printStackTrace(); } result =
-	 * "redirect:" + callback + "?callback_func=" +
-	 * URLEncoder.encode(callback_func,"UTF-8") + file_result; return result; }
-	 */
 }

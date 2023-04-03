@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.myshop.dto.DeliveryDTO;
 import shop.myshop.dto.UserDTO;
-import shop.myshop.entity.Delivery;
 import shop.myshop.service.CartService;
 import shop.myshop.service.DeliveryService;
 import shop.myshop.service.LikesService;
@@ -136,7 +134,6 @@ public class MyPageController {
 	//배송지 삭제(비동기)
 	@GetMapping("deliverydelete")
 	public String deliveryDelte(@RequestParam(value = "deliveryId")Integer deliveryId) throws Exception {
-		System.out.println("머냐고 ----" + deliveryId);
 		
 		deliveryService.deleteByDeliveryId(deliveryId);
 		

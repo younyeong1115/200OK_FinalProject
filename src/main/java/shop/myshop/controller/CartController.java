@@ -1,32 +1,30 @@
 package shop.myshop.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.Cart;
 import shop.myshop.entity.Product;
+import shop.myshop.entity.User;
 import shop.myshop.service.CartService;
 import shop.myshop.service.DeliveryService;
 import shop.myshop.service.ProductService;
@@ -40,9 +38,62 @@ public class CartController {
 
 	@Autowired
 	private ProductService productservice;
-	
+
 	@Autowired
 	private DeliveryService deliveryservice;
+	
+	//x 아이콘 누르면 장바구니 삭제
+	@GetMapping("cartdelete")
+	public String cartDelete(HttpSession session,@RequestParam(value = "productCode")String productCode) throws Exception {
+		
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		cartservice.deleteByUserIdAndProductCode(user.getUserId(),Integer.parseInt(productCode));
+		
+		return "redirect:/cart/cartform";
+	}
+
+	// 구매 -> 장바구니 추가
+	@RequestMapping(value = "/insertcart")
+	public String insertCart(Model model,HttpSession session, @RequestParam("productCode") String code) throws Exception {
+		int productCode = Integer.parseInt(code);
+		UserDTO userDTO = (UserDTO) session.getAttribute("user");
+		ModelMapper modelMapper = new ModelMapper();
+		User user = modelMapper.map(userDTO, User.class);
+		List<Product> productList = cartservice.getProductCode(user.getUserId());
+
+		System.out.println(productList);
+		System.out.println(productList.get(0).getProductCode());
+
+		int validProductCode = 0;// 이미 존재하는 상품코드를 담기 위한 변수
+		for (int i = 0; i < productList.size(); i++) {
+			// 장바구니에 상품 코드가 존재한다면 변수에 저장
+			if (productCode == productList.get(i).getProductCode()) {
+				validProductCode += productCode;
+			}
+		}
+
+		if (validProductCode == 0) {// 유효한 상품 코드가 없다면 장바구니에 save
+			Cart cart = new Cart();
+			cart.setCartQuantity(1);
+			Product product = new Product();
+			product.setProductCode(productCode);
+			cart.setProductCode(product);
+			cart.setUserId(user);
+			cartservice.saveCart(cart);
+
+		} else {// 유효한 상품 코드가 있다면 수량 +1 한 후에 update
+			Cart cart = new Cart();
+			cart.setCartQuantity((cartservice.getCart(user.getUserId(), validProductCode).getCartQuantity()) + 1);
+			cart.setCartNo(cartservice.getCart(user.getUserId(), validProductCode).getCartNo());
+			Product product = new Product();
+			product.setProductCode(validProductCode);
+			cart.setProductCode(product);
+			cart.setUserId(user);
+			cartservice.saveCart(cart);
+		}
+
+		return "forward:/cart/cartform";
+	}
 
 	// 장바구니 폼으로 이동
 	@GetMapping("cartform")
@@ -107,20 +158,22 @@ public class CartController {
 		}
 
 		// 총합 계산
-		int totalPrice = 0; //구매 총 금액 
-		ArrayList<Integer> priceList = new ArrayList<Integer>();//물건 * 갯수 (개별금액)
+		int totalPrice = 0; // 구매 총 금액
+		ArrayList<Integer> priceList = new ArrayList<Integer>();// 물건 * 갯수 (개별금액)
 		for (int i = 0; i < productCodeList.size(); i++) {
 			Product product = productservice.findByProductCode(productCodeList.get(i));
 			int quantity = quantityList.get(i);
 			priceList.add(Integer.parseInt(product.getProductPrice()) * quantity);
 			totalPrice += Integer.parseInt(product.getProductPrice()) * quantity;
-			
+
 		}
 		UserDTO user = (UserDTO) session.getAttribute("user");
-		//딜리버리 서비스에서 deliveryDao.findBydeliveryBasicynAndDeliveryId(userId);이거 가져와서 기본 배송지 초기화
+		// 딜리버리 서비스에서 deliveryDao.findBydeliveryBasicynAndDeliveryId(userId);이거 가져와서 기본
+		// 배송지 초기화
 		model.addAttribute("delivery", deliveryservice.findBydeliveryBasicynAndDeliveryId(user.getUserId()));
 		model.addAttribute("user", user);
-		model.addAttribute("totalPrice", totalPrice + 3000);
+		// model.addAttribute("totalPrice", totalPrice + 3000);
+		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("product", list);
 		model.addAttribute("quantity", quantityList);
 		model.addAttribute("price", priceList);

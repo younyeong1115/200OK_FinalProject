@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import shop.myshop.entity.Cart;
 import shop.myshop.entity.Product;
 import shop.myshop.repository.CartRepository;
 
@@ -29,13 +30,24 @@ public class CartServiceImpl implements CartService{
 		return cartDao.getProductCode(userId);
 	}
 	
+	
+	@Override
+	public void deleteByUserIdAndProductCode(String userId, int productCode) throws Exception{
+		 cartDao.deleteByUserIdAndProductCode(userId, productCode);
+	}
+	@Override
+	public void saveCart(Cart cart) throws Exception{
+		cartDao.save(cart);
+	}
+	
 	@Override
 	public List<Integer> getCartQuantity(String userId) throws Exception{
 		return cartDao.getCartQuantity(userId);
 	}
+	
 	@Override
-	public void deleteByUserIdAndProductCode(String userId, int productCode) throws Exception{
-		 cartDao.deleteByUserIdAndProductCode(userId, productCode);
+	public Cart getCart(String userId,int productCode) throws Exception{
+		return cartDao.getCart(userId,productCode);
 	}
 
 }
