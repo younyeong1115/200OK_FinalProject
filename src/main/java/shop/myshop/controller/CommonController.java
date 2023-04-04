@@ -16,6 +16,7 @@ public class CommonController {
 	    UserDTO user = (UserDTO) session.getAttribute("user");
 	    if (user != null) {
 	        model.addAttribute("userName", user.getUserName());
+	        model.addAttribute("userRole", user.getUserRole().toString());
 	    } else {
 	        model.addAttribute("userName", "");
 	    }
