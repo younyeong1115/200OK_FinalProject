@@ -13,7 +13,6 @@
 <body>
 
 
-
 <div class="shCMSshop">
 		<div class="shopView">
 			<div class="viewHeader">
@@ -21,25 +20,21 @@
 				<div class="productImg">
 					<div class="mainImg">
 					  <img th:src="@{/image/__${product.productThumbnail}__.jpg}" >
-						<!-- <img src="main.jpg" alt=""> -->
 					</div>
 					  <ul class="subImg">
 						<li> <img src="#" class="img-responsive"  th:src="@{/image/__${product.productThumbnail}__.jpg}" alt="서브 이미지1" ></li>
 						<li> <img src="#" class="img-responsive"  th:src="@{/image/__${product.productImage1}__.jpg}" alt="서브 이미지2" ></li>
 						<li> <img src="#" class="img-responsive"  th:src="@{/image/__${product.productImage2}__.jpg}" alt="서브 이미지3" ></li>
-						<!-- <li><img src="sub02.jpg" alt="서브 이미지2"></li>
-						<li><img src="sub01.jpg" alt="서브 이미지3"></li>
-						<li><img src="sub01.jpg" alt="서브 이미지4"></li> -->
+						
 					</ul>
 				</div>
 				<!-- 상품 설명 -->
 				<div class="productInfo">
-					<h3>[[${product.productName}]]<!-- <span>1kg/3kg/5kg</span>  --></h3>
+					<h3>[[${product.productName}]]</h3>
 					<div class="price">
 						<!-- sale,cost-price 빠지면 글씨가 밀려서 글자색 하얀색으로바꿈 css에서 수정 가능 -->
 						<span class="sale">20<span>%</span></span>
 						<span class="cost-price">9,000원</span>
-						<!--  -->
 						<span class="sale-price">[[${product.productPrice}]] ₩</span>
 					</div>
 					<div class="manufact">CODE         <span>   [[${product.productCode}]]</span></div>
@@ -58,17 +53,22 @@
 					<div class="btn">
 						<a href="">장바구니</a>
 						<a href="">구매하기</a>
+</form>
+
+
 					</div>
 				</div>
 			</div>
+			
+			
+  		
+
+			
+			
+			
 <!-- 하단의 탭부분 시작 -->
 			<div class="viewBody">
-			<!-- 	<ul class="contentNav">
-					<li class="active"><a href="">상품 정보</a></li>
-					<li><a href="">상품 후기<span>(<span class="count">20</span>)</span></a></li>
-					<li><a href="">Q & A <span></span></a></li>
-					<li><a href="">반품 / 교환</a></li>
-				</ul> -->
+			
 				<!-- 탭부분 끝 -->
 				<br><hr>
 				<!-- 상품정보 -->
@@ -102,6 +102,10 @@
 		</div>
 	</div>
 <script>
+
+
+
+
 var price_sum = 0;
 var options = [];
 
@@ -159,23 +163,27 @@ $(document).on('click','.item-close',{},function(e){
    var price_sum = $('.all-price span').html();
    var result_price = price_sum - price[0];
    $('.all-price span').html(result_price);
-   // var price_sum = 0;
-
-   //  if($('.item').length = '0'){
-   //  var price_sum = 0;
-   //     $('.all-price span').html(price_sum);
-   // }
+  
+   
 	 if($('.item').length='0'){
 			var price_sum = 0;
 	 }
   options = $.grep(options, function(value) {
     return value != $.trim($el.closest('.item').find('.item-name').text());
   });
-  // console.log(options);
+  
 var price_sum = 0;
 });
 var price_sum = 0;
+
+
+
+
+
+
 </script>
+
+
 </body>
 </th:block>
 </html>

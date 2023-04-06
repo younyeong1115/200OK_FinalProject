@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="../assets/css/adress-list.css" />
 
-<title>Insert title here</title>
+<title>address-list.html</title>
 <style type="text/css"></style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"> 
 </script> 
@@ -23,7 +23,6 @@
 	</div>
 
 	
-	<!--title-->
 	
 	<!--title-->
 	<div class="d-box">
@@ -43,15 +42,13 @@
 						<li style="font-size: 0.8rem;"><a href="#">watch</a></li>
 						<li style="font-size: 0.8rem;"><a href="#">object</a></li>
 					</ul></li>
-				<li><a href="#">QnA</a></li>
-				<li><a href="#">Notice</a></li>
+				<li><a href="qna/qnalist">QnA</a></li>
+				<li><a href="notice/noticelist">Notice</a></li>
 			</ul>
 				<ul class="s-list">
-				<li><a href="#">찜하기</a></li>
 				<li><a href="#">장바구니</a></li>
 				<li><a href="">검색</a></li>
 				<li><a href="user/login">로그인</a></li>
-				<li><a href= "error">error</a></li> 
 			</ul>
 		</div>
 
@@ -103,11 +100,7 @@
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 </div>
-<!-- 둥근 버튼 -->
-<!-- <button style="background-color: beige; border-radius: 50px ; font-size: 20px;">배송지 추가</button>
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp -->
+
 		
 	</div>
             
@@ -186,25 +179,7 @@
 <!-- axios 사용 설정 -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-/*   function deleteDelivery(deliveryId) {
-	  console.log(deliveryId);
-     $.ajax({
-      url: 'mypage/deliverydelete?deliveryId=' + deliveryId,
-      type: 'DELETE',
-      success: function(result) {
-        // 삭제 성공한 경우, 리스트를 다시 출력합니다.
-        window.location.href = '/delivery';
-      },
-      error: function(xhr, status, error) {
-        // 삭제 실패한 경우, 에러 메시지를 출력합니다.
-        alert(error);
-      },
-      complete: function() {
-    	    console.log(deliveryId);
-    	    // 이곳에서 항상 실행되어야 하는 코드를 작성합니다.
-    	  }
-    }); 
-  } */
+
   
   function deleteDelivery(deliveryId) {
 	

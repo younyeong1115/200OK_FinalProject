@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=3.0">
 
-<<link th:href="@{/assets/css/main.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{/assets/css/main.css}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -373,14 +373,15 @@ function agreeAll(agreeAll)  {
 
 
 
-//인증메일?질문
+//인증메일
 function checkEmail(email) {
 	  axios({
 	    method: 'POST',
 	    url: 'user/userEmailConfirm?userEmail=' + email
 	  })
 	  .then(function (response) {
-	    
+		  alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.");
+
 		var confirmationCode = response.data.confirmationCode; 
 	    var inputCode = document.getElementById('userEmailconfirm').value; 
 
@@ -397,6 +398,7 @@ function checkEmail(email) {
 		  console.log(error);
 	  });
 	}
+
 //유효성 검사 및 폼 제출	
 function Yncheck(checkbox) {
 	  if (checkbox.checked == true) {

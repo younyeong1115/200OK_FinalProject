@@ -481,6 +481,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 
 	
 	
+	
 	<!--title-->
 		<div class="d-box">
 			<div class="titl">
@@ -489,10 +490,10 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
   <img th:src="@{/image/logo.png}" width="70" height="70">
 </a>
 				</div>
-				
+			
 					<ul class="f-list">
 					<li><a href="#">Best</a></li>
-					<li><a href="#">Products</a>
+					<li><a href="">Products</a>
 						<ul class="list-s">
 						<li style="font-size: 0.8rem;"><a th:href="@{/product/ringlist}">ring</a></li>
 						<li style="font-size: 0.8rem;"><a th:href="@{/product/braceletlist}">bracelet</a></li>
@@ -501,17 +502,28 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 						<li style="font-size: 0.8rem;"><a th:href="@{/product/watchlist}">watch</a></li>
 						<li style="font-size: 0.8rem;"><a th:href="@{/product/objectlist}">object</a></li>
 						</ul></li>
-				<li><a href="#">QnA</a></li>
-				<li><a href="notice/noticelist">Notice</a></li>
+				<li><a th:href="@{/qna/qnalist}">QnA</a></li>
+				<li><a th:href="@{/notice/noticelist}">Notice</a></li>
 			</ul>
-			<ul class="s-list">
-				<li><a href="#">찜하기</a></li>
-				<li><a href="#">장바구니</a></li>
-				<li><a href="">검색</a></li>
-				<li><a href="user/login">로그인</a></li>
-				
-				
-			</ul>
+			<div th:if="${userName eq ''}">
+					<ul class="s-list">
+					
+						<li><a href="#">검색</a></li>
+						<li><a th:href="@{/user/login}">로그인</a></li>
+					</ul>
+				</div>
+
+				<div th:if="${userName ne ''}">
+					<ul class="s-list">
+						
+						<li><a th:href="@{/cart/cartform}">장바구니</a></li>
+						<li><a href="#">검색</a></li>
+						<li th:if="${userRole eq 'ADMIN'}"><a href="#">관리자 Home</a></li>
+						<li><a href="mypage/home">마이페이지</a></li>
+						<li><a href="user/logout">로그아웃</a></li>
+						<li><a href="user/kakaologoutterm">카카오로그아웃</a></li>
+					</ul>
+				</div>
 		</div>
 
 <section>
@@ -598,19 +610,19 @@ $(document).ready(function() {
 	  // "GOLD" button clicked
 	  $("#gold-btn").click(function() {
 	    $(".row").hide();
-	    $(".row:nth-of-type(3)").show(); // Category 7 Products
+	    $(".row:nth-of-type(3)").show(); 
 	  });
 	  
 	  // "SILVER" button clicked
 	  $("#silver-btn").click(function() {
 	    $(".row").hide();
-	    $(".row:nth-of-type(4)").show(); // Category 8 Products
+	    $(".row:nth-of-type(4)").show(); 
 	  });
 	  
 	  // "ETC" button clicked
 	  $("#etc-btn").click(function() {
 	    $(".row").hide();
-	    $(".row:nth-of-type(5)").show(); // Category 9 Products
+	    $(".row:nth-of-type(5)").show(); 
 	  });
 	});
 </script>

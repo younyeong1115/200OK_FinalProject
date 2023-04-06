@@ -22,25 +22,22 @@
 				<div class="productImg">
 					<div class="mainImg">
 					  <img th:src="@{/image/__${product.productThumbnail}__.jpg}" >
-						<!-- <img src="main.jpg" alt=""> -->
 						</div>
 						<ul class="subImg">
 							<li><img src="#" class="img-responsive"
 								th:src="@{/image/__${product.productThumbnail}__.jpg}"
 								alt="서브 이미지1"></li>
-							<!-- <li><img src="sub02.jpg" alt="서브 이미지2"></li>
-						<li><img src="sub01.jpg" alt="서브 이미지3"></li>
-						<li><img src="sub01.jpg" alt="서브 이미지4"></li> -->
+						
 						</ul>
 					</div>
 					<!-- 상품 설명 -->
 					<div class="productInfo">
-					<h3>[[${product.productName}]]<!-- <span>1kg/3kg/5kg</span>  --></h3>
+					<h3>[[${product.productName}]]</h3>
 					<div class="price">
 						<!-- sale,cost-price 빠지면 글씨가 밀려서 글자색 하얀색으로바꿈 css에서 수정 가능 -->
 						<span class="sale">20<span>%</span></span>
 						<span class="cost-price">9,000원</span>
-						<!--  -->
+						
 						<span class="sale-price">[[${product.productPrice}]] ₩</span>
 					</div>
 					<div class="manufact">CODE         <span>   [[${product.productCode}]]</span></div>
@@ -57,7 +54,6 @@
 							총 상품금액 <span>0</span>원
 						</div>
 						<div class="btn">
-							<!-- <a href="addToCart()" onclick="">장바구니</a>  -->
 							<a id="cartLink" href="#">장바구니</a>
 							<a id="buy" href="#">구매하기</a>
 						</div>
@@ -65,12 +61,7 @@
 				</div>
 				<!-- 하단의 탭부분 시작 -->
 				<div class="viewBody">
-					<!-- 	<ul class="contentNav">
-					<li class="active"><a href="">상품 정보</a></li>
-					<li><a href="">상품 후기<span>(<span class="count">20</span>)</span></a></li>
-					<li><a href="">Q & A <span></span></a></li>
-					<li><a href="">반품 / 교환</a></li>
-				</ul> -->
+					
 					<!-- 탭부분 끝 -->
 					<br>
 					<hr>
@@ -226,7 +217,6 @@ document.getElementById("buy").setAttribute("href", ordertUrl);
    //위쪽 내용
     var text = $(this).children('span').html(); //전체 html또는 text를 가져와서
     var full = $(this).closest('tr').next('tr').children('td').eq(1).text(text).css('text-align','left'); // tr 출력후 나머지 글자 출력 및 정렬
-    // var cut = $(this).closest('tr').next('tr').children('td').eq(1).text();
    $(this).closest('tr').next('tr').toggleClass('display'); //자세한 이용후기 tr 출력하기
   });
 });
@@ -242,19 +232,13 @@ $(document).on('click','.item-close',{},function(e){
    var price_sum = $('.all-price span').html();
    var result_price = price_sum - price[0];
    $('.all-price span').html(result_price);
-   // var price_sum = 0;
-
-   //  if($('.item').length = '0'){
-   //  var price_sum = 0;
-   //     $('.all-price span').html(price_sum);
-   // }
+  
 	 if($('.item').length='0'){
 			var price_sum = 0;
 	 }
   options = $.grep(options, function(value) {
     return value != $.trim($el.closest('.item').find('.item-name').text());
   });
-  // console.log(options);
 var price_sum = 0;
 });
 var price_sum = 0;

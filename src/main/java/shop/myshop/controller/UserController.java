@@ -97,13 +97,13 @@ public class UserController {
 	    try {
 	        String userId = userService.getUserId(userName, userEmail);
 	        model.addAttribute("userId", userId);
-	        return "user/findIdResult.html";
+	        return "user/findIdResult";
 	    } catch (UserNotFoundException e) {
 	        model.addAttribute("errorMessage", "일치하는 사용자 정보가 없습니다.");
-	        return "user/findIdFail.html";
+	        return "user/findIdfail";
 	    } catch (Exception e) {
 	        model.addAttribute("errorMessage", "오류가 발생했습니다. 다시 시도해주세요.");
-	        return "user/findIdFail.html";
+	        return "user/findIdfail";
 	    }
 	}
 

@@ -53,7 +53,7 @@
                            모델명 : <span th:text="${product.productName}" id="productName"></span>
                            (상품 코드 : <span th:text="${product.productCode}"></span>) / <span
                               th:text="${quantity[__${productStat.index}__]} + '개'"></span>
-                        </p> <!-- <span class= "price" th:text="${totalPrice}"></span> 원 <br> -->
+                        </p> 
                      </td>
                      <td><br>
                         <p>
@@ -196,41 +196,40 @@
                   </p>
                </td>
             </tr>
-         </table>
+            
+            <tr class="c2">
+            <td>
+            
+            
+						<div class="input-agree" align="right" style="right: auto;color: black; ;font-size:auto;">
+							<span>이용약관</span>                            <span>개인정보처리방침</span>
+						</div>
+					<p>	
+				<div class="input-check" align="left"style="left: auto;">
+				<label for="agree_all">
+ 					 <input type="checkbox" name="agree_all" id="agree_all" value='agreeAll' onclick='agreeAll(this)'>
+  				<span>전체 동의합니다</span>
+					</label><p> 
 
-         <br> <br> <br>
+ 			<p>	<label for="agree">
+  				<input type="checkbox"  name="agree" value="1" id="agree1">
+  							<span>이용약관 동의<strong>(필수)</strong></span>
+			</label></p>
 
-         <div class="cart__mainbtns">
-            <button class="cart__bigorderbtn left">홈으로 이동하기</button>
-            <!-- 
-            <button class="cart__bigorderbtn right" id="btn_payment"
-               onclick="if(document.getElementById('cashPayment').checked) window.location.href='/ok/order/payment'; else if(document.getElementById('creditPayment').checked) requestPay(); else alert('결제 방법을 선택해주세요.');">
-               주문하기</button> -->
-            <button class="cart__bigorderbtn right" id="btn_payment"
-               onclick="if(document.getElementById('cashPayment').checked)  onPaymentButtonClick(); else if(document.getElementById('creditPayment').checked) requestPay(); else alert('결제 방법을 선택해주세요.');">
-               주문하기</button>
-            <!-- <button class="cart__bigorderbtn right" id="btn_payment" onclick="onPaymentButtonClick()">주문하기</button> -->
-         </div>
-         <!-- </form>   -->
+			<p><label for="agree">
+  					<input type="checkbox"  name="agree" value="2" id="agree2">
+  					<span>개인정보 수집, 이용 동의<strong>(필수)</strong></span>
+			</label></p>
 
-         <!-- <form id="payment-form" action="/ok/order/payment" method="POST">  -->
-         <!-- <input type="hidden" name="userId" th:value="${user?.userId}"> -->
-         <!--  <form action="/ok/order/payment" method="POST">-->
-         <!-- <input type="hidden" name="userId" th:value="${user?.userId}">
-         <table>
-            <tr class="c1">
-               <td>
-                  <p>
-                     &emsp;통합결제&emsp;&emsp; <input type="radio" name="paymentType"
-                        value="credit" id="creditPayment"><small>신용카드(일반)</small>&emsp;&emsp;
-                  </p>
-                  <p>
-                     &emsp;현금결제&emsp;&emsp;&nbsp; <input type="radio"
-                        name="paymentType" value="cash" id="cashPayment"><small>무통장입금</small></a>&emsp;&emsp;&emsp;&nbsp;&nbsp;
-
-
-                  </p>
-               </td>
+		<p><label for="agree">
+  					<input type="checkbox" name="agree" value="3" id="agree3">
+  					<span>구매 동의<strong>(필수)</strong></span>
+		</label></p> 
+      
+            
+            
+            </td>
+            
             </tr>
          </table>
 
@@ -238,17 +237,51 @@
 
          <div class="cart__mainbtns">
             <button class="cart__bigorderbtn left">홈으로 이동하기</button>
+           
             <button class="cart__bigorderbtn right" id="btn_payment"
-               onclick="if(document.getElementById('cashPayment').checked) window.location.href='/ok/order/payment'; else if(document.getElementById('creditPayment').checked) requestPay(); else alert('결제 방법을 선택해주세요.');">
+               onclick="if(document.getElementById('cashPayment').checked)  onPaymentButtonClick(); else if(document.getElementById('creditPayment').checked) requestPay(); else alert('결제 방법을 선택해주세요.');">
                주문하기</button>
-         </div> -->
-
-         <!-- </form>  -->
+         </div>
+        
       </section>
 
 
 
       <script>
+      
+    //전체 동의
+      function agreeAll(agreeAll)  {
+      	  const checkboxes 
+      	     = document.querySelectorAll('input[name="agree"]');
+      	  
+      	  checkboxes.forEach((checkbox) => {
+      	    checkbox.checked = agreeAll.checked
+      	  })
+      	}
+    
+    
+    
+    //유효성
+      function validateForm() {
+    	
+    	  const agree1 = document.getElementById('agree1');
+    	  const agree2 = document.getElementById('agree2');
+    	  const agree3 = document.getElementById('agree3');
+    	   
+
+    	  if (!agree1.checked || !agree2.checked || !agree3.checked) {
+    	    alert('모든 필수 동의 항목을 확인해주세요.');
+    	    return;
+    	  }
+
+      } 
+    	 
+      
+      
+      
+      
+      
+      	//결제API
          var IMP = window.IMP;
          IMP.init("imp05153660");
          var productName = $('#productName').text();
@@ -256,7 +289,8 @@
          var userEmail = $('#userEmail').val();
          var userName = $('#userName').val();
          var userMobile = $('#userMobile').val();
-
+		
+         //무통장입금
          function onPaymentButtonClick() {
              console.log("hi");
              var orderTotalprice = parseInt(document.getElementById('orderTotalprice').value);
@@ -281,7 +315,7 @@
          }
          
          
-         
+         //통합결제
          function onPaymentapiButtonClick() {
              console.log("hi");
              var orderTotalprice = parseInt(document.getElementById('orderTotalprice').value);
@@ -307,7 +341,7 @@
 
          
          
-
+		//결제API
          function requestPay() {
                 IMP.request_pay({
                   pg: 'html5_inicis',
@@ -338,7 +372,7 @@
                   alert(msg);
                 });
               }
-
+		//배송지정보 초기화
          function clearDeliveryInfo() {
             if (document.getElementById('sameAsBilling').checked) {
                document.getElementsByName('deliveryName')[0].value = '';
