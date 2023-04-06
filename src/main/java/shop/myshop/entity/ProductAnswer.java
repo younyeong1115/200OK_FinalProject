@@ -1,6 +1,7 @@
 package shop.myshop.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,12 +15,23 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.Data;
-import lombok.NonNull;
-import lombok.ToString;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
-@Data
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+import lombok.ToString;
+import shop.myshop.dto.Role;
+
+@DynamicInsert   //(insert 시 null 인필드 제외)
+@DynamicUpdate //(update 시 null 인필드 제외)
+@NoArgsConstructor
 @ToString
+@Getter
+@Setter
 @Entity(name = "Productanswer")
 public class ProductAnswer {
 	
@@ -40,11 +52,7 @@ public class ProductAnswer {
 	@NonNull
 	@JoinColumn(name="userId")
 	private User userId;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@NonNull
-	@JoinColumn(name="productCode")
-	private Product productCode;
+
 	
 	@OneToOne
 	@NonNull

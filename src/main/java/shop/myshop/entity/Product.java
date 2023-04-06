@@ -3,6 +3,7 @@ package shop.myshop.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -86,13 +87,14 @@ public class Product {
 
 	
 	
-	@OneToMany(mappedBy = "productCode")
+	@OneToMany(mappedBy = "productCode", cascade = CascadeType.ALL)
 	private List<Review> Review = new ArrayList<Review>();
 	
-	@OneToMany(mappedBy = "productCode")
+	@OneToMany(mappedBy = "productCode", cascade = CascadeType.ALL)
 	private List<ProductQuestion> productquestion = new ArrayList<ProductQuestion>();
 	
-	@OneToMany(mappedBy = "productCode")
+	
+	@OneToMany(mappedBy = "productCode", cascade = CascadeType.ALL)
 	private List<OrderItem> orderitem = new ArrayList<OrderItem>();
 	
 	@Override

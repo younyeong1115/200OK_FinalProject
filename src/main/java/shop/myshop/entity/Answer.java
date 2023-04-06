@@ -12,11 +12,21 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.Setter;
 import lombok.ToString;
-@Data
+@DynamicInsert   //(insert 시 null 인필드 제외)
+@DynamicUpdate //(update 시 null 인필드 제외)
+@NoArgsConstructor
 @ToString
+@Getter
+@Setter
 @Entity
 public class Answer {
 	@Id
@@ -39,10 +49,7 @@ public class Answer {
 	
 	@OneToOne
 	@NonNull
-	@JoinColumn(name="qusetionNo")
+	@JoinColumn(name="questionNo")
 	private Question questionNo;
 	
-
-
-
 }

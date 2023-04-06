@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -90,37 +91,38 @@ public class User {
 	@Column(nullable = true)
 	private String userProvider;
 	
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private List<Cart> Cart = new ArrayList<Cart>();
 	
 	
 
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private List<Orders> orders = new ArrayList<Orders>();
 	
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private List<Question> question = new ArrayList<Question>();
 	
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private List<ProductQuestion> productquestion = new ArrayList<ProductQuestion>();
 	
 	
 	
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private List<Review> review = new ArrayList<Review>();
 	
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private List<Answer> answer= new ArrayList<Answer>();
 	
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private List<Notice> notice= new ArrayList<Notice>();
 	
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private List<ProductAnswer> productanswer= new ArrayList<ProductAnswer>();
 
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
 	private List<Delivery> delivery = new ArrayList<Delivery>();
 	
+
 	@Override
 	public String toString() {
 	return "User{" +

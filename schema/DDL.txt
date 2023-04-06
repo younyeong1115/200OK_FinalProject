@@ -153,12 +153,12 @@ productquestion_no INTEGER NOT NULL
 /*질문 게시판*/
 
 create table QUESTION(/*질문 게시판*/
-qusetion_no INTEGER AUTO_INCREMENT PRIMARY KEY,
-qusetion_title VARCHAR(50) NOT NULL,
-qusetion_content VARCHAR(500) NOT NULL,
-qusetion_regdate TIMESTAMP NOT NULL,
-qusetion_category VARCHAR(20) NOT NULL,
-qusetion_publication INTEGER NOT NULL,
+question_no INTEGER AUTO_INCREMENT PRIMARY KEY,
+question_title VARCHAR(50) NOT NULL,
+question_content VARCHAR(500) NOT NULL,
+question_regdate TIMESTAMP NOT NULL,
+question_category VARCHAR(20) NOT NULL,
+question_publication INTEGER NOT NULL,
 user_id VARCHAR(32) NOT NULL
 );
 
@@ -222,7 +222,7 @@ ALTER TABLE NOTICE ADD FOREIGN KEY (user_id) REFERENCES USER(user_id);
 
 ALTER TABLE ANSWER ADD FOREIGN KEY(user_id) REFERENCES USER(user_id);
 
-ALTER TABLE ANSWER ADD FOREIGN KEY(question_no) REFERENCES QUESTION(qusetion_no);
+ALTER TABLE ANSWER ADD FOREIGN KEY(question_no) REFERENCES QUESTION(question_no);
 
 
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -54,59 +55,50 @@ public class Orders {
 	@Column(nullable = false)
 	private String orderPayment;
 
-	
-
 	@NonNull
 	@Column(nullable = false)
 	private String orderStatus;
-	
+
 	@NonNull
 	@Column(nullable = false)
-	private String orderTotalPrice;
-	
-	
+	private String orderTotalprice;
+
 	@NonNull
 	@Column(nullable = false)
 	private String deliveryName;
-	
+
 	@NonNull
 	@Column(nullable = false)
 	private String deliveryMobile;
-	
+
 	@NonNull
 	@Column(nullable = false)
 	private String deliveryAdd1;
-	
+
 	@NonNull
 	@Column(nullable = false)
 	private String deliveryAdd2;
-	
-	
+
 	@Column(nullable = true)
 	private String deliveryAdd3;
-	
-	
+
 	@Column(nullable = true)
 	private String deliveryMemo;
-	
-	@OneToMany(mappedBy = "orderCode")
+
+	@OneToMany(mappedBy = "orderCode", cascade = CascadeType.ALL)
 	private List<OrderItem> orderitem = new ArrayList<OrderItem>();
 
-	@OneToMany(mappedBy = "orderCode")
+	@OneToMany(mappedBy = "orderCode", cascade = CascadeType.ALL)
 	private List<Review> review = new ArrayList<Review>();
+
 
 	@Override
 	public String toString() {
 		return "Orders{" + "orderCode=" + orderCode + ", userId=" + userId.getUserId() + ", orderRegdate="
-				+ orderRegdate + ", orderPayment='" + orderPayment
-				+ ' ' + ", orderStatus='" + orderStatus + ' ' +", deliveryName='" + deliveryName + ' '+
-				", deliveryMobile='" + deliveryMobile + ' '+
-				", deliveryAdd1='" + deliveryAdd1 + ' '+
-				", deliveryAdd2='" + deliveryAdd2 + ' '+
-				", deliveryAdd3='" + deliveryAdd3 + ' '+
-				", deliveryMemo='" + deliveryMemo + ' ' + '}';
+				+ orderRegdate + ", orderPayment='" + orderPayment + ' ' + ", orderStatus='" + orderStatus + ' '
+				+ ", deliveryName='" + deliveryName + ' ' + ", deliveryMobile='" + deliveryMobile + ' '
+				+ ", deliveryAdd1='" + deliveryAdd1 + ' ' + ", deliveryAdd2='" + deliveryAdd2 + ' ' + ", deliveryAdd3='"
+				+ deliveryAdd3 + ' ' + ", deliveryMemo='" + deliveryMemo + ' ' + '}';
 	}
-	
-	
 
 }
