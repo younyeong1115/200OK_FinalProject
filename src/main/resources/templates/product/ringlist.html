@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-	>
+   >
 <head>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>product list</title>
@@ -139,15 +139,15 @@ display: inline-block;
 }
 
 .fx{
-			position:fixed;
-		  bottom:330px;
-			right:20px;
-			width:50px;
-			height:150px;
-			background-color:none;
+         position:fixed;
+        bottom:330px;
+         right:20px;
+         width:50px;
+         height:150px;
+         background-color:none;
       clear:both;
        z-index:1;
-		}
+      }
 hr
 {border: solid 2px #666;}
 /*선종류 선굵기 선색상*/
@@ -471,60 +471,60 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 </head>
 <body>
 
-	<!--사이드바-->
-	<div class="fx">
-		<a href="#"> <img class="main"
-			src="https://www.slou.co.kr/img/front/btn/cartBtn.png" width="50"></a>
-		<a href="#"><img class="main"
-			src="https://www.slou.co.kr/img/front/btn/searchBtn.png" width="50"></a>
-	</div>
+   <!--사이드바-->
+   <div class="fx">
+      <a href="#"> <img class="main"
+         src="https://www.slou.co.kr/img/front/btn/cartBtn.png" width="50"></a>
+      <a href="#"><img class="main"
+         src="https://www.slou.co.kr/img/front/btn/searchBtn.png" width="50"></a>
+   </div>
 
-	
-	
-	
-	<!--title-->
-		<div class="d-box">
-			<div class="titl">
-				<div style="float: left; margin: 0 20px;">
-					<a th:href="@{/user/logo}" class="logo-link">
+   
+   
+   
+   <!--title-->
+      <div class="d-box">
+         <div class="titl">
+            <div style="float: left; margin: 0 20px;">
+               <a th:href="@{/user/logo}" class="logo-link">
   <img th:src="@{/image/logo.png}" width="70" height="70">
 </a>
-				</div>
-			
-					<ul class="f-list">
-					<li><a href="#">Best</a></li>
-					<li><a href="#">Products</a>
-						<ul class="list-s">
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/ringlist}">ring</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/braceletlist}">bracelet</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/necklacelist}">necklace</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/earringlist}">earring</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/watchlist}">watch</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/objectlist}">object</a></li>
-						</ul></li>
-				<li><a href="qna/qnalist">QnA</a></li>
-				<li><a href="notice/noticelist">Notice</a></li>
-			</ul>
-		<div th:if="${userName eq ''}">
-					<ul class="s-list">
-					
-						<li><a href="#">검색</a></li>
-						<li><a th:href="@{/user/login}">로그인</a></li>
-					</ul>
-				</div>
+              </div>
+         
+               <ul class="f-list">
+               <li><a href="#">Best</a></li>
+               <li><a href="#">Products</a>
+                  <ul class="list-s">
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/ringlist}">ring</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/braceletlist}">bracelet</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/necklacelist}">necklace</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/earringlist}">earring</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/watchlist}">watch</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/objectlist}">object</a></li>
+                  </ul></li>
+            <li><a href="qna/qnalist">QnA</a></li>
+            <li><a href="notice/noticelist">Notice</a></li>
+         </ul>
+      <div th:if="${userName eq ''}">
+               <ul class="s-list">
+               
+                  <li><a href="#">검색</a></li>
+                  <li><a th:href="@{/user/login}">로그인</a></li>
+               </ul>
+            </div>
 
-				<div th:if="${userName ne ''}">
-					<ul class="s-list">
-						
-						<li><a th:href="@{/cart/cartform}">장바구니</a></li>
-						<li><a href="#">검색</a></li>
-						<li th:if="${userRole eq 'ADMIN'}"><a href="#">관리자 Home</a></li>
-						<li><a href="mypage/home">마이페이지</a></li>
-						<li><a href="user/logout">로그아웃</a></li>
-						<li><a href="user/kakaologoutterm">카카오로그아웃</a></li>
-					</ul>
-				</div>
-		</div>
+            <div th:if="${userName ne ''}">
+               <ul class="s-list">
+                  
+                  <li><a th:href="@{/cart/cartform}">장바구니</a></li>
+                  <li><a href="#">검색</a></li>
+                  <li th:if="${userRole eq 'ADMIN'}"><a href="#">관리자 Home</a></li>
+                  <li><a th:href="@{/mypage/home}">마이페이지</a></li>
+                  <li><a th:href="@{/user/logout}">로그아웃</a></li>
+                  <li><a th:href="@{/user/kakaologoutterm}">카카오로그아웃</a></li>
+               </ul>
+            </div>
+      </div>
 
 
 <section>
@@ -606,29 +606,29 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 
 <script >
 $(document).ready(function() {
-	  // "ALL" button clicked
-	  $("#all-btn").click(function() {
-	    $(".row").show();
-	  });
-	  
-	  // "GOLD" button clicked
-	  $("#gold-btn").click(function() {
-	    $(".row").hide();
-	    $(".row:nth-of-type(3)").show(); 
-	  });
-	  
-	  // "SILVER" button clicked
-	  $("#silver-btn").click(function() {
-	    $(".row").hide();
-	    $(".row:nth-of-type(4)").show(); 
-	  });
-	  
-	  // "ETC" button clicked
-	  $("#etc-btn").click(function() {
-	    $(".row").hide();
-	    $(".row:nth-of-type(5)").show(); 
-	  });
-	});
+     // "ALL" button clicked
+     $("#all-btn").click(function() {
+       $(".row").show();
+     });
+     
+     // "GOLD" button clicked
+     $("#gold-btn").click(function() {
+       $(".row").hide();
+       $(".row:nth-of-type(3)").show(); 
+     });
+     
+     // "SILVER" button clicked
+     $("#silver-btn").click(function() {
+       $(".row").hide();
+       $(".row:nth-of-type(4)").show(); 
+     });
+     
+     // "ETC" button clicked
+     $("#etc-btn").click(function() {
+       $(".row").hide();
+       $(".row:nth-of-type(5)").show(); 
+     });
+   });
 </script>
 </body>
 </th:block>
