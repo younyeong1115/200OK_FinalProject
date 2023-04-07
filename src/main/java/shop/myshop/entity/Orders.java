@@ -14,20 +14,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import shop.myshop.dto.Role;
 
 @DynamicInsert // (insert 시 null 인필드 제외)
 @DynamicUpdate // (update 시 null 인필드 제외)
@@ -91,7 +88,24 @@ public class Orders {
 	@OneToMany(mappedBy = "orderCode", cascade = CascadeType.ALL)
 	private List<Review> review = new ArrayList<Review>();
 
-
+	
+	public Orders(Integer orderCode, User userId, Date orderRegdate, String orderPayment, String orderStatus,
+			String orderTotalprice, String deliveryName, String deliveryMobile, String deliveryAdd1,
+			String deliveryAdd2, String deliveryAdd3, String deliveryMemo) {
+		this.orderCode = orderCode;
+		this.userId = userId;
+		this.orderRegdate = orderRegdate;
+		this.orderPayment = orderPayment;
+		this.orderStatus = orderStatus;
+		this.orderTotalprice = orderTotalprice;
+		this.deliveryName = deliveryName;
+		this.deliveryMobile = deliveryMobile;
+		this.deliveryAdd1 = deliveryAdd1;
+		this.deliveryAdd2 = deliveryAdd2;
+		this.deliveryAdd3 = deliveryAdd3;
+		this.deliveryMemo = deliveryMemo;
+	}
+	
 	@Override
 	public String toString() {
 		return "Orders{" + "orderCode=" + orderCode + ", userId=" + userId.getUserId() + ", orderRegdate="
@@ -100,5 +114,7 @@ public class Orders {
 				+ ", deliveryAdd1='" + deliveryAdd1 + ' ' + ", deliveryAdd2='" + deliveryAdd2 + ' ' + ", deliveryAdd3='"
 				+ deliveryAdd3 + ' ' + ", deliveryMemo='" + deliveryMemo + ' ' + '}';
 	}
+
+
 
 }

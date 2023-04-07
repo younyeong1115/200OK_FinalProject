@@ -38,4 +38,5 @@ public class Category {
 	
 	@OneToMany(mappedBy = "categoryNo")
 	private List<Product> product = new ArrayList<Product>();
+	
 }

@@ -41,4 +41,14 @@ public class Likes {
 	@NonNull
 	@JoinColumn(name="userId")
 	private User userId;
+	
+	
+	@Override
+	public String toString() {
+	    return "Likes{" +
+	            "likeNo=" + likeNo +
+	            ", productCode=" + productCode.getProductName() +
+	            ", userId=" + userId.getUserName() +
+	            '}';
+	}
 }
