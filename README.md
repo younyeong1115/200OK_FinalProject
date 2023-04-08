@@ -52,6 +52,7 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 ###  ✔️ 로그인
 ▪️  인터셉터를 이용한 일반로그인, sns 로그인 두가지 방식으로 로그인 가능<br>
 ▪️  sns로 최초 로그인하는 경우 kakao가 제공하는 사용자 정보 외에 필요한 정보를 회원가입폼을 이용하여 입력 받게됨<br>
+<img width="80%" src="https://user-images.githubusercontent.com/92067780/230707093-ea17f22c-3e96-4ce4-9cf5-87791585a12c.gif"/>
 
 ###  ✔️ 이메일 인증
 
