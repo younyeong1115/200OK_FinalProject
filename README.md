@@ -135,7 +135,7 @@ user entity 에서는 userId가 String 타입이었고, cart entity에서 userId
 
 ## :pencil2:개선할점
 ###  ✔️ html css 분리
-짧은 css코드이면 html에 상단 style에 넣어도 되지만 현재 작성한 html중 일부 css코드는 장문이다.<br>
+짧은 css코드이면 html 상단 style에 넣어도 되지만 현재 작성한 html중 일부 css코드는 장문이다.<br>
 이러한 css는 따로 분리하여 링크를 걸어주어야 클린코드가 가능하다.
   
   
