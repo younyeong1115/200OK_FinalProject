@@ -117,10 +117,10 @@ user entity 에서는 userId가 String 타입이었고, cart entity에서 userId
 @Query("SELECT COUNT(c) FROM Cart c WHERE c.userId.userId = :userId") 따라서 userId(유저타입).userId로 쿼리를 생성하여 오류를 해결하였다
 
 ###  ✔️ userEntity 오류 발생
-회원가입 기능을 구현하는 도중 userRegdate가 null값으로 출력되면서 오류가 발생되었다.
-이때 @CreationTimestamp을 사용하여 오류를 해결하였다.
-@CreationTimeStamp는 INSERT 쿼리가 실행될 때 값을 현재시간으로 채워서 쿼리를 생성한다.
-따라서 데이터 생성 시점 관리에 대한 수고스러움을 덜 수 있다.
+회원가입 기능을 구현하는 도중 userRegdate가 null값으로 출력되면서 오류가 발생되었다.<br>
+이때 @CreationTimestamp을 사용하여 오류를 해결하였다.<br>
+@CreationTimeStamp는 INSERT 쿼리가 실행될 때 값을 현재시간으로 채워서 쿼리를 생성한다.<br>
+따라서 데이터 생성 시점 관리에 대한 수고스러움을 덜 수 있다.<br>
 
 
 
