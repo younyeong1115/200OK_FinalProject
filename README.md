@@ -12,25 +12,31 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 
 ## 💻기술 스택
 <div>
+<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat-square&logo=Spring Boot&logoColor=white"/>
+<img src="https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white"/><br>
+
+
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
-<img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=java&logoColor=white"/>
+<img src="https://img.shields.io/badge/axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/>
 <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
 <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
-</div>
 
+
+
+</div>
 
 <br>
 
 
 ## :date:개발 기간
-2023.??.?? ~ 2023.??.??
+2023.03.13 ~ 2023.04.09
 
 <br>
 
 
 ## :running:팀원 소개
-🍀이윤영
-:hamster:김영림
+<h4> 🍀 이윤영 : https://github.com/younyeong1115 </h4>
+<h4> :hamster: 김영림 : https://github.com/RimKim </h4>
 
 <br>
 
@@ -41,6 +47,10 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 ### 1️⃣ 데이터베이스 설계
 <br><br><br>
 
+<div align="center">
+<img width="60%" src="https://user-images.githubusercontent.com/92067780/230749582-fc7e920d-8f01-4dc3-865d-7d5350bed860.png"/>
+</div>
+
 ### 2️⃣ 목업 설계
 <br><br><br>
 
@@ -50,7 +60,8 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 
 
 ###  ✔️ 로그인
-▪️  인터셉터를 이용한 일반로그인, sns 로그인 두가지 방식으로 로그인이 가능합니다.<br>
+▪️  보안을 강화하기 위해 인터셉터(interceptor) 기능을 활용하여 로그인 프로세스를 처리하고 있습니다.<br>
+▪️  일반로그인, sns 로그인 두가지 방식으로 로그인이 가능합니다.<br>
 ▪️  sns로 최초 로그인하는 경우 kakao가 제공하는 사용자 정보 외에 필요한 정보를 회원가입폼을 이용하여 입력 받게 됩니다.<br><br>
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707093-ea17f22c-3e96-4ce4-9cf5-87791585a12c.gif"/>
 
