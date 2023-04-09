@@ -78,6 +78,8 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707289-2817cc11-6bb7-4e05-9106-292f9ebdb9af.gif"/>
 
 ###  ✔️ 결제
+<img width="70%" height = "300px" src="https://user-images.githubusercontent.com/122211031/230764829-98482b38-3fd1-400f-9c79-180791af3ad4.gif"/>
+
 
 ###  ✔️ 관리자
 ▪️  관리자로 로그인 한 경우 마이페이지에서 관리자 홈으로 이동 가능합니다.( 일반 유저의 경우 버튼이 보이지 않습니다. )<br>
