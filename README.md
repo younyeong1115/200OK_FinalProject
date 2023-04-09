@@ -52,7 +52,8 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 </div>
 
 ### 2️⃣ 목업 설계
-<br><br><br>
+
+▪️ https://ovenapp.io/project/qd88VIWjsaejDrMlMGqosTVo0LvrruLM#4IE1u
 
 ## 📚주요 기능
 ###  ✔️ 회원가입
