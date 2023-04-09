@@ -15,7 +15,7 @@ import shop.myshop.entity.Delivery;
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery, Integer> {
 	
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------
+	
 	
 	@Query("select d from Delivery d where d.userId.userId=:userId")
 	List<Delivery> getByUserId(@Param("userId")String userId) throws Exception;

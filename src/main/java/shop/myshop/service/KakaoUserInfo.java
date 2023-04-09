@@ -34,7 +34,7 @@ public class KakaoUserInfo {
              System.out.println("Response Code : " + responseCode);
              System.out.println("Response Code : " + msg);
 
-             //HttpEntity entity = response.getEntity();  이 주석처리 되어있는 코드들은 혹시 오류가 나는 상황이라면 주석 없애고 실행 ㄱㄱ 무슨 오류인지 알려줄거임.
+             //HttpEntity entity = response.getEntity();  이 주석처리 되어있는 코드들은 혹시 오류가 나는 상황이라면 주석 없애고 실행 하면 무슨 오류인지 알려줌.
              //String responseString = EntityUtils.toString(entity, "UTF-8");
              //logger.info("responseString----->"+responseString);
              // JSON 형태 반환값 처리

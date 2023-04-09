@@ -471,14 +471,7 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 </head>
 <body>
 
-	<!--사이드바-->
-	<div class="fx">
-		<a href="#"> <img class="main"
-			src="https://www.slou.co.kr/img/front/btn/cartBtn.png" width="50"></a>
-		<a href="#"><img class="main"
-			src="https://www.slou.co.kr/img/front/btn/searchBtn.png" width="50"></a>
-	</div>
-
+	
 	
 	
 	
@@ -502,13 +495,13 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 						<li style="font-size: 0.8rem;"><a th:href="@{/product/watchlist}">watch</a></li>
 						<li style="font-size: 0.8rem;"><a th:href="@{/product/objectlist}">object</a></li>
 						</ul></li>
-				<li><a href="qna/qnalist">QnA</a></li>
-				<li><a href="notice/noticelist">Notice</a></li>
+				<li><a th:href="@{/qna/qnalist}">QnA</a></li>
+				<li><a th:href="@{/notice/noticelist}">Notice</a></li>
 			</ul>
 			<div th:if="${userName eq ''}">
 					<ul class="s-list">
 					
-						<li><a href="#">검색</a></li>
+						<li><a id="search-btn">검색</a></li>
 						<li><a th:href="@{/user/login}">로그인</a></li>
 					</ul>
 				</div>
@@ -517,11 +510,11 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 					<ul class="s-list">
 						
 						<li><a th:href="@{/cart/cartform}">장바구니</a></li>
-						<li><a href="#">검색</a></li>
+						<li><a id="search-btn">검색</a></li>
 						<li th:if="${userRole eq 'ADMIN'}"><a href="#">관리자 Home</a></li>
 						<li><a th:href="@{/mypage/home}">마이페이지</a></li>
 						<li><a th:href="@{/user/logout}">로그아웃</a></li>
-						<li><a th:href="@{/user/kakaologoutterm}">카카오로그아웃</a></li>
+						
 					</ul>
 				</div>
 		</div>

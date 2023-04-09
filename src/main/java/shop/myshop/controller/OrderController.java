@@ -47,7 +47,8 @@ public class OrderController {
 
 	@Autowired
 	private DeliveryService deliveryService;
-
+	
+	//개별구매
 	@MySecured(role = Role.USER)
 	@GetMapping("/eachorder")
 	public String order(@RequestParam("productCode") Product productCode, HttpSession session, Model model)
@@ -91,8 +92,8 @@ public class OrderController {
 		return "product/order";
 	}
 
-// ------▲영림 ------ ▼윤영---------------------------------------------------------------------------
 
+	//무통장주문
 	@MySecured(role = Role.USER)
 	@GetMapping("payment")
 	public String handlePaymentRequest(HttpSession session, @RequestParam("orderTotalprice") String orderTotalprice,
@@ -147,7 +148,8 @@ public class OrderController {
 
 		return "product/success-payment";
 	}
-
+	
+	//통합결제
 	@MySecured(role = Role.USER)
 	@GetMapping("paymentapi")
 	public String handlePaymentapiRequest(HttpSession session, @RequestParam("orderTotalprice") String orderTotalprice,

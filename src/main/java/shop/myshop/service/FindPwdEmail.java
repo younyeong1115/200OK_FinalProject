@@ -22,7 +22,7 @@ public class FindPwdEmail implements MailServiceInter {
 	// 임시 패스워드
 	private String tempPwd;
 
-	// 메일 내용 작성
+	// 메일 작성
 	@Override
 	public MimeMessage createMessage(String to) throws MessagingException, UnsupportedEncodingException {
 		// TODO Auto-generated method stub
@@ -47,7 +47,7 @@ public class FindPwdEmail implements MailServiceInter {
 		msgg += tempPwd + "</strong><div><br/> ";
 		msgg += "</div>";
 		message.setText(msgg, "utf-8", "html");// 내용
-		message.setFrom(new InternetAddress("luckyham0914@naver.com", "200Ok_Admin"));// 보내는 사람
+		message.setFrom(new InternetAddress("메일아이디", "200Ok_Admin"));// 보내는 사람
 
 		return message;
 	}
@@ -58,8 +58,8 @@ public class FindPwdEmail implements MailServiceInter {
 		StringBuffer key = new StringBuffer();
 		Random rnd = new Random();
 
-		for (int i = 0; i < 8; i++) { // 인증코드 8자리
-			int index = rnd.nextInt(3); // 0~2 까지 랜덤
+		for (int i = 0; i < 8; i++) { 
+			int index = rnd.nextInt(3); 
 
 			switch (index) {
 			case 0:

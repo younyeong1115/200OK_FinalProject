@@ -188,6 +188,6 @@ public class CartController {
 		return "product/order.html";
 	}
 
-	// 오더 폼에서 다른 페이지로 넘어갈때 세션에 저장된 selectedProducts 지우기!
+	
 
 }

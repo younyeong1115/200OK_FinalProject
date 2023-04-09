@@ -16,7 +16,7 @@ import shop.myshop.entity.Notice;
 public interface NoticeRepository extends JpaRepository<Notice, Integer> {
 
 	
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------
+	
 	
 
 	List<Notice> findByNoticeNo(int noticeNo) throws Exception;

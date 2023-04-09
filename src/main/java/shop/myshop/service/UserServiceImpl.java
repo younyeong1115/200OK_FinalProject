@@ -92,9 +92,9 @@ public class UserServiceImpl implements UserService {
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
-		postParams.add(new BasicNameValuePair("client_id", "4f66648509a057edfe2a0b9e3bbf285a")); // REST API KEY
-		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost/ok/user/kakao")); // 최종으로 깃에 올릴때는 꼭 지우고
-																									// 올리기!!!
+		postParams.add(new BasicNameValuePair("client_id", "카카오아이디")); // REST API KEY
+		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost/ok/user/kakao")); 
+																									
 		postParams.add(new BasicNameValuePair("code", code)); // 로그인 과정중 얻은 code 값
 
 		final HttpClient client = HttpClientBuilder.create().build();

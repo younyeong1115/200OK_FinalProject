@@ -10,7 +10,7 @@ import shop.myshop.entity.Likes;
 @Repository
 public interface LikesRepository extends JpaRepository<Likes, Integer> {
 	
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------
+	
 	
 	
 	@Query("SELECT COUNT(l) FROM Likes l WHERE l.userId.userId = :userId") 

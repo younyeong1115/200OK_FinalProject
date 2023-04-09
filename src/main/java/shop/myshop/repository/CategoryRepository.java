@@ -10,7 +10,6 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	
 	Category findByCategoryNo(Integer categoryNo);
 	
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------
 	
 	
 

@@ -15,7 +15,7 @@ import shop.myshop.entity.Notice;
 @Service
 public interface NoticeService {
 	
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------	
+	
 	
 	public void saveNotice(Notice notice) throws SQLException ;
 	

@@ -10,7 +10,7 @@ import shop.myshop.entity.Review;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------
+	
 	
 	@Query("SELECT COUNT(r) FROM Review r WHERE r.userId.userId = :userId")
 	int getReviewCount(@Param("userId") String userId);

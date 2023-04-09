@@ -16,8 +16,7 @@ import shop.myshop.entity.Product;
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Integer> {
 
-	// ------▲영림 ------
-	// ▼윤영--------------------------------------------------------------------------
+	
 
 	// 마이페이지 장바구니 갯수
 	@Query("SELECT COUNT(c) FROM Cart c WHERE c.userId.userId = :userId")

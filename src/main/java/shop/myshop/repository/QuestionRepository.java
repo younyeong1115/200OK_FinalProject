@@ -10,7 +10,7 @@ import shop.myshop.entity.Question;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 	
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------
+	
 	
 	@Query("SELECT COUNT(q) FROM Question q WHERE q.userId.userId = :userId")
 	int getQuestionwCount(@Param("userId") String userId);

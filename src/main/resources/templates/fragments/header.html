@@ -9,14 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <body>
-      <!-- 사이드바 -->
-      <div class="fx">
-         <a href="#"> <img class="main"
-            src="https://www.slou.co.kr/img/front/btn/cartBtn.png" width="50"></a>
-         <a href="#"><img class="main"
-            src="https://www.slou.co.kr/img/front/btn/searchBtn.png" width="50"></a>
-      </div>
-
+    
 
       <!-- title -->
       <div class="d-box">
@@ -48,7 +41,7 @@
             <div th:if="${userName eq ''}">
                <ul class="s-list">
                
-                  <li><a href="#">검색</a></li>
+                  <li><a id="search-btn">검색</a></li>
                   <li><a th:href="@{/user/login}">로그인</a></li>
                </ul>
             </div>
@@ -56,7 +49,7 @@
             <div th:if="${userName ne ''}">
                <ul class="s-list">
                   <li><a th:href="@{/cart/cartform}">장바구니</a></li>
-                  <li><a href="#">검색</a></li>
+                   <li><a id="search-btn">검색</a></li>
                   
                   <li><a th:href="@{/mypage/home}">마이페이지</a></li>
                   <li><a th:href="@{/user/logout}">로그아웃</a></li>

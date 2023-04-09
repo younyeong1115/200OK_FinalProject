@@ -47,7 +47,7 @@
         <input type="text" class="ib" th:value="${delivery.deliveryAdd1}" name="deliveryAdd1">&nbsp;&nbsp;
         <button type="button" onclick="execPostCode();">우편번호 찾기</button>
         <br>
-        <input type="text" class="ia" name="deliveryAdd2" th:value="${delivery.deliveryAdd2}" style="margin-top:10px; width:300px;"> 기본주소
+        <input type="text" class="ia" name="deliveryAdd2" th:value="${delivery.deliveryAdd2}" style="margin-top:10px; display: inline; width:300px;"readonly="readonly"> 기본주소
         <br>
         <input type="text" class="ia" name="deliveryAdd3" th:value="${delivery.deliveryAdd3}" style="margin-top:10px; width:300px;"> 상세주소
       </div>

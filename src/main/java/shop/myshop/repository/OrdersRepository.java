@@ -13,7 +13,6 @@ import shop.myshop.entity.Product;
 @Repository
 public interface OrdersRepository extends JpaRepository<Orders, Integer> {
 	
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------	
 	
 	@Query("SELECT COUNT(o) FROM Orders o WHERE o.userId.userId=:userId and orderStatus=:orderStatus")
 	int getOrdersCount(@Param("userId") String userId ,@Param("orderStatus") String orderStatus);

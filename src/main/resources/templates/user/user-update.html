@@ -7,7 +7,9 @@
 <head>
 <link th:href="@{/assets/css/user-update.css}" rel="stylesheet" type="text/css" />
 <style type="text/css"></style>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"> 
+
 </script> 
 </head>
 <body>
@@ -58,9 +60,9 @@
     </div>
     <div class="sign-input">
     <input type="text" name="userAddr1" th:value="${user.userAddr1}" class="ib">&nbsp;-&nbsp;
-    <a class="d-button">우편번호</a>
+    <a class="d-button" onclick="execPostCode();">우편번호</a>
     <br>
-    <input type="text"  name="userAddr2" class="ia" th:value="${user.userAddr2}" style="margin-top:10px; width:300px;"> 기본주소
+    <input type="text"  name="userAddr2" class="ia" th:value="${user.userAddr2}" style="margin-top:10px; display: inline; width:300px;" readonly="readonly" > 기본주소
     <br>
     <input type="text"  name="userAddr3"  class="ia" th:value="${user.userAddr3}" style="margin-top:10px;
 width:300px;"> 상세주소
@@ -101,6 +103,45 @@ width:300px;"> 상세주소
 
   
 </form>
+
+<script type="text/javascript">
+
+
+//도로명api
+function execPostCode() {
+  new daum.Postcode({
+      oncomplete: function(data) {
+
+         var fullRoadAddr = data.roadAddress;
+         var extraRoadAddr = ''; // 
+
+         if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+             extraRoadAddr += data.bname;
+         }
+         if(data.buildingName !== '' && data.apartment === 'Y'){
+            extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+         }
+         if(extraRoadAddr !== ''){
+             extraRoadAddr = ' (' + extraRoadAddr + ')';
+         }
+         if(fullRoadAddr !== ''){
+             fullRoadAddr += extraRoadAddr;
+         }
+
+         console.log(data.zonecode);
+         console.log(fullRoadAddr);
+         
+         
+         $("[name=userAddr1]").val(data.zonecode);
+         $("[name=userAddr2]").val(fullRoadAddr);
+         
+        
+     }
+  }).open();
+}
+
+
+</script>
 </body>
 </th:block>
 </html>

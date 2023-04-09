@@ -129,8 +129,8 @@ public class UserController {
 } 
 
 	
-
 	
+	//회원가입
 	@PostMapping("join")
 	public String join(User user, Model model) {
 
@@ -146,7 +146,7 @@ public class UserController {
 		}
 	} 
 	
-//------▲영림 ------ ▼윤영---------------------------------------------------------------------------
+
 	
 
 
@@ -160,7 +160,7 @@ public class UserController {
 		return "user/login-form";
 	}
 
-	//
+	
 	@PostMapping("login")
 	public String login(@RequestParam("id") String id, @RequestParam("password") String password,
 			HttpSession httpSession) throws Exception {
@@ -277,7 +277,7 @@ public class UserController {
 
 		StringBuffer url = new StringBuffer();
 		url.append("https://kauth.kakao.com/oauth/authorize?");
-		url.append("client_id=" + "4f66648509a057edfe2a0b9e3bbf285a");
+		url.append("client_id=" + "카카오톡아이디");
 		url.append("&redirect_uri=http://localhost/ok/user/kakao");
 		url.append("&response_type=code");
 
@@ -289,7 +289,7 @@ public class UserController {
 
 		StringBuffer url = new StringBuffer();
 		url.append("https://kauth.kakao.com/oauth/logout?");
-		url.append("client_id=" + "4f66648509a057edfe2a0b9e3bbf285a");
+		url.append("client_id=" + "카카오톡아이디");
 		url.append("&logout_redirect_uri=http://localhost/ok/user/kakaologout");
 
 		return "redirect:" + url.toString();

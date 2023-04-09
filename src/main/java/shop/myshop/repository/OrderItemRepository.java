@@ -14,7 +14,7 @@ import shop.myshop.entity.Product;
 @Repository
 public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
 	
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------	
+	
 	
 	@Query("select o.productCode from Orderitem o where o.orderCode.orderCode=:orderCode")
 	List<Product> findByorderCode(@Param("orderCode") int orderCode);

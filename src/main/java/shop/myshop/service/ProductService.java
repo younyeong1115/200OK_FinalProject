@@ -18,7 +18,7 @@ public interface  ProductService {
 
 	public List<ProductDTO> getProductListByCategory(Category categoryNo);
 	
-//----------------------------------------------------------------------
+
 	public Product findByProductCode(@Param("productCode")int productCode);
 	
 	public List<Product> findProduct() throws Exception ;

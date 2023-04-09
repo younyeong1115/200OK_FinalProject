@@ -20,7 +20,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Autowired
 	private ModelMapper modelMapper;
 
-	//------▲영림 ------ ▼윤영--------------------------------------------------------------------------
+	
 	
 	@Override
 	public void saveNotice(Notice notice) throws SQLException {

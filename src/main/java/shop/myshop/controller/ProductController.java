@@ -180,7 +180,6 @@ public class ProductController {
 	    return "product/objectlist";
 	}
 	
-	//--------------------------------------------------------------------------------------
 	
 		@GetMapping("productdetail/{productCode}")
 		public String detail(@PathVariable int productCode, Model model,HttpSession httpSession) throws Exception {
@@ -198,6 +197,7 @@ public class ProductController {
 
 		}
 		
+		//검색
 		@GetMapping("search")
 		public String search(@RequestParam("keyword")String keyword,Model model) throws Exception {
 			System.out.println(keyword);
