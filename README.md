@@ -5,7 +5,7 @@
 <br>
 
 ## :speech_balloon:서비스 소개
-Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
+Spring Boot + MySql + JPA로 구현한 쥬얼리쇼핑몰입니다.
 
 <br>
 
@@ -19,7 +19,17 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
 <img src="https://img.shields.io/badge/axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/>
 <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
+<img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=white"/><br>
+  
+<img src="https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=Postman&logoColor=white">
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white">
+<img src="https://img.shields.io/badge/Miro-050038?style=flat-square&logo=Miro&logoColor=white">
+<img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=Slack&logoColor=white">
+<img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=Notion&logoColor=white"><br>
+
+  
+  
+
 
 
 
