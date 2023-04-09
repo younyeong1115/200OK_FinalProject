@@ -131,12 +131,7 @@ user entity 에서는 userId가 String 타입이었고, cart entity에서 userId
  StackOverflowError는 우리가 접할 수 있는 가장 일반적인 런타임 오류 중 하나이다<br> 
  여러 원인과 해결 방법이 있으나 우선 엔티티 문제로 파악하고 @tosting을 지우고 직접 tostring지정을 하여 오류를 해결하였다.<br> 
 
-  
 
-## :pencil2:개선할점
-###  ✔️ html css 분리
-짧은 css코드이면 html 상단 style에 넣어도 되지만 현재 작성한 html중 일부 css코드는 장문이다.<br>
-이러한 css는 따로 분리하여 링크를 걸어주어야 클린코드가 가능하다.
   
   
  
