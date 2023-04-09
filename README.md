@@ -111,5 +111,12 @@ Spring Boot + MySql + JPA로 구현한 쥬얼리쇼핑몰입니다.
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707321-efd4ac86-8442-4fae-987e-1a7e137997f3.gif"/>
 
 ## 💥트러블 슈팅
+###  ✔️ Parameter value [1] did not match expected type [entity.User (n/a)]; java.lang.IllegalArgumentException
+user entity 에서는 userId가 String 타입이었고, cart entity에서 userId의 타입은 User와 조인을 하기 때문에 User타입으로 선언해주었기 때문에 
+@Query("SELECT COUNT(c) FROM Cart c WHERE c.userId = :userId") 이렇게 쿼리를 생성해줬을때 타입이 다르다는 오류가 발생했다
+@Query("SELECT COUNT(c) FROM Cart c WHERE c.userId.userId = :userId") 따라서 userId(유저타입).userId로 쿼리를 생성하여 오류를 해결하였다
+
+###  ✔️
+
 
 ## :pencil2:개선할점
