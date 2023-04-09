@@ -1,6 +1,5 @@
 package shop.myshop.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.myshop.dto.ProductDTO;
 import shop.myshop.entity.Category;
@@ -195,6 +195,15 @@ public class ProductController {
 			
 
 			return "product/product-detail-onesize";
+
+		}
+		
+		@GetMapping("search")
+		public String search(@RequestParam("keyword")String keyword,Model model) throws Exception {
+			System.out.println(keyword);
+			System.out.println(productService.findByProductNameLikeIgnoreCase(keyword));
+			model.addAttribute("product", productService.findByProductNameLikeIgnoreCase(keyword));
+			return "product/product-search";
 
 		}
 

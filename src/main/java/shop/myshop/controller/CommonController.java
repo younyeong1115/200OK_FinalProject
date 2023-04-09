@@ -17,8 +17,11 @@ public class CommonController {
 	    if (user != null) {
 	        model.addAttribute("userName", user.getUserName());
 	        model.addAttribute("userRole", user.getUserRole().toString());
+	        model.addAttribute("userProvider", user.getUserProvider());
 	    } else {
 	        model.addAttribute("userName", "");
+	        model.addAttribute("userRole", "");
+	        model.addAttribute("userProvider", "");
 	    }
 	}
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import shop.myshop.annotation.MySecured;
 import shop.myshop.dto.Role;
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.Notice;
@@ -30,6 +31,7 @@ public class NoticeController {
 	private NoticeService noticeService;
 
 	// 공지 작성폼으로 이동 - 관리자만 작성 가능
+	@MySecured(role = Role.ADMIN)
 	@GetMapping("writeform")
 	public String noticeForm(HttpSession session, Model model) throws Exception {
 		UserDTO user = (UserDTO) session.getAttribute("user");
@@ -40,6 +42,7 @@ public class NoticeController {
 	}
 
 //	 @RequestMapping(value = "/",method = RequestMethod.GET)
+	@MySecured(role = Role.ADMIN)
 	@RequestMapping(value = "/a")
 	public ModelAndView insertEditor(HttpServletRequest req, ModelMap model) throws Exception {
 		ModelAndView mav = new ModelAndView("board/notice-write");
@@ -48,6 +51,7 @@ public class NoticeController {
 	}
 
 	// @RequestMapping(value = "/savepost" ,method = RequestMethod.GET)
+	@MySecured(role = Role.ADMIN)
 	@RequestMapping(value = "/savepost1")
 	public String savePost(HttpServletRequest req, Notice notice) throws Exception {
 
@@ -62,6 +66,7 @@ public class NoticeController {
 
 	}
 	
+	@MySecured(role = Role.ADMIN)
 	@RequestMapping(value = "savepost")
 	public String savePost1(HttpServletRequest req, Notice notice) throws Exception {
 
@@ -70,7 +75,7 @@ public class NoticeController {
 	}
 	
 	
-	
+	@MySecured(role = Role.ADMIN)
 	@RequestMapping(value = "/updatePost")
 	public String updatePost(HttpSession session,HttpServletRequest req, Notice notice) throws Exception {
 
@@ -116,7 +121,7 @@ public class NoticeController {
 
 		return "board/notice-list";
 	}
-
+	
 	@GetMapping("detail/{noticeNo}")
 	public String detail(@PathVariable int noticeNo, Model model,HttpSession httpSession) throws Exception {
 		
@@ -140,6 +145,7 @@ public class NoticeController {
 
 	}
 	//삭제
+	@MySecured(role = Role.ADMIN)
 	@GetMapping("delete")
 	public String noticeDelete(@RequestParam("noticeNo") int noticeNo) throws Exception {
 		noticeService.deleteByNoticeNo(noticeNo);
@@ -148,6 +154,7 @@ public class NoticeController {
 
 	}
 	//수정 폼으로 이동
+	@MySecured(role = Role.ADMIN)
 	@GetMapping("updateform")
 	public String noticeUpdateForm(@RequestParam("noticeNo") int noticeNo,Model model) throws Exception {
 		model.addAttribute("notice",  noticeService.findByNoticeNo(noticeNo));

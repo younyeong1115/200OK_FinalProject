@@ -21,6 +21,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import shop.myshop.annotation.MySecured;
+import shop.myshop.dto.Role;
 import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.Cart;
 import shop.myshop.entity.Product;
@@ -43,6 +45,7 @@ public class CartController {
 	private DeliveryService deliveryservice;
 	
 	//x 아이콘 누르면 장바구니 삭제
+	@MySecured(role = Role.USER)
 	@GetMapping("cartdelete")
 	public String cartDelete(HttpSession session,@RequestParam(value = "productCode")String productCode) throws Exception {
 		
@@ -53,6 +56,7 @@ public class CartController {
 	}
 
 	// 구매 -> 장바구니 추가
+	@MySecured(role = Role.USER)
 	@RequestMapping(value = "/insertcart")
 	public String insertCart(Model model,HttpSession session, @RequestParam("productCode") String code) throws Exception {
 		int productCode = Integer.parseInt(code);
@@ -62,7 +66,7 @@ public class CartController {
 		List<Product> productList = cartservice.getProductCode(user.getUserId());
 
 		System.out.println(productList);
-		System.out.println(productList.get(0).getProductCode());
+		//System.out.println(productList.get(0).getProductCode());
 
 		int validProductCode = 0;// 이미 존재하는 상품코드를 담기 위한 변수
 		for (int i = 0; i < productList.size(); i++) {
@@ -96,6 +100,7 @@ public class CartController {
 	}
 
 	// 장바구니 폼으로 이동
+	@MySecured(role = Role.USER)
 	@GetMapping("cartform")
 	public String cartForm(HttpSession session, Model model) throws Exception {
 
@@ -120,7 +125,8 @@ public class CartController {
 
 		return "product/cart";
 	}
-
+	
+	@MySecured(role = Role.USER)
 	@PostMapping("addcart")
 	public String addCart(HttpSession session, @RequestBody Map<String, Object> jsonData,
 			RedirectAttributes redirectAttributes, Model model) {
@@ -134,7 +140,8 @@ public class CartController {
 
 		return "product/order";
 	}
-
+	
+	@MySecured(role = Role.USER)
 	@GetMapping("orderform")
 	public String orderForm(HttpSession session, Model model) throws Exception {
 

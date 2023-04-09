@@ -1,5 +1,8 @@
 package shop.myshop.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.myshop.annotation.MySecured;
 import shop.myshop.dto.DeliveryDTO;
+import shop.myshop.dto.Role;
 import shop.myshop.dto.UserDTO;
+import shop.myshop.entity.Product;
 import shop.myshop.service.CartService;
 import shop.myshop.service.DeliveryService;
 import shop.myshop.service.LikesService;
+import shop.myshop.service.OrderItemService;
 import shop.myshop.service.OrdersService;
 import shop.myshop.service.ProductQuestionService;
 import shop.myshop.service.QuestionService;
@@ -43,12 +50,16 @@ public class MyPageController {
 	private OrdersService orderService;
 	
 	@Autowired
+	private OrderItemService orderItemService;
+	
+	@Autowired
 	private DeliveryService deliveryService;
 	
 	
 	
 	
 	//회원 정보 수정 폼
+	@MySecured(role = Role.USER)
 	@GetMapping("edituserform")
 	public String EditUserForm(Model model,HttpSession httpSession) throws Exception {
 		UserDTO user = (UserDTO) httpSession.getAttribute("user");
@@ -56,6 +67,7 @@ public class MyPageController {
 		return "user/user-update";
 	}
 	//회원 정보 수정
+	@MySecured(role = Role.USER)
 	@GetMapping("edituser")
 	public String Edituser() throws Exception {
 		
@@ -63,6 +75,7 @@ public class MyPageController {
 	}
 	
 	//배송지 목록
+	@MySecured(role = Role.USER)
 	@GetMapping("adresslist")
 	public String Adresslist(Model model, HttpSession httpSession) throws Exception {
 		
@@ -75,6 +88,7 @@ public class MyPageController {
 	}
 	
 	@GetMapping("home")
+	@MySecured(role = Role.USER)
 	public String myInfo(Model model, HttpSession httpSession) throws Exception {
 		if (httpSession.getAttribute("user") != null) {
 
@@ -89,11 +103,24 @@ public class MyPageController {
 			model.addAttribute("shipping", orderService.getOrdersCount(user.getUserId(), "배송중"));
 			model.addAttribute("completed", orderService.getOrdersCount(user.getUserId(), "배송완료"));
 			
+			//주문한 상품이 배송완료 상태가 아닌경우 마이페이지 뷰에 출력
+			List<Integer> orderCodes = orderService.findByUserId(user.getUserId());
+			List<Product> products = new ArrayList<>();
+
+			for(Integer orderCode : orderCodes) {
+			   List<Product> orderProducts = orderItemService.findByorderCode(orderCode);
+			   products.addAll(orderProducts);
+			}
+			System.out.println(products);
+			
+			
+			
 			model.addAttribute("user", user);
 		} 
 		return "user/my-info";
 	}
 	//배송지 추가 페이지로 이동
+	@MySecured(role = Role.USER)
 	@GetMapping("deliveryaddform")
 	public String deliveryAddForm(HttpSession session,Model model) throws Exception {
 		UserDTO user = (UserDTO) session.getAttribute("user");
@@ -102,6 +129,7 @@ public class MyPageController {
 	}
 	
 	//기본 배송지 추가/수정
+	@MySecured(role = Role.USER)
 	@PostMapping("deliveryadd")
 	public String deliveryAdd(DeliveryDTO delivery,HttpSession session) throws Exception {
 		System.out.println(delivery);
@@ -122,6 +150,7 @@ public class MyPageController {
 		return "redirect:/mypage/adresslist";
 	}
 	//배송지 수정 페이지로 이동
+	@MySecured(role = Role.USER)
 	@GetMapping("deliveryupdateform")
 	public String deliveryUpdateForm(HttpSession session,Model model,@RequestParam(value = "deliveryId")Integer deliveryId) throws Exception {
 		UserDTO user = (UserDTO) session.getAttribute("user");
@@ -132,6 +161,7 @@ public class MyPageController {
 	}
 	
 	//배송지 삭제(비동기)
+	@MySecured(role = Role.USER)
 	@GetMapping("deliverydelete")
 	public String deliveryDelte(@RequestParam(value = "deliveryId")Integer deliveryId) throws Exception {
 		

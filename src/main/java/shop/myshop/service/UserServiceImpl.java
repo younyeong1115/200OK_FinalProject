@@ -34,14 +34,12 @@ import shop.myshop.dto.UserDTO;
 import shop.myshop.entity.User;
 import shop.myshop.repository.UserRepository;
 
-
-
 @Service
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	@Autowired
 	private UserRepository userDao;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
 
@@ -49,161 +47,145 @@ public class UserServiceImpl implements UserService{
 	public User join(User user) {
 		return userDao.save(user);
 	}
-	
-	
 
 	@Override
-    public Boolean isUser(String id, String pwd) throws Exception {
-        List<User> list = userDao.findByUserIdAndUserPwd(id, pwd);
-        return list.stream().anyMatch((user) -> user.getUserId().equals(id) && user.getUserPwd().equals(pwd));
-    }
-	
-	
-   
-    @Override
-    public UserDTO findByUserId(String id) throws Exception {
-        User user = userDao.findByUserId(id);
-       if (user == null) {
-            return null;
-        }
-        return modelMapper.map(user, UserDTO.class);
-    }
+	public Boolean isUser(String id, String pwd) throws Exception {
+		List<User> list = userDao.findByUserIdAndUserPwd(id, pwd);
+		return list.stream().anyMatch((user) -> user.getUserId().equals(id) && user.getUserPwd().equals(pwd));
+	}
 
+	@Override
+	public UserDTO findByUserId(String id) throws Exception {
+		User user = userDao.findByUserId(id);
+		if (user == null) {
+			return null;
+		}
+		return modelMapper.map(user, UserDTO.class);
+	}
 
-    @Override
-    public List<UserDTO> findAll() throws Exception{
-        List<User> userList = userDao.findAll();
-        return userList.stream()
-                .map(user -> modelMapper.map(user, UserDTO.class))
-                .collect(Collectors.toList());
-    }
+	@Override
+	public List<UserDTO> findAll() throws Exception {
+		List<User> userList = userDao.findAll();
+		return userList.stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
+	}
 
+	// 아이디찾기
+	@Override
+	public String getUserId(String userName, String userEmail) throws Exception {
+		return userDao.findByUserNameAndUserEmail(userName, userEmail);
 
-    
-
-  //아이디찾기
-  	@Override
-  	public String getUserId(String userName, String userEmail) throws Exception {
-  		return userDao.findByUserNameAndUserEmail(userName,userEmail);
-
-  	}
-
-
+	}
 
 	@Override
 	public User findUserPwd(String userId, String userName, String userEmail) throws Exception {
 		return userDao.findByUserIdAndUserNameAndUserEmail(userId, userName, userEmail);
 	}
-		
-	
-		@Override	
-		public int changeTempPwd(String tempPwd, String userId) throws Exception {
-			return userDao.updateTempPwd(tempPwd, userId);
-		}
-
-
-
-		@Override
-		public JsonNode getKakaoAccessToken(String code) {
-	        final String RequestUrl = "https://kauth.kakao.com/oauth/token"; // Host
-	        final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
-	 
-	        postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
-	        postParams.add(new BasicNameValuePair("client_id", "4f66648509a057edfe2a0b9e3bbf285a")); // REST API KEY
-	        postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost/ok/user/kakao")); //최종으로 깃에 올릴때는 꼭 지우고 올리기!!!
-	        postParams.add(new BasicNameValuePair("code", code)); // 로그인 과정중 얻은 code 값
-	 
-	        final HttpClient client = HttpClientBuilder.create().build();
-	        final HttpPost post = new HttpPost(RequestUrl);
-	 
-	        JsonNode returnNode = null;
-	 
-	        try {
-	            post.setEntity(new UrlEncodedFormEntity(postParams));
-	 
-	            final HttpResponse response = client.execute(post);
-	            final int responseCode = response.getStatusLine().getStatusCode();
-	 
-	            System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
-	            System.out.println("Post parameters : " + postParams);
-	            System.out.println("Response Code : " + responseCode);
-	 
-	            // JSON 형태 반환값 처리
-	            ObjectMapper mapper = new ObjectMapper();
-	 
-	            returnNode = mapper.readTree(response.getEntity().getContent());
-	 
-	        } catch (UnsupportedEncodingException e) {
-	            e.printStackTrace();
-	        } catch (ClientProtocolException e) {
-	            e.printStackTrace();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        } finally {
-	        }
-	 
-	        return returnNode;
-	    }
-
-
-	 public HashMap<String, Object> getUserInfo (String access_Token) {
-        
-        //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
-        HashMap<String, Object> userInfo = new HashMap<>();
-        String reqURL = "https://kapi.kakao.com/v2/user/me";
-        try {
-            URL url = new URL(reqURL);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            
-            //    요청에 필요한 Header에 포함될 내용
-            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
-            
-            int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
-            
-            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            
-            String line = "";
-            String result = "";
-            
-            while ((line = br.readLine()) != null) {
-                result += line;
-            }
-            System.out.println("response body : " + result);
-            
-            JsonParser parser = new JsonParser();
-            JsonElement element = parser.parse(result);
-            
-            JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-            JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-            
-            String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-            String email = kakao_account.getAsJsonObject().get("email").getAsString();
-            
-            userInfo.put("nickname", nickname);
-            userInfo.put("email", email);
-            
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
-        return userInfo;
-    }
-
-
 
 	@Override
-	  public boolean UserIdExists(String userId) throws Exception {
-		Optional<User> optionalUser =  userDao.existsByUserId(userId);
-		
-	        return optionalUser.isPresent();
-	    }
-
+	public int changeTempPwd(String tempPwd, String userId) throws Exception {
+		return userDao.updateTempPwd(tempPwd, userId);
 	}
 
-	
+	@Override
+	public JsonNode getKakaoAccessToken(String code) {
+		final String RequestUrl = "https://kauth.kakao.com/oauth/token"; // Host
+		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 
+		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
+		postParams.add(new BasicNameValuePair("client_id", "4f66648509a057edfe2a0b9e3bbf285a")); // REST API KEY
+		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost/ok/user/kakao")); // 최종으로 깃에 올릴때는 꼭 지우고
+																									// 올리기!!!
+		postParams.add(new BasicNameValuePair("code", code)); // 로그인 과정중 얻은 code 값
+
+		final HttpClient client = HttpClientBuilder.create().build();
+		final HttpPost post = new HttpPost(RequestUrl);
+
+		JsonNode returnNode = null;
+
+		try {
+			post.setEntity(new UrlEncodedFormEntity(postParams));
+
+			final HttpResponse response = client.execute(post);
+			final int responseCode = response.getStatusLine().getStatusCode();
+
+			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
+			System.out.println("Post parameters : " + postParams);
+			System.out.println("Response Code : " + responseCode);
+
+			// JSON 형태 반환값 처리
+			ObjectMapper mapper = new ObjectMapper();
+
+			returnNode = mapper.readTree(response.getEntity().getContent());
+
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+		}
+
+		return returnNode;
+	}
+
+	public HashMap<String, Object> getUserInfo(String access_Token) {
+
+		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
+		HashMap<String, Object> userInfo = new HashMap<>();
+		String reqURL = "https://kapi.kakao.com/v2/user/me";
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+
+			// 요청에 필요한 Header에 포함될 내용
+			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode : " + responseCode);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+			String line = "";
+			String result = "";
+
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+			System.out.println("response body : " + result);
+
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+
+			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+
+			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+			String email = kakao_account.getAsJsonObject().get("email").getAsString();
+
+			userInfo.put("nickname", nickname);
+			userInfo.put("email", email);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return userInfo;
+	}
+
+	@Override
+	public boolean UserIdExists(String userId) throws Exception {
+		Optional<User> optionalUser = userDao.existsByUserId(userId);
+
+		return optionalUser.isPresent();
+	}
 	
-	
+	@Override
+	public void deleteByUserId(String userId) throws Exception{
+		userDao.deleteById(userId);
+	}
+
+
+}

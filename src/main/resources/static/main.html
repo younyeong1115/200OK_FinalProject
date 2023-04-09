@@ -28,7 +28,6 @@
 		<div class="titl">
 			<div style="float: left; margin: 0 20px;">
 
-				<!-- 수정 필요 ! 비회원 -> index.html / 회원 관리자 로그인시 main.html로 넘어가도록 -->
 				<a href="user/logo"><img src="image/logo.png" width="70"></a>
 
 			</div>
@@ -46,23 +45,20 @@
 				<li><a href="qna/qnalist">QnA</a></li>
 				<li><a href="notice/noticelist">Notice</a></li>
 			</ul>
-			<ul class="s-list">
-                  
-                  <li><a href="cart/cartform">장바구니</a></li>
-                  <li><a href="#">검색</a></li>
-                  <li th:if="${userRole eq 'ADMIN'}"><a href="#">관리자 Home</a></li>
-                  <li><a href="mypage/home">마이페이지</a></li>
-                  <li><a href="user/logout">로그아웃</a></li>
-                  <li><a href="user/kakaologoutterm">카카오로그아웃</a></li>
-               </ul>
+			<ul class="s-list" id="menu">
 
+				<li><a href="cart/cartform">장바구니</a></li>
+				<li><a id="search-btn">검색</a></li>
+				<li><a href="mypage/home">마이페이지</a></li>
+				<li><a href="user/logout">로그아웃</a></li>
+				</ul>
 
 		</div>
-		<div id="search-container"></div>
+		
 
 	</div>
-
-
+<div id="search-container" class="hidden">
+</div>
 
 	<br>
 	<br>
@@ -120,7 +116,8 @@
 		</div>
 
 	</div>
-
+	
+	
 	<br>
 	<br>
 	<br>
@@ -185,70 +182,7 @@
 							<img src="image/banner_04.png" alt="" width="500" height="450">
 						</div>
 				</a></li>
-				<!-- <li class="bottom" style="width: 662px;">
-          <a href="#">
-            <div class="text-box green">
-              <p>5% SALE</p>
-            </div>
-            <div class="img-box">
-              <img src="https://webimage.10x10.co.kr/eventIMG/2022/pcmainlookitem/itemimage20220317214723.JPEG" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="top" style="width: 450px;">
-          <a href="#">
-            <div class="text-box green">
-              <p>5% SALE</p>
-            </div>
-            <div class="img-box">
-              <img src="https://webimage.10x10.co.kr/eventIMG/2022/pcmainlookitem/itemimage20220317214746.JPEG" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="bottom" style="width: 551px;">
-          <a href="#">
-            <div class="img-box">
-              <img src="https://webimage.10x10.co.kr/eventIMG/2022/pcmainlookitem/itemimage20220317214809.JPEG" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="top" style="width: 566px;">
-          <a href="#">
-            <div class="text-box green">
-              <p>5% SALE</p>
-            </div>
-            <div class="img-box">
-              <img src="https://webimage.10x10.co.kr/eventIMG/2022/pcmainlookitem/itemimage20220317214829.JPEG" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="top" style="width: 740px;">
-          <a href="#">
-            <div class="text-box green">
-              <p>5% SALE</p>
-            </div>
-            <div class="img-box">
-              <img src="https://webimage.10x10.co.kr/eventIMG/2022/pcmainlookitem/itemimage20220317214851.JPEG" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="bottom" style="width: 526px;">
-          <a href="#">
-            <div class="text-box green">
-              <p>5% SALE</p>
-            </div>
-            <div class="img-box">
-              <img src="https://webimage.10x10.co.kr/eventIMG/2022/pcmainlookitem/itemimage20220317214914.JPEG" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="top" style="width: 373px;">
-          <a href="#">
-            <div class="img-box">
-              <img src="https://webimage.10x10.co.kr/eventIMG/2022/pcmainlookitem/itemimage20220317214933.JPEG" alt="">
-            </div>
-          </a>
-        </li>-->
+				
 				<!-- 연속되게 보이기 -->
 				<li class="bottom" style="width: 495px;"><a href="#">
 						<div class="text-box">
@@ -356,36 +290,85 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=474c933b212ecfab546f58afc91463fa&libraries=services,clusterer,drawing"></script>
 	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script> -->
 	<script>
+	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(35.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
+	mapOption = {
+		center : new kakao.maps.LatLng(35.450701, 126.570667), // 지도의 중심좌표
+		level : 3
+	// 지도의 확대 레벨
+	};
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-var iwContent = '<div style="padding:5px;">200OK 오프라인 쇼핑몰</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-    iwPosition = new kakao.maps.LatLng(37.5724, 126.9929), //인포윈도우 표시 위치입니다
-    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+	var iwContent = '<div style="padding:5px;">200OK 오프라인 쇼핑몰</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	iwPosition = new kakao.maps.LatLng(37.5724, 126.9929), //인포윈도우 표시 위치입니다
+	iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
-// 인포윈도우를 생성하고 지도에 표시합니다
-var infowindow = new kakao.maps.InfoWindow({
-    map: map, // 인포윈도우가 표시될 지도
-    position : iwPosition, 
-    content : iwContent,
-    removable : iwRemoveable
-});
-    
-const searchBtn = document.getElementById('search-btn');
-const searchContainer = document.getElementById('search-container');
+	// 인포윈도우를 생성하고 지도에 표시합니다
+	var infowindow = new kakao.maps.InfoWindow({
+		map : map, // 인포윈도우가 표시될 지도
+		position : iwPosition,
+		content : iwContent,
+		removable : iwRemoveable
+	});
+	
+	
+	const searchBtn = document.getElementById('search-btn');
+	const searchContainer = document.getElementById('search-container');
 
-searchBtn.addEventListener('click', () => {
-  // 검색창을 생성하고 삽입
-  const searchInput = document.createElement('input');
-  searchInput.type = 'text';
-  searchInput.placeholder = '검색어를 입력하세요';
-  searchContainer.appendChild(searchInput);
-});
+	// 검색창과 검색 버튼을 미리 생성하고 삽입합니다.
+	const searchInput = document.createElement('input');
+	searchInput.type = 'text';
+	searchInput.placeholder = '검색어를 입력하세요';
+
+	const submitButton = document.createElement('button');
+	submitButton.innerText = '검색';
+	submitButton.className = 'submit-button';
+
+	searchContainer.appendChild(searchInput);
+	searchContainer.appendChild(submitButton);
+
+	// 검색 버튼에 이벤트 리스너를 추가합니다.
+	submitButton.addEventListener('click', () => {
+	  const searchValue = searchInput.value;
+	  window.location.href = `product/search?keyword=${searchValue}`;
+	});
+
+	// 닫기 버튼에 이벤트 리스너를 추가합니다.
+	const closeButton = document.createElement('span');
+	closeButton.innerHTML = '&times;';
+	closeButton.className = 'close-button';
+	closeButton.addEventListener('click', () => {
+	  searchContainer.removeChild(searchInput);
+	  searchContainer.removeChild(submitButton);
+	  searchContainer.removeChild(closeButton);
+	  searchContainer.classList.add('hidden');
+	});
+	searchContainer.appendChild(closeButton);
+
+	// 검색 버튼을 클릭할 때마다 검색창이 생기지 않도록 수정합니다.
+	searchBtn.addEventListener('click', () => {
+	  if (searchContainer.classList.contains('hidden')) {
+	    searchContainer.classList.remove('hidden');
+	  } else {
+	    searchContainer.classList.add('hidden');
+	  }
+	});
+	
+	// 검색 버튼을 누르면 실행되는 함수
+	submitButton.addEventListener('click', () => {
+		  const searchValue = searchInput.value;
+		  const xhr = new XMLHttpRequest();
+		  xhr.open('GET', `product/search?keyword=${searchValue}`);
+		  xhr.onload = function() {
+		    if (xhr.status === 200) {
+		      // 서버로부터 받은 응답을 처리합니다.
+		    } else {
+		      // 에러 처리를 합니다.
+		    }
+		  };
+		  xhr.send();
+		});
 	</script>
 
 </body>

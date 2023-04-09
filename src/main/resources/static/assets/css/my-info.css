@@ -491,12 +491,16 @@ div{
   margin-bottom: 2px;
 }
 
-
-
-/*  */
-.listContainer .item:hover{
-/*   background-color: #f8f8f8; */
+html, body {
+    height: 100%
 }
-.infoContainer .item:hover{
-/*   background-color: #f8f8f8; */
+
+#wrap {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+}
+
+footer {
+    bottom: 0;
 }

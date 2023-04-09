@@ -32,5 +32,7 @@ public interface UserService {
 	public int changeTempPwd(String tempPwd, String userId) throws Exception;
 
 	public boolean UserIdExists(String userId) throws Exception;
+	
+	public void deleteByUserId(String userId) throws Exception;
 
 }

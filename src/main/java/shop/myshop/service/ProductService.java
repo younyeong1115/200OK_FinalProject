@@ -16,11 +16,24 @@ public interface  ProductService {
 	
 
 
-	List<ProductDTO> getProductListByCategory(Category categoryNo);
+	public List<ProductDTO> getProductListByCategory(Category categoryNo);
 	
 //----------------------------------------------------------------------
-	Product findByProductCode(@Param("productCode")int productCode);
-
-
+	public Product findByProductCode(@Param("productCode")int productCode);
+	
+	public List<Product> findProduct() throws Exception ;
+	
+	/*상품 이름 검색*/
+	public List<Product> findByProductNameLikeIgnoreCase(String title) throws Exception;
+	
+	public void saveProduct(Product product) throws Exception;
+	
+	public void deleteProduct(int productCode) throws Exception;
+	
+	public List<String> findTop5ByOrderByProductSaleDesc() throws Exception;
+	
+	public List<Product> findByProductSale() throws Exception;
+	
+	public List<String> findWorst5ByOrderByProductSaleAsc() throws Exception;
 
 }
