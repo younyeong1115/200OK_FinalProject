@@ -374,25 +374,31 @@ function agreeAll(agreeAll)  {
 
 
 
-
 //인증메일
-var confirmationCode; // 인증번호를 저장할 전역 변수
 function checkEmail(email) {
-	  axios({
-	    method: 'POST',
-	    url: 'user/userEmailConfirm?userEmail=' + email
-	  })
-	  .then(function (response) {
-	    alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.");
-	    document.getElementById('userEmailconfirmTxt').innerText = ''; // 인증번호 일치 여부 텍스트 초기화
-	   
-	  })
-	  .catch(function (error) {
-	    console.log(error);
-	  });
-	}
+  axios({
+    method: 'POST',
+    url: 'user/userEmailConfirm?userEmail=' + email
+  })
+  .then(function (response) {
+    alert("해당 이메일로 인증번호 발송이 완료되었습니다. \n 확인부탁드립니다.");
+    document.getElementById('userEmailconfirmTxt').innerText = ''; // 인증번호 일치 여부 텍스트 초기화
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
 
-
+function verifyCode() {
+  var confirmationCode = response.data.confirmationCode; 
+  var inputCode = document.getElementById('userEmailconfirm').value;
+  
+  if (confirmationCode === inputCode) {
+    document.getElementById('userEmailconfirmTxt').innerText = '인증번호가 일치합니다.';
+  } else {
+    document.getElementById('userEmailconfirmTxt').innerText = '인증번호가 일치하지 않습니다.';
+  }
+}
 
 //유효성 검사 및 폼 제출	
 function Yncheck(checkbox) {
@@ -401,8 +407,8 @@ function Yncheck(checkbox) {
 	  } else {
 	    checkbox.value = "N";
 	  }
-	}
-
+	}	
+	
 function validateForm() {
 	  const userId = document.getElementById('userId');
 	  const userPwd = document.getElementById('userPwd');
@@ -433,20 +439,20 @@ function validateForm() {
 	    alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
 	    return;
 	  }
-	  
-	  if (!btnPrimary.clicked) {
-	    alert("이메일 인증을 해주세요.");
-	    btnPrimary.addEventListener('click', function() {
-	  	  btnPrimary.clicked = true;
-	  	});
-	    return;
+	  if (!btnIdCheck.clicked) {
+		    alert("아이디 중복체크를 해주세요.");
+
+		    btnIdCheck.addEventListener('click', function() {
+		      btnIdCheck.clicked = true;
+		    });
+		    return;
 	  }
 
-	  if (!btnIdCheck.clicked) {
-	    alert("아이디 중복체크를 해주세요.");
+	  if (!btnPrimary.clicked) {
+	    alert("이메일 인증을 해주세요.");
 
-	    btnIdCheck.addEventListener('click', function() {
-	      btnIdCheck.clicked = true;
+	    btnPrimary.addEventListener('click', function() {
+	    	btnPrimary.clicked = true;
 	    });
 	    return;
 	  }
@@ -479,7 +485,11 @@ function validateForm() {
 	}
 
 	submitForm();
-
+	
+		  
+		  
+		  
+		  
 </script>
 
 
