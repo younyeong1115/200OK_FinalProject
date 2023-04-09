@@ -56,6 +56,10 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 
 ## 📚주요 기능
 ###  ✔️ 회원가입
+▪️  유효성을 주어 조건 미충족시 회원가입을 못하도록 하였습니다.<br>
+▪️  유효성: 아이디양식체크, ID중복체크, 비밀번호일치확인, 필수입력사항 알람창, 필수동의사항 알람창, ID중복체크 알람창, 인증번호체크 알람창<br>
+▪️  도로명API를 사용하여 주소지를 입력하게 하였습니다. 우편번호와 도로명주소는 도로명API를 통해서만 입력됩니다.<br>
+▪️  이메일 입력 후 인증버튼 클릭시 인증번호가 메일로 전송됩니다. 메일에 전송된 인증번호를 인증번호입력칸에 입력하여야 합니다.<br><br>
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/122211031/230764556-3207cb04-cc32-4476-8dd3-f3289b689ac9.gif"/>
 
 ###  ✔️ 로그인
@@ -65,6 +69,9 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707093-ea17f22c-3e96-4ce4-9cf5-87791585a12c.gif"/>
 
 ###  ✔️ 이메일 인증
+▪️  아이디, 이름, 입력 후 버튼 클릭시 이메일로 임시 비밀번호가 전송됩니다.<br> 
+▪️  해당 임시비밀번호가 메일 전송시 자동으로 회원 DB를 갱신합니다.<br>
+▪️  아이디와 임시비밀번호로 로그인이 가능합니다.<br><br>
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/122211031/230764694-e875b71e-ecc5-44e0-9f8f-be98c45ec71e.gif"/>
 
 ###  ✔️ 장바구니
@@ -78,6 +85,9 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707289-2817cc11-6bb7-4e05-9106-292f9ebdb9af.gif"/>
 
 ###  ✔️ 결제
+▪️  통합결제시 결제API를 통해 실결제가 가능합니다.<br>
+▪️  주문자의 이름과 이메일이 출력됩니다.<br>
+▪️  결제가 완료되면 결제완료 및 결제금액 알람창이 나온 후 결제완료 페이지가 나타납니다.<br><br>
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/122211031/230764829-98482b38-3fd1-400f-9c79-180791af3ad4.gif"/>
 
 
