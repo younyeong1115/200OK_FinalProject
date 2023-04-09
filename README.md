@@ -65,6 +65,7 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707093-ea17f22c-3e96-4ce4-9cf5-87791585a12c.gif"/>
 
 ###  ✔️ 이메일 인증
+<img width="70%" height = "300px" src="https://user-images.githubusercontent.com/122211031/230764694-e875b71e-ecc5-44e0-9f8f-be98c45ec71e.gif"/>
 
 ###  ✔️ 장바구니
 ▪️  상품 상세보기에서 장바구니 담기 가능합니다.<br>
