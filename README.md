@@ -111,7 +111,7 @@ Spring Boot + MySql + JPA로 구현한 쥬얼리쇼핑몰입니다.
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707321-efd4ac86-8442-4fae-987e-1a7e137997f3.gif"/>
 
 ## 💥트러블 슈팅
-###  ✔️ Parameter value [1] did not match expected type [entity.User (n/a)]; java.lang.IllegalArgumentException
+###  ✔️ 쿼리 참조 타입 오류 발생
 user entity 에서는 userId가 String 타입이었고, cart entity에서 userId의 타입은 User와 조인을 하기 때문에 User타입으로 선언해주었기 때문에 
 @Query("SELECT COUNT(c) FROM Cart c WHERE c.userId = :userId") 이렇게 쿼리를 생성해줬을때 타입이 다르다는 오류가 발생했다
 @Query("SELECT COUNT(c) FROM Cart c WHERE c.userId.userId = :userId") 따라서 userId(유저타입).userId로 쿼리를 생성하여 오류를 해결하였다
@@ -122,6 +122,9 @@ user entity 에서는 userId가 String 타입이었고, cart entity에서 userId
 @CreationTimeStamp는 INSERT 쿼리가 실행될 때 값을 현재시간으로 채워서 쿼리를 생성한다.<br>
 따라서 데이터 생성 시점 관리에 대한 수고스러움을 덜 수 있다.<br>
 
-
+###  ✔️ 타임리프 두가지 list 반복문 오류 발생
+컨트롤러에서 product list와 quantity list 두가지 list가 넘어왔을때
+<li th:each="product  : ${product}"> list의 size가 같음에도 불구하고 오류가 발생하였으나
+<li th:each="product,productStat  : ${product}"> productStat을 추가하여 현재 반복의 상태를 나타내는 변수를 추가하여 오류를 
 
 ## :pencil2:개선할점
