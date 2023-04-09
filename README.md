@@ -56,8 +56,7 @@ Spring Boot로 구현한 쥬얼리쇼핑몰입니다.
 
 ## 📚주요 기능
 ###  ✔️ 회원가입
-
-
+<img width="70%" height = "300px" src="https://user-images.githubusercontent.com/122211031/230764556-3207cb04-cc32-4476-8dd3-f3289b689ac9.gif"/>
 
 ###  ✔️ 로그인
 ▪️  보안을 강화하기 위해 인터셉터(interceptor) 기능을 활용하여 로그인 프로세스를 처리하고 있습니다.<br>
