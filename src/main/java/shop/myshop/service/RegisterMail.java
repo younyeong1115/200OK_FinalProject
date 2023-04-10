@@ -21,15 +21,15 @@ public class RegisterMail implements MailServiceInter  {
 
 	private String ePw; 
 
-	// 메일 내용 작성
+	// 작성
 	@Override
 	public MimeMessage createMessage(String to) throws MessagingException, UnsupportedEncodingException {
 
 		
 		MimeMessage message = emailsender.createMimeMessage();
 
-		message.addRecipients(RecipientType.TO, to);// 보내는 대상
-		message.setSubject("200OK 회원가입 이메일 인증");// 제목
+		message.addRecipients(RecipientType.TO, to);
+		message.setSubject("200OK 회원가입 이메일 인증");
 
 		String msgg = "";
 		msgg += "<div style='margin:100px;'>";
@@ -43,16 +43,16 @@ public class RegisterMail implements MailServiceInter  {
 		msgg += "<h3 style='color:blue;'>회원가입 인증 코드입니다.</h3>";
 		msgg += "<div style='font-size:130%'>";
 		msgg += "CODE : <strong>";
-		msgg += ePw + "</strong><div><br/> "; // 인증번호 
+		msgg += ePw + "</strong><div><br/> "; 
 		msgg += "</div>";
-		message.setText(msgg, "utf-8", "html");// 내용, charset 타입, subtype
-		// 보내는 사람의 이메일 주소, 보내는 사람 이름
+		message.setText(msgg, "utf-8", "html");
+		
 		message.setFrom(new InternetAddress("메일아이디", "200OK_Admin"));// 보내는 사람
 
 		return message;
 	}
 
-	// 랜덤 인증 코드 전송
+	// 랜덤 코드 
 	@Override
 	public String createKey() {
 		StringBuffer key = new StringBuffer();
@@ -80,15 +80,15 @@ public class RegisterMail implements MailServiceInter  {
 		return key.toString();
 	}
 
-	// 메일 발송
+	// 발송
 	@Override
 	public String sendSimpleMessage(String to) throws Exception {
 
-		ePw = createKey(); // 랜덤 인증번호 생성
+		ePw = createKey(); 
 
-		// TODO Auto-generated method stub
-		MimeMessage message = createMessage(to); // 메일 발송
-		try {// 예외처리
+		
+		MimeMessage message = createMessage(to); // 발송
+		try {
 			emailsender.send(message);
 		} catch (MailException es) {
 			es.printStackTrace();
