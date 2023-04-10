@@ -19,18 +19,17 @@ public class FindPwdEmail implements MailServiceInter {
 	@Autowired
 	JavaMailSender emailsender;
 
-	// 임시 패스워드
+
 	private String tempPwd;
 
-	// 메일 작성
+	// 작성
 	@Override
 	public MimeMessage createMessage(String to) throws MessagingException, UnsupportedEncodingException {
-		// TODO Auto-generated method stub
 
 		MimeMessage message = emailsender.createMimeMessage();
 
 		message.addRecipients(RecipientType.TO, to);// 보내는 대상
-		message.setSubject("200OK 임시비밀번호 발급");// 제목
+		message.setSubject("200OK 임시비밀번호 발급");
 
 		String msgg = "";
 		msgg += "<div style='margin:100px;'>";
@@ -46,13 +45,13 @@ public class FindPwdEmail implements MailServiceInter {
 		msgg += "CODE : <strong>";
 		msgg += tempPwd + "</strong><div><br/> ";
 		msgg += "</div>";
-		message.setText(msgg, "utf-8", "html");// 내용
-		message.setFrom(new InternetAddress("메일아이디", "200Ok_Admin"));// 보내는 사람
+		message.setText(msgg, "utf-8", "html");
+		message.setFrom(new InternetAddress("메일아이디", "200Ok_Admin"));
 
 		return message;
 	}
 
-	// 랜덤 값 생성
+	// 랜덤 번호 
 	@Override
 	public String createKey() {
 		StringBuffer key = new StringBuffer();
@@ -79,14 +78,13 @@ public class FindPwdEmail implements MailServiceInter {
 		return key.toString();
 	}
 
-	// 메일 발송
+	// 발송
 	@Override
 	public String sendSimpleMessage(String to) throws Exception {
 		tempPwd = createKey();
 
-		// TODO Auto-generated method stub
 		MimeMessage message = createMessage(to);
-		try {// 예외처리
+		try {
 			emailsender.send(message); 
 		} catch (MailException es) {
 			es.printStackTrace();
