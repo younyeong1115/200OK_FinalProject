@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import shop.myshop.dto.ProductDTO;
 import shop.myshop.entity.Category;
 import shop.myshop.entity.Product;
-
+import org.springframework.data.domain.Pageable;
 
 @Service
 public interface  ProductService {
 	
 	
-
+	public List<Product> getAllProductsSortedBySales(Pageable pageable); 
 
 	public List<ProductDTO> getProductListByCategory(Category categoryNo);
 	

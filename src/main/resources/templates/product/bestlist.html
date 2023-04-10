@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-	>
+   >
 <head>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<title>product list</title>
+<title>Best</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
@@ -139,15 +139,15 @@ display: inline-block;
 }
 
 .fx{
-			position:fixed;
-		  bottom:330px;
-			right:20px;
-			width:50px;
-			height:150px;
-			background-color:none;
+         position:fixed;
+        bottom:330px;
+         right:20px;
+         width:50px;
+         height:150px;
+         background-color:none;
       clear:both;
        z-index:1;
-		}
+      }
 hr
 {border: solid 2px #666;}
 /*선종류 선굵기 선색상*/
@@ -471,155 +471,84 @@ section > .container > .div-2 > .flex-item-2 > .review2 > .review-number2 {
 </head>
 <body>
 
-	
-
-	
-	
-	
-	<!--title-->
-		<div class="d-box">
-			<div class="titl">
-				<div style="float: left; margin: 0 20px;">
-					<a th:href="@{/user/logo}" class="logo-link">
+  
+   <!--title-->
+      <div class="d-box">
+         <div class="titl">
+            <div style="float: left; margin: 0 20px;">
+               <a th:href="@{/user/logo}" class="logo-link">
   <img th:src="@{/image/logo.png}" width="70" height="70">
 </a>
-				</div>
-			
-					<ul class="f-list">
-				   <li><a th:href="@{/product/best}">Best</a></li>
-					<li><a href="">Products</a>
-						<ul class="list-s">
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/ringlist}">ring</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/braceletlist}">bracelet</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/necklacelist}">necklace</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/earringlist}">earring</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/watchlist}">watch</a></li>
-						<li style="font-size: 0.8rem;"><a th:href="@{/product/objectlist}">object</a></li>
-						</ul></li>
-				<li><a th:href="@{/qna/qnalist}">QnA</a></li>
-				<li><a th:href="@{/notice/noticelist}">Notice</a></li>
-			</ul>
-			<div th:if="${userName eq ''}">
-					<ul class="s-list">
-					
-						    <li><a id="search-btn">검색</a></li>
-						<li><a th:href="@{/user/login}">로그인</a></li>
-					</ul>
-				</div>
+              </div>
+         
+               <ul class="f-list">
+               <li><a th:href="@{/product/best}">Best</a></li>
+               <li><a href="#">Products</a>
+                  <ul class="list-s">
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/ringlist}">ring</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/braceletlist}">bracelet</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/necklacelist}">necklace</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/earringlist}">earring</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/watchlist}">watch</a></li>
+                  <li style="font-size: 0.8rem;"><a th:href="@{/product/objectlist}">object</a></li>
+                  </ul></li>
+            <li><a th:href="@{/qna/qnalist}">QnA</a></li>
+	<li><a th:href="@{/notice/noticelist}">Notice</a></li>
+         </ul>
+      <div th:if="${userName eq ''}">
+               <ul class="s-list">
+               
+                   <li><a id="search-btn">검색</a></li>
+                  <li><a th:href="@{/user/login}">로그인</a></li>
+               </ul>
+            </div>
 
-				<div th:if="${userName ne ''}">
-					<ul class="s-list">
-						
-						<li><a th:href="@{/cart/cartform}">장바구니</a></li>
-						    <li><a id="search-btn">검색</a></li>
-						<li th:if="${userRole eq 'ADMIN'}"><a href="#">관리자 Home</a></li>
-						<li><a th:href="@{/mypage/home}">마이페이지</a></li>
-						<li><a th:href="@{/user/logout}">로그아웃</a></li>
-						
-					</ul>
-				</div>
-		</div>
+            <div th:if="${userName ne ''}">
+               <ul class="s-list">
+                  
+                  <li><a th:href="@{/cart/cartform}">장바구니</a></li>
+                   <li><a id="search-btn">검색</a></li>
+                  <li th:if="${userRole eq 'ADMIN'}"><a href="#">관리자 Home</a></li>
+                  <li><a th:href="@{/mypage/home}">마이페이지</a></li>
+                  <li><a th:href="@{/user/logout}">로그아웃</a></li>
+                 
+               </ul>
+            </div>
+      </div>
+
 
 <section>
   <div class="container">
     <div class="div-1">
-      <span>Earring</span>
+      <span>Best</span>
     </div>
-    <div class="w3-bar">
-  <a id="all-btn" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">ALL</a>
-  <a id="gold-btn" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">GOLD</a>
-  <a id="silver-btn" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">SILVER</a>
-  <a id="etc-btn" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-gray w3-hover-text-gray">ETC</a>
-</div>
+
     <br>
     <br>
     <br>
     <br>
   
-    <!-- Category 4 Products -->
-    <div class="row">
-      <div class="col-md-12">
-        
+   <div class="row">
+  <div class="col-md-12">
+    <!-- 다른 내용 -->
+  </div>
+  <div class="col-md-4" th:each="product : ${bestList}">
+    <div class="product-item">
+      <div class="pi-img-wrapper">
+        <img src="#" class="img-responsive" th:src="@{/image/__${product.productThumbnail}__.jpg}">
       </div>
-      <div class="col-md-4" th:each="product : ${productList1}">
-        <div class="product-item">
-          <div class="pi-img-wrapper">
-          
-            <img src="#" class="img-responsive"  th:src="@{/image/__${product.productThumbnail}__.jpg}" >
-      
-          </div>
-          <h3><a th:href="@{'productdetail/' + ${product.productCode}}" th:text="${product.productName}"></a></h3>
-          <div class="pi-price" th:text="${product.productPrice}"></div>
-          
-        </div>
-      </div>
+      <h3><a th:href="@{'productdetail/' + ${product.productCode}}" th:text="${product.productName}"></a></h3>
+      <div class="pi-price" th:text="${product.productPrice}"></div>
     </div>
-
-    <!-- Category 5 Products -->
-    <div class="row">
-      <div class="col-md-12">
-       
-      </div>
-      <div class="col-md-4" th:each="product : ${productList2}">
-        <div class="product-item">
-          <div class="pi-img-wrapper">
-            <img src="#" class="img-responsive" th:src="@{/image/__${product.productThumbnail}__.jpg}">
-            
-          </div>
-          <h3><a th:href="@{'productdetail/' + ${product.productCode}}" th:text="${product.productName}"></a></h3>
-          <div class="pi-price" th:text="${product.productPrice}"></div>
-          
-        </div>
-      </div>
-    </div>
-
-    <!-- Category 6 Products -->
-    <div class="row">
-      <div class="col-md-12">
-       
-      </div>
-        <div class="col-md-4" th:each="product : ${productList3}">
-        <div class="product-item">
-          <div class="pi-img-wrapper">
-            <img src="#" class="img-responsive" th:src="@{/image/__${product.productThumbnail}__.jpg}" >
-            <div>
-             
-            </div>
-          </div>
-          <h3><a th:href="@{'productdetail/' + ${product.productCode}}" th:text="${product.productName}"></a></h3>
-          <div class="pi-price" th:text="${product.productPrice}"></div>
-       
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
 
 </section>
-<script >
-$(document).ready(function() {
-	  // "ALL" button clicked
-	  $("#all-btn").click(function() {
-	    $(".row").show();
-	  });
-	  
-	  // "GOLD" button clicked
-	  $("#gold-btn").click(function() {
-	    $(".row").hide();
-	    $(".row:nth-of-type(3)").show(); 
-	  });
-	  
-	  // "SILVER" button clicked
-	  $("#silver-btn").click(function() {
-	    $(".row").hide();
-	    $(".row:nth-of-type(4)").show(); 
-	  });
-	  
-	  // "ETC" button clicked
-	  $("#etc-btn").click(function() {
-	    $(".row").hide();
-	    $(".row:nth-of-type(5)").show(); 
-	  });
-	});
-</script>
+
+
+
+
+
 </body>
 </th:block>
 </html>

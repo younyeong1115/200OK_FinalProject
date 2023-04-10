@@ -14,6 +14,11 @@ import shop.myshop.entity.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 	
+		//best상품
+		@Query("SELECT p FROM Product p ORDER BY p.productSale DESC")
+		List<Product> findAllOrderByProductSaleDesc(Pageable pageable);
+	
+	
 	@Query(value="select p from Product p where p.categoryNo=:categoryNo")
 	 List<Product> findByCategoryNo(@Param("categoryNo")Category categoryNo);
 	

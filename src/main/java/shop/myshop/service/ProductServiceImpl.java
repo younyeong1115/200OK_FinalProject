@@ -21,6 +21,10 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductRepository productDao;
+	
+	public List<Product> getAllProductsSortedBySales(Pageable pageable) {
+		return productDao.findAllOrderByProductSaleDesc(pageable);
+	}
 
 	@Override
 	public List<ProductDTO> getProductListByCategory(Category categoryNo) {

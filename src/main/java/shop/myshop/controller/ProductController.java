@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import shop.myshop.dto.ProductDTO;
 import shop.myshop.entity.Category;
@@ -64,6 +66,27 @@ public class ProductController {
  
 		 return "product/objectlist";
 }
+	
+	@GetMapping("bestForm")
+	 public String bestlist() {
+
+		 return "product/bestlist";
+}
+	
+	@GetMapping("/best")
+	public String getbestProducts(Model model) {
+	
+		Pageable pageable = PageRequest.of(0, 9); // 첫 번째 페이지, 페이지당 9개씩
+	    List<Product> bestList = productService.getAllProductsSortedBySales(pageable);
+	   
+
+	    
+	    model.addAttribute("bestList", bestList);
+	    
+	    return "product/bestlist";
+	}
+	
+	
 	
 	@GetMapping("/ringlist")
 	public String getRingProducts(Model model) {
