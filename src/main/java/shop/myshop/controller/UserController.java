@@ -119,7 +119,7 @@ public class UserController {
 		String tempPwd = findPwdEmail.sendSimpleMessage(user.getUserEmail());
 		userService.updateTempPwd(tempPwd, user.getUserId());
 
-		model.addAttribute("message", "임시비밀번호 변경이 완료되었습니다. 메일을 확인해주세요.");
+		model.addAttribute("message", "임시비밀번호가 발급되었습니다. 메일을 확인해주세요.");
 		return "user/findPwdResult.html";
 	}
 		return "user/findPwdfail.html"; 
