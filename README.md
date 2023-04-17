@@ -94,7 +94,7 @@ Spring Boot + MySql + JPA 기반으로 개발된 웹 프로젝트입니다.<br>
 ▪️  비밀번호찾기: 아이디, 이름, 이메일 입력 후 버튼 클릭시 이메일로 임시 비밀번호가 전송됩니다.<br> 
 ▪️  메일 전송시 회원의 기존 비밀번호는 해당 임시 비밀번호로 갱신됩니다.<br>
 ▪️  아이디와 임시 비밀번호로 로그인이 가능합니다.<br><br>
-<img width="70%" height = "300px" src="https://user-images.githubusercontent.com/122211031/230764694-e875b71e-ecc5-44e0-9f8f-be98c45ec71e.gif"/>
+<img width="70%" height = "300px" src="https://user-images.githubusercontent.com/122211031/232493484-47801af1-9185-4807-b153-3d8d1ec289b7.gif"/>
 
 ###  ✔️ 장바구니
 ▪️  상품 상세보기에서 장바구니 담기 가능합니다.<br>
