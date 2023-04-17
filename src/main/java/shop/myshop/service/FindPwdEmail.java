@@ -90,8 +90,8 @@ public class FindPwdEmail implements MailServiceInter {
 		MimeMessage message = createMessage(to);
 		try {
 			emailsender.send(message); 
-		} catch (MailException es) {
-			es.printStackTrace();
+		} catch (MailException e) {
+			e.printStackTrace();
 			throw new IllegalArgumentException();
 		}
 		return tempPwd;
