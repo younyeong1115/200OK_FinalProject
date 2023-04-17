@@ -37,7 +37,7 @@ public class RegisterMail implements MailServiceInter  {
 	        .append("CODE : <strong>").append(authCode).append("</strong><div><br/> "); 
 
 	    String msg = emailMsg.toString();
-	    message.setText(msg, "utf-8", "html");// 내용, charset 타입, subtype
+	    message.setText(msg, "utf-8", "html");
 	    message.setFrom(new InternetAddress("발신인 이메일", "200OK_Admin"));
 
 	    return message;
