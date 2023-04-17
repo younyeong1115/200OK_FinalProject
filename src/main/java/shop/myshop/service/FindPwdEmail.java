@@ -44,7 +44,7 @@ public class FindPwdEmail implements MailServiceInter {
 		    pwdMsg.append("</strong><div><br/> ");
 		    pwdMsg.append("</div>");
 
-		    message.setText(pwdMsg.toString(), "utf-8", "html");// 내용
+		    message.setText(pwdMsg.toString(), "utf-8", "html");
 		    message.setFrom(new InternetAddress("발신인 이메일", "200Ok_Admin"));
 
 		    return message;
