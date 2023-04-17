@@ -52,8 +52,10 @@ Spring Boot + MySql + JPA 기반으로 개발된 웹 프로젝트입니다.<br>
 
 
 ## :running:팀원 소개
-<h4> 🍀 이윤영 : https://github.com/younyeong1115 </h4>
-<h4> :hamster: 김영림 : https://github.com/RimKim </h4>
+| Name | Git Address |
+| -------- | -------- |
+|:hamster: 김영림| https://github.com/RimKim|
+|🍀 이윤영|https://github.com/younyeong1115| 
 
 <br>
 
@@ -96,7 +98,8 @@ Spring Boot + MySql + JPA 기반으로 개발된 웹 프로젝트입니다.<br>
 
 ###  ✔️ 장바구니
 ▪️  상품 상세보기에서 장바구니 담기 가능합니다.<br>
-▪️  체크박스에 체크 된 상품만 가격 합계 계산 및 주문서로 넘어 가게됩니다.<br><br>
+▪️  체크박스에 체크 된 상품만 가격 합계 계산 및 주문서로 넘어 가게됩니다.<br>
+▪️  상품 주문시 장바구니에서 해당 상품은 사라지게 됩니다.<br><br>
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707305-612b37ac-c333-4e7c-ad9c-0137fe6cf35d.gif"/>
 
 ###  ✔️ 배송지관리
@@ -130,9 +133,9 @@ user entity 에서는 userId가 String 타입이었고, cart entity에서 userId
 따라서 데이터 생성 시점 관리에 대한 수고스러움을 덜 수 있다.<br>
 
 ###  ✔️ 타임리프 두가지 list 반복문 오류 발생
-컨트롤러에서 product list와 quantity list 두가지 list가 넘어왔을때
-<li th:each="product  : ${product}"> list의 size가 같음에도 불구하고 오류가 발생하였으나
-<li th:each="product,productStat  : ${product}"> productStat을 추가하여 현재 반복의 상태를 나타내는 변수를 추가하여 오류를 해결하였다
+컨트롤러에서 product list와 quantity list 두가지 list가 넘어왔을때<br>
+&lt;li th:each=&quot;product : ${products}&quot;&gt; list의 size가 같음에도 불구하고 오류가 발생하였으나<br>
+&lt;li th:each=&quot;product,productStat : ${products}&quot;&gt; productStat을 추가하여 현재 반복의 상태를 나타내는 변수를 추가하여 오류를 해결하였다<br>
  
 ###  ✔️ StackOverflow 오류 발생
  StackOverflowError는 우리가 접할 수 있는 가장 일반적인 런타임 오류 중 하나이다<br> 
