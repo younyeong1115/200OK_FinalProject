@@ -117,7 +117,7 @@ public class UserController {
 	
 	if (user != null) {
 		String tempPwd = findPwdEmail.sendSimpleMessage(user.getUserEmail());
-		userService.changeTempPwd(tempPwd, user.getUserId());
+		userService.updateTempPwd(tempPwd, user.getUserId());
 
 		model.addAttribute("message", "임시비밀번호 변경이 완료되었습니다. 메일을 확인해주세요.");
 		return "user/findPwdResult.html";
@@ -277,7 +277,7 @@ public class UserController {
 
 		StringBuffer url = new StringBuffer();
 		url.append("https://kauth.kakao.com/oauth/authorize?");
-		url.append("client_id=" + "카카오톡아이디");
+		url.append("client_id=" + "카카오아이디");
 		url.append("&redirect_uri=http://localhost/ok/user/kakao");
 		url.append("&response_type=code");
 
@@ -289,7 +289,7 @@ public class UserController {
 
 		StringBuffer url = new StringBuffer();
 		url.append("https://kauth.kakao.com/oauth/logout?");
-		url.append("client_id=" + "카카오톡아이디");
+		url.append("client_id=" + "카카오아이디");
 		url.append("&logout_redirect_uri=http://localhost/ok/user/kakaologout");
 
 		return "redirect:" + url.toString();

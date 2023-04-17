@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int changeTempPwd(String tempPwd, String userId) throws Exception {
+	public int updateTempPwd(String tempPwd, String userId) throws Exception {
 		return userDao.updateTempPwd(tempPwd, userId);
 	}
 

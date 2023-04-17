@@ -29,7 +29,7 @@ public interface UserService {
 
 	public User findUserPwd(String userId, String userName, String userEmail) throws Exception;
 
-	public int changeTempPwd(String tempPwd, String userId) throws Exception;
+	public int updateTempPwd(String tempPwd, String userId) throws Exception;
 
 	public boolean UserIdExists(String userId) throws Exception;
 	
