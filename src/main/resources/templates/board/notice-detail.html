@@ -15,49 +15,16 @@
  
 <br><br><br><br><br>
   <!-- board detail area -->
-
-  <div id="board-list">
-    <div class="container1">
-    
-<table class="board-table" align="center" cellpadding="5" cellspacing="2" width="60%"
-			border='1'>
-
-			 <tr>
-			    <td width="100" height="20">
-			        <p align="right">
-			            <b><span style="font-size: 12pt;">작성일</span></b>
-			        </p>
-			    </td>
-			    <td width="450" height="20" colspan="3">
-			    <span style="font-size: 12pt;"><b th:text="${notice[0].noticeRegdate}"></b></span></td>
-			</tr> 
-			<tr>
-			<tr>
-			    <td width="100" height="20">
-			        <p align="right">
-			            <b><span style="font-size: 12pt;">제 목</span></b>
-			        </p>
-			    </td>
-			    <td width="450" height="20" colspan="3"><span
-			            style="font-size: 12pt;"><b th:text="${notice[0].noticeTitle}"></b></span></td>
-			</tr>
-			
-			
-			 <tr>
-			    <td width="100" height="200" valign="top">
-			        <p align="right">
-			            <b><span style="font-size: 12pt;">내 용</span></b>
-			        </p>
-			    </td>
-			
-			    <td width="450" height="200" valign="top" colspan="3"><span
-			            style="font-size: 12pt;"><b th:utext="${notice[0].noticeContent}"></b></span></td>
-			</tr>
-		</table>
-		
-    </div>
-    
+  <div align="center" style="padding-left: 400px; padding-right: 400px;">
+  	<span style="font-size: 20px; font-weight: bold;" th:text="${notice[0].noticeTitle}">
+  	</span>
+  	
+    <hr style="border-width: 1px; margin-top: 15px;">
+    <br>
+	<span style="font-size: 15px;" th:utext="${notice[0].noticeContent}">
+  	</span>
 </div>
+
 <br>
 
 
