@@ -87,8 +87,9 @@ Spring Boot + MySql + JPA 기반으로 개발된 웹 프로젝트입니다.<br>
 ###  ✔️ 로그인
 ▪️  보안을 강화하기 위해 인터셉터(interceptor) 기능을 활용하여 로그인 프로세스를 처리하고 있습니다.<br>
 ▪️  일반로그인, sns 로그인 두가지 방식으로 로그인이 가능합니다.<br>
-▪️  sns로 최초 로그인하는 경우 kakao가 제공하는 사용자 정보 외에 필요한 정보를 회원가입폼을 이용하여 입력 받게 됩니다.<br><br>
-<img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707093-ea17f22c-3e96-4ce4-9cf5-87791585a12c.gif"/>
+▪️  sns로 최초 로그인하는 경우 kakao가 제공하는 사용자 정보 외에 필요한 정보를 회원가입폼을 이용하여 입력 받게 됩니다.<br>
+▪️  이후 sns로 로그인 시 별도의 절차 없이 로그인 되어 메인으로 이동 합니다.<br><br>
+<img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/232733398-b1efe900-bc9e-45bb-a277-3e052554f974.gif"/>
 
 ###  ✔️ 이메일 인증
 ▪️  비밀번호찾기: 아이디, 이름, 이메일 입력 후 버튼 클릭시 이메일로 임시 비밀번호가 전송됩니다.<br> 
@@ -99,7 +100,7 @@ Spring Boot + MySql + JPA 기반으로 개발된 웹 프로젝트입니다.<br>
 ###  ✔️ 장바구니
 ▪️  상품 상세보기에서 장바구니 담기 가능합니다.<br>
 ▪️  체크박스에 체크 된 상품만 가격 합계 계산 및 주문서로 넘어 가게됩니다.<br>
-▪️  상품 주문시 장바구니에서 해당 상품은 사라지게 됩니다.<br><br>
+▪️  상품 결제 시 장바구니에서 해당 상품은 사라지게 됩니다.<br><br>
 <img width="70%" height = "300px" src="https://user-images.githubusercontent.com/92067780/230707305-612b37ac-c333-4e7c-ad9c-0137fe6cf35d.gif"/>
 
 ###  ✔️ 배송지관리
